@@ -3,6 +3,9 @@ node_modules/
 dist/
 .reference-review/
 .taste-skill/
+.hallmark/scaffold/
+.hallmark/after-static.txt
+.hallmark/before-overview.json
 .env
 .env.*
 !.env.example

@@ -17,7 +17,7 @@ The first milestone is a local UI presentation for Zealpro Solutions Incorporate
 ## Decisions
 
 - Use native browser modules and a Node loopback server. The local backend now uses pinned PGlite and pg_dump tooling; install with `npm ci`.
-- Use the supplied logo as the brand authority: white chrome, navy actions, cyan calendar highlights and green completion states.
+- Use the supplied logo and latest owner screenshot as brand authority: navy navigation, lime selection, navy actions and white working panels. The explicit reference supersedes exploratory hue changes.
 - Keep the initial ocular assessment possible before formal enrollment.
 - Complete treatment, deduct stock and compile its report in one validated local action.
 - Record pest type explicitly; never infer it from the treatment method.
@@ -49,3 +49,7 @@ The original SRS, three paperwork photographs and logo are preserved. The public
 ## Calendar refinement
 
 Year provides twelve equal month cards with monthly contribution and drill-down. Shared period navigation clamps invalid leap-day/month-end selections. Desktop calendar/detail panels align at 720 pixels; narrow panels stack, and long values wrap without changing month-card heights. Blank outside-month cells have a distinct fill. See [calendar QA](../docs/QA_CALENDAR_REFINEMENT.md). Drafting changes stay directly on main, followed by verification and commit/push.
+
+## Shared visual system
+
+`design.md` records the restored navy/lime system. Mobile table actions and focus containment were improved while retaining all business workflows. See [brand restoration QA](../docs/QA_BRAND_RESTORATION.md) and the final screenshots.

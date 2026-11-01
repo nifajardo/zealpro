@@ -9,3 +9,5 @@ Client editing and optional person/role/phone/email fields are implemented on th
 Next milestone: explicit UI persistence cutover, command retry/conflict recovery and reviewed legacy import. Hosted provider provisioning, authentication and live integrations remain separate work.
 
 Year calendar and logo-guided white/neutral refinement are implemented; see `docs/QA_CALENDAR_REFINEMENT.md`. All four desktop calendar/detail panels align, the day action fills its card, and outside-month cells have a distinct fill. Draft directly on `main`; verify, commit and push without creating feature branches.
+
+Latest visual authority: the owner screenshot restores navy navigation, lime selection, blue actions and white working panels. Read `design.md` and `docs/QA_BRAND_RESTORATION.md`; preserve this scheme unless the owner changes it. Calendar and mobile usability fixes remain implemented.

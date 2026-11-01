@@ -1,6 +1,35 @@
 {
   "runs": [
     {
+      "date": "2026-11-02",
+      "project": "Zealpro owner-reference palette restoration",
+      "mode": "redesign",
+      "depth": "full",
+      "scope": "app",
+      "genre": "modern-minimal",
+      "theme": "brand",
+      "brand": "Owner screenshot and unchanged original logo",
+      "axes": "light/grotesk-sans/navy-lime",
+      "nav": "navy nine-destination sidebar with lime selection",
+      "signature": "service ledger and white operations summary",
+      "preserved": [
+        "nine routes",
+        "links, fields and handlers",
+        "all figures and records",
+        "calendar and payment behavior"
+      ],
+      "waived": [
+        "24b: existing compact optical spacing"
+      ],
+      "answered": [
+        "F7: owner reference white working panels",
+        "F4: outlined secondaries and one navy primary",
+        "F24: native dialog overlay"
+      ],
+      "review": "finish-review: subagent, ship for final palette; no unresolved visual findings",
+      "verification": "39 tests, syntax/static checks and native browser inspection; no scripted render pass"
+    },
+    {
       "date": "2026-11-01",
       "project": "Zealpro operations UI demo",
       "scope": "app",

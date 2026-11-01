@@ -83,8 +83,8 @@ The SRS spells the treatment category **Gel bathing**. The demo preserves it. Co
 
 ## Design and assets
 
-- Brand: the supplied Zealpro logo defines navy actions, cyan calendar highlights and green completion states on white surfaces. Darker accent shades preserve text contrast.
-- Design workflows: Taste achromatic-ledger app refinement and Hallmark app rules; the supplied brand overrides the dealt theme colors.
+- Brand: the owner reference screenshot defines navy navigation, lime active selection, blue actions and white working panels on a cool grey canvas. The supplied logo is unchanged. See [design system](design.md).
+- Design workflows: Hallmark brand app redesign and Taste app review; the supplied logo and owner screenshot govern the palette.
 - Typeface: General Sans, supplied by [Fontshare](https://www.fontshare.com/fonts/general-sans), downloaded from the official Fontshare API. The unmodified license is included at `public/assets/General-Sans-FFL.txt`.
 - Reference mapping: [SRS traceability](docs/SRS_TRACEABILITY.md).
-- Current refinement: [overview](docs/screenshots/overview-after-refinement.png), [Year calendar](docs/screenshots/calendar-year-after-refinement.png) and [calendar/detail alignment](docs/screenshots/calendar-detail-after-refinement.png). Earlier screenshots: [workspace](docs/screenshots/overview-desktop-v2.png), [actual-product entry](docs/screenshots/report-actual-entry-v2.png), [phone calendar](docs/screenshots/calendar-phone-v2.png), [phone report form](docs/screenshots/report-phone-entry-v2.png). The live calendar contains the complete desktop layout; additional full-page capture was unavailable.
+- Current palette: [overview](docs/screenshots/brand-restored-overview.jpg), [calendar](docs/screenshots/brand-restored-calendar.jpg), [phone](docs/screenshots/brand-restored-phone.jpg) and [QA](docs/QA_BRAND_RESTORATION.md). Year/calendar alignment evidence remains in [calendar QA](docs/QA_CALENDAR_REFINEMENT.md). Earlier screenshots: [workspace](docs/screenshots/overview-desktop-v2.png), [actual-product entry](docs/screenshots/report-actual-entry-v2.png), [phone calendar](docs/screenshots/calendar-phone-v2.png), [phone report form](docs/screenshots/report-phone-entry-v2.png). The live calendar contains the complete desktop layout; additional full-page capture was unavailable.

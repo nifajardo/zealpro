@@ -1,13 +1,26 @@
 {
-  "date": "2026-11-01",
+  "scanned": "2026-11-02",
   "scope": "app",
-  "brand_source": "375958077_122113076180026477_5273206052510758923_n.png",
-  "dominant_logo_colors": { "navy": "#0f346e", "lime": "#84c225", "cyan": "#3bb3c2" },
-  "requirements_source": "ZEALPRO - SRS.pdf, pages 1-3",
-  "preserved": ["all original reference files", "Zealpro logo proportions and pixels", "SRS treatment terminology"],
-  "introduced": ["native-module UI", "illustrative records", "General Sans typography", "responsive operations workspace"],
-  "theme": "Coral, dealt 3/3; brand palette overrides theme colors",
-  "signature": "service queue connected to Zealpro treatment and report fields",
-  "states": ["full", "empty", "form validation error", "storage recovery warning"],
-  "verification": "Static Hallmark and Taste checks plus connected Brave browser inspection; automated render scripts were not used."
+  "mode": "redesign",
+  "depth": "full",
+  "findings": {
+    "fonts": "General Sans: public/tokens.css:46; existing local woff2 files",
+    "palette": "Owner reference screenshot restores original navy/lime/cyan logo scheme; public/tokens.css is runtime authority",
+    "framework": "Native modules: src/app.js:1; Node/PGlite package.json; no framework change",
+    "routes": "Nine destinations: src/app.js:88",
+    "existing": "Overview, calendar, catalogs, ocular visits, clients, reports, inventory, billing and analytics; clean main at 2067c73"
+  },
+  "preserve": [
+    "logo pixels and provenance",
+    "all links, fields, handlers and records",
+    "calendar and payment behavior",
+    "General Sans"
+  ],
+  "introduce": [
+    "restore navy sidebar and lime selection",
+    "restore navy actions and white summary panels",
+    "retain improved readable tables and focus containment",
+    "shared design.md"
+  ],
+  "verification": "Static Hallmark/Taste plus supported native browser controls. Raw-CDP rendering is not retried."
 }

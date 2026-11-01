@@ -20,6 +20,12 @@ The supplied logo remains unchanged and defines navy actions, cyan data accents 
 
 Drafting work now stays directly on `main`, followed by verified commit/push. Do not create feature branches or ceremonial merges. This refinement changes no storage schema or persistence boundary.
 
+## Owner reference palette restoration
+
+The latest owner screenshot supersedes the lighter chrome and exploratory hue direction. Navy sidebar, vivid lime active navigation, navy actions, cool grey canvas and white working panels are restored. `design.md` records this shared system. The original logo remains byte-identical and now declares its natural image dimensions. All nine routes and existing records/handlers remain intact.
+
+Shared interface improvements include clearer type and table spacing, a contained mobile ledger with a visible 44-pixel row action, inset focus rings, 960-pixel menu collapse and two-column summary metrics below 1100 pixels. Calendar Year/Month/Week/Day still use equal 720-pixel desktop frames, full-width day actions, visible outside cells and preserved scroll. Final evidence is `docs/QA_BRAND_RESTORATION.md`; independent visual review says ship. All 39 tests pass. UI persistence remains browser-local and no records were reset.
+
 ## Run and live state
 
 - Install with `npm ci` (Node.js 22+). `npm start` runs the loopback server and opens `.local/db` by default. Migrations run on startup; seeding never runs implicitly.

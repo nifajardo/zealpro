@@ -1,3 +1,8 @@
+/* Hallmark · shape: app screen · genre: modern-minimal · theme: brand · redesign: full · copy: verbatim
+ * nav: navy nine-destination sidebar · signature: service ledger and white operations summary · states: full, empty, validation error, storage error
+ * axes: light/grotesk-sans/navy-lime · posture: restrained · brand: Zealpro (supplied logo) · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: S, the real service queue and selected-day dispatch carry the screen instead of decorative graphics. */
+/* Hallmark · finish-review: subagent, ship · final owner-reference navy/lime palette · no unresolved visual findings. */
 /* Hallmark · shape: app screen · genre: modern-minimal · theme: Coral (deal 3/3, brand palette override)
  * nav: eight-destination labeled sidebar · signature: service queue connected to Zealpro paperwork · states: full, empty, validation error, storage error
  * axes: light/grotesk-sans/brand-navy · posture: restrained · v2.0.0 */
@@ -5,6 +10,7 @@
 /* Hallmark · waive 24b · compact table and calendar optical spacing · Zealpro service rows and material labels use tuned gaps to remain readable at narrow desktop widths. */
 /* Hallmark · answered F4 · The base button has a visible outline on the paper surface; only the primary button uses a solid navy fill. */
 /* Hallmark · answered F24 · The native dialog needs a defined edge and overlay elevation to separate service forms from the dense queue. */
+/* Hallmark · answered F7 · The owner reference explicitly uses white metrics, service and fulfillment panels; consistent containment distinguishes business regions without adding another colour. */
 @import url('./tokens.css');
 
 * { box-sizing: border-box; }
@@ -18,7 +24,7 @@ button, a { touch-action: manipulation; }
 button { cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 button { color: inherit; }
-button:disabled { cursor: not-allowed; color: var(--color-muted); background: var(--color-track); border-color: var(--color-rule); }
+button:disabled { cursor: not-allowed; color: var(--color-ink); background: var(--color-track); border-color: var(--color-rule); }
 button:active:not(:disabled), .button:active { transform: translateY(1px); }
 button, input, select, textarea { min-width: 0; }
 :focus-visible { outline: 2px solid var(--color-cyan-ink); outline-offset: 3px; }
@@ -48,7 +54,7 @@ strong, b { font-weight: 600; }
 .sidebar nav a { display: flex; gap: 12px; align-items: center; padding: 10px 12px; min-height: 44px; margin: 4px 0; font-size: 13px; color: var(--color-shell-muted); border-radius: 6px; transition: background var(--dur-micro), color var(--dur-micro); }
 .sidebar nav .icon { width: 18px; height: 18px; }
 .sidebar nav a:hover { background: var(--color-shell-raised); color: var(--color-shell-ink); }
-.sidebar nav a[aria-current] { background: var(--color-lime); color: var(--color-shell); font-weight: 600; }
+.sidebar nav a[aria-current] { background: var(--color-lime); color: var(--color-ink); font-weight: 500; }
 .nav-count { margin-left: auto; background: var(--color-shell-raised); padding: 0 6px; color: var(--color-shell-ink); border-radius: 4px; font-size: 11px; }
 .sidebar-foot { margin-top: auto; padding-top: 20px; }
 .guide-button { width: 100%; display: flex; align-items: center; gap: 10px; padding: 11px 12px; background: var(--color-clear); border: 0; border-radius: 5px; color: var(--color-shell-muted); font-size: 12px; }
@@ -111,7 +117,7 @@ kbd { border: 1px solid var(--color-rule); border-radius: 4px; padding: 1px 4px;
 .tabs a[aria-current] { color: var(--color-navy); border-bottom-color: var(--color-navy); font-weight: 600; }
 .tabs a > span { font-size: 10px; padding: 1px 5px; background: var(--color-paper); border-radius: 4px; }
 .tabs.standalone { margin-bottom: 20px; padding: 0; }
-.table-scroll { overflow-x: auto; }
+.table-scroll { position: relative; overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; text-align: left; white-space: nowrap; }
 th { font-size: 12px; color: var(--color-muted); font-weight: 400; padding: 12px 16px; }
 td { padding: 17px 16px; border-top: 1px solid var(--color-rule); font-size: 12px; }
@@ -524,7 +530,7 @@ dd { margin: 0; font-size: 13px; overflow-wrap: anywhere; }
   .page-heading p { max-width: 45ch; }
   .calendar-day { min-height: 85px; }
 }
-@media (max-width: 800px) {
+@media (max-width: 960px) {
   :root { --gutter: 20px; }
   .sidebar { display: none; width: 234px; inset: 55px auto 0 0; box-shadow: 12px 0 30px var(--color-overlay); }
   .sidebar.mobile-open { display: flex; }
@@ -665,7 +671,7 @@ dd { margin: 0; font-size: 13px; overflow-wrap: anywhere; }
 /* November 2026 refinement: quiet chrome, a single teal data accent, and equal calendar/detail frames. */
 h1 { font-size: 30px; letter-spacing: -.6px; }
 .sidebar { border-right-color: var(--color-border); }
-.sidebar nav a[aria-current] { background: var(--color-shell-raised); color: var(--color-ink); }
+.sidebar nav a[aria-current] { background: var(--color-shell-raised); color: var(--color-shell-ink); }
 .nav-count { background: var(--color-surface); border: 1px solid var(--color-rule); color: var(--color-ink); }
 .metric > strong, .completed-metric > strong { color: var(--color-ink); }
 .donut-value { stroke: var(--color-lime-ink); }
@@ -744,3 +750,202 @@ h1 { font-size: 30px; letter-spacing: -.6px; }
 .calendar-outside-label { display: inline-flex; align-items: center; gap: 5px; }
 .calendar-outside-label i { width: 10px; height: 10px; background: var(--color-calendar-outside); border: 1px solid var(--color-calendar-rule); }
 .mini-days > span:empty { background: var(--color-calendar-outside); }
+
+/* Hallmark brand redesign: the owner reference restores navy navigation, lime selection and white working panels. */
+::selection { background: var(--color-lime); color: var(--color-ink); }
+input, textarea { caret-color: var(--color-navy); }
+html { scrollbar-color: var(--color-border) var(--color-paper); }
+.canvas, .page-footer { max-width: 1440px; }
+.canvas { padding-top: 32px; }
+h1 { font-size: 34px; line-height: 1.18; letter-spacing: -1px; }
+.page-heading { align-items: flex-start; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--color-border); }
+.page-heading p { font-size: 14px; margin-top: 8px; }
+.heading-actions { padding-top: 4px; }
+.sidebar { padding: 16px 16px 0; border-right: 1px solid var(--color-shell-rule); }
+.brand { min-height: 88px; margin-bottom: 24px; border-radius: 8px; }
+.brand img { width: 196px; max-width: 100%; }
+.workspace { gap: 8px; padding: 0 8px 24px; }
+.workspace-mark { width: 24px; border: 0; background: var(--color-clear); color: var(--color-shell-ink); }
+.workspace strong { font-size: 13px; }
+.nav-label { margin: 24px 12px 8px; font-size: 11px; color: var(--color-shell-muted); }
+.nav-divider { margin-top: 24px; }
+.sidebar nav a { min-height: 44px; padding: 12px; border-radius: 8px; color: var(--color-shell-ink); font-size: 13px; font-weight: 500; }
+.sidebar nav a:hover { background: var(--color-shell-raised); color: var(--color-shell-ink); }
+.sidebar nav a[aria-current] { background: var(--color-lime); color: var(--color-ink); font-weight: 500; }
+.nav-count { background: var(--color-lime-tint); color: var(--color-ink); border: 0; border-radius: 4px; min-width: 22px; text-align: center; }
+.sidebar nav a[aria-current] .nav-count { background: var(--color-lime); color: var(--color-ink); }
+.sidebar .avatar.navy { background: var(--color-surface); color: var(--color-ink); }
+.user { padding: 20px; }
+.utility { background: var(--color-paper); border-bottom-color: var(--color-border); }
+.global-search { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: 6px; padding: 0 12px; }
+.global-search input { width: 176px; }
+.demo-label { border-color: var(--color-border); background: var(--color-clear); }
+.button { min-height: 44px; padding: 12px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+.button.primary { background: var(--color-navy); color: var(--color-surface); border-color: var(--color-navy); }
+.button.primary:hover { background: var(--color-navy-hover); border-color: var(--color-navy-hover); }
+.small-button { min-height: 36px; padding: 8px 12px; font-size: 12px; }
+.icon-button { min-width: 36px; min-height: 36px; }
+.button:disabled, input:disabled, select:disabled, textarea:disabled { opacity: .55; cursor: not-allowed; }
+.sidebar :focus-visible, .profit-band :focus-visible { outline-color: var(--color-lime); }
+.operations-band { background: var(--color-clear); color: var(--color-ink); padding: 0; margin-bottom: 24px; }
+.operations-band .page-heading { border: 0; padding: 0; margin-bottom: 16px; }
+.operations-band .page-heading p, .operations-band .date-line { color: var(--color-muted); }
+.operations-band .date-line { margin-bottom: 12px; font-size: 12px; }
+.operations-band .time-label { border-color: var(--color-border); }
+.operations-band .metrics { background: var(--color-surface); color: var(--color-ink); border: 1px solid var(--color-rule); border-radius: var(--radius); padding: 20px 0; margin: 0; }
+.operations-band .metric { border-color: var(--color-rule); padding: 0 24px; }
+.operations-band .metric:first-child { padding-left: 24px; }
+.operations-band .metric:last-child { padding-right: 24px; }
+.operations-band .metric > span, .operations-band .metric > small { color: var(--color-muted); }
+.operations-band .metric > strong { color: var(--color-navy); font-size: 32px; margin: 8px 0; font-weight: 600; }
+.operations-band .completed-metric > strong { color: var(--color-lime-ink); }
+.overview-grid { grid-template-columns: minmax(0, 1fr) 288px; gap: 24px; }
+.panel { border-color: var(--color-border); }
+.panel-heading { padding: 20px 24px 16px; }
+.panel-heading h2 { font-size: 18px; }
+.panel-heading p { font-size: 12px; }
+.schedule-panel { border: 1px solid var(--color-rule); border-radius: var(--radius); background: var(--color-surface); }
+.schedule-panel > .panel-heading { padding: 20px 24px 16px; }
+.schedule-panel .tabs { padding: 0 24px; gap: 24px; border-color: var(--color-rule); }
+.tabs a { font-size: 12px; }
+.tabs a[aria-current] { color: var(--color-ink); border-color: var(--color-navy); }
+.schedule-panel .table-scroll { background: var(--color-surface); }
+.schedule-panel .visit-table th:first-child, .schedule-panel .visit-table td:first-child { padding-left: 16px; }
+th { background: var(--color-navy-tint); color: var(--color-muted); font-size: 12px; font-weight: 500; }
+td { font-size: 13px; }
+.visit-table td { padding-top: 16px; padding-bottom: 16px; }
+tbody tr:hover { background: var(--color-navy-tint); }
+.identity-link { font-size: 13px; }
+.person { font-size: 12px; }
+.badge { border-radius: 5px; padding: 4px 8px; font-size: 11px; }
+.schedule-panel .panel-foot { background: var(--color-surface); padding: 16px; font-size: 11px; border-radius: 0 0 var(--radius) var(--radius); }
+.text-link, .text-button { font-size: 12px; font-weight: 600; }
+.row-action:focus-visible, .tabs a:focus-visible { outline-offset: -3px; }
+.calendar-day:focus-visible { outline-offset: -3px; }
+.overview-rail { gap: 20px; }
+.fulfillment { background: var(--color-surface); border: 1px solid var(--color-rule); min-height: 292px; }
+.fulfillment .panel-heading { padding-top: 20px; }
+.donut-wrap { width: 172px; height: 172px; margin: 16px auto; }
+.donut-value { stroke: var(--color-lime); }
+.swatch.lime { background: var(--color-lime); }
+.donut-text strong { color: var(--color-ink); font-size: 42px; font-weight: 600; }
+.fulfillment-legend { padding-bottom: 20px; }
+.attention { background: var(--color-surface); border: 1px solid var(--color-rule); padding: 20px 20px 8px; }
+.attention h2 { font-size: 14px; }
+.attention-row { border-color: var(--color-border); }
+.trend-panel { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); overflow: visible; }
+.trend-panel .panel-heading { padding-left: 24px; padding-right: 24px; }
+.recent-panel { background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); overflow: visible; }
+.recent-panel .panel-heading, .report-list { padding-left: 20px; padding-right: 20px; }
+.recent-panel .text-link { font-size: 12px; }
+.chart-caption, .chart-legend > small { font-size: 11px; }
+.calendar-topline { margin: 0 0 20px; }
+.view-switch { border: 0; background: var(--color-navy-tint); padding: 4px; }
+.view-switch a { font-size: 13px; color: var(--color-ink); }
+.view-switch a[aria-current] { background: var(--color-surface); color: var(--color-ink); font-weight: 600; }
+.profit-band { background: var(--color-field); border: 0; padding: 20px 24px; color: var(--color-field-ink); }
+.profit-band-title { border-color: var(--color-field-rule); font-size: 13px; }
+.profit-band-title > span:last-child, .profit-figures > div > span, .profit-figures small, .profit-band > p { color: var(--color-field-muted); }
+.profit-figures strong, .profit-figures > div:first-child strong { color: var(--color-field-ink); font-size: 29px; font-weight: 600; }
+.profit-figures > div:nth-child(2) strong, .profit-figures .profit-up { color: var(--color-lime); }
+.profit-figures .profit-down { color: var(--color-field-muted); }
+.profit-band > p { font-size: 11px; }
+.calendar-panel .calendar-toolbar { padding: 20px; }
+.calendar-panel .calendar-toolbar h2 { font-size: 22px; }
+.calendar-panel .calendar-weekdays span { font-size: 12px; background: var(--color-navy-tint); }
+.calendar-panel .day-number { font-size: 13px; }
+.calendar-panel .calendar-event { font-size: 11px; }
+.calendar-panel .calendar-client { font-size: 10px; }
+.day-detail-heading { background: var(--color-mist); color: var(--color-ink); padding: 24px 20px; }
+.day-detail-number { font-size: 48px; color: var(--color-ink); }
+.day-detail-heading p, .day-detail-heading > span { color: var(--color-muted); }
+.day-profits { background: var(--color-surface); }
+.day-profits strong { font-size: 21px; font-weight: 600; color: var(--color-ink); }
+.dispatch-row > strong { font-size: 15px; }
+.day-detail-footer .button { background: var(--color-lime-tint); color: var(--color-ink); }
+.day-detail-footer .button:hover { background: var(--color-lime); }
+.year-month { border: 0; border-radius: 6px; background: var(--color-calendar-weekend); padding: 12px; }
+.year-month:hover { background: var(--color-navy-tint); }
+.year-month.selected-month { background: var(--color-cyan-tint); outline: 1px solid var(--color-cyan-ink); outline-offset: -1px; }
+.year-month-heading strong { font-size: 14px; }
+.year-month-heading > span, .year-month-profit small { font-size: 11px; }
+.year-month-profit b { font-size: 12px; }
+.mini-weekdays, .mini-days { font-size: 11px; }
+.mini-days > span.has-services { color: var(--color-ink); background: var(--color-lime); }
+.mini-days > span.selected { color: var(--color-field-ink); background: var(--color-field); }
+.year-month:focus-visible { outline-width: 2px; outline-offset: -2px; }
+.list-toolbar { padding: 20px 24px; background: var(--color-surface); }
+.field input, .field select, .field textarea { border-color: var(--color-border); border-radius: 6px; }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline-offset: -3px; }
+.dialog-heading { background: var(--color-navy-tint); }
+.form-footer { background: var(--color-paper); }
+.page-footer { padding-top: 20px; font-size: 11px; }
+@media (max-width: 1100px) {
+  .overview-grid { grid-template-columns: minmax(0, 1fr); }
+  .overview-rail { grid-column: 1; grid-row: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trend-panel, .recent-panel { grid-column: 1; grid-row: auto; }
+}
+@media (max-width: 1100px) {
+  .operations-band { padding: 0; }
+  .operations-band .page-heading { flex-wrap: wrap; gap: 16px; }
+  .operations-band .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 0; }
+  .operations-band .metric { padding: 0 16px; }
+  .operations-band .metric:nth-child(odd) { padding-left: 16px; }
+  .operations-band .metric:nth-child(even) { border-right: 0; padding-right: 16px; }
+  .operations-band .metric > strong { font-size: 28px; }
+  .operations-band .metric > small { font-size: 11px; }
+  .profit-figures strong, .profit-figures > div:first-child strong { font-size: 25px; }
+}
+@media (max-width: 600px) {
+  h1 { font-size: 28px; letter-spacing: -.6px; }
+  .canvas { padding-top: 20px; }
+  .page-heading { padding-bottom: 20px; }
+  .page-heading p { font-size: 14px; }
+  .operations-band { padding: 0; margin-bottom: 24px; }
+  .operations-band .date-line { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .operations-band .metric > span { font-size: 12px; }
+  .operations-band .metric > strong { font-size: 24px; }
+  .operations-band .metrics { padding: 16px 0; }
+  .overview-rail { grid-template-columns: minmax(0, 1fr); }
+  .fulfillment { min-height: 0; }
+  .fulfillment .donut-wrap { width: 144px; height: 144px; }
+  .fulfillment-legend { padding: 16px; }
+  .schedule-panel .panel-heading { gap: 8px; }
+  .schedule-panel .tabs { gap: 16px; }
+  .schedule-panel .visit-table th:first-child, .schedule-panel .visit-table td:first-child { padding-left: 8px; }
+  .schedule-panel .identity-link { font-size: 12px; }
+  .schedule-panel .visit-table { table-layout: fixed; white-space: normal; }
+  .schedule-panel .visit-table th, .schedule-panel .visit-table td { padding-left: 4px; padding-right: 4px; }
+  .schedule-panel .visit-table th:first-child, .schedule-panel .visit-table td:first-child { width: 44px; }
+  .schedule-panel .visit-table th:nth-child(5), .schedule-panel .visit-table td:nth-child(5) { width: 108px; }
+  .schedule-panel .visit-table th:last-child, .schedule-panel .visit-table td:last-child { width: 44px; padding: 4px 0; }
+  .schedule-panel .service-payment > small { font-size: 11px; }
+  .schedule-panel .badge { max-width: 100%; white-space: normal; text-align: left; }
+  .badge { font-size: 10px; }
+  .calendar-topline { flex-wrap: wrap; gap: 12px; }
+  .view-switch { width: 100%; }
+  .view-switch a { flex: 1; min-height: 44px; padding: 8px; font-size: 12px; }
+  .profit-band { padding: 16px; }
+  .profit-band-title { font-size: 12px; }
+  .profit-figures { gap: 20px 16px; }
+  .profit-figures strong, .profit-figures > div:first-child strong { font-size: 24px; }
+  .calendar-panel .calendar-toolbar { padding: 16px 12px; }
+  .calendar-panel .calendar-weekdays span { font-size: 11px; padding: 8px 4px; }
+  .calendar-panel .calendar-event { font-size: 10px; }
+  .calendar-key { flex-wrap: wrap; font-size: 11px; padding: 12px; }
+  .calendar-key > span:last-child { width: 100%; margin-left: 0; }
+  .year-month { padding: 8px; }
+  .year-month-heading strong { font-size: 13px; }
+  .year-month-heading > span, .year-month-profit small { font-size: 10px; }
+  .year-month-profit b, .mini-days, .mini-weekdays { font-size: 10px; }
+  .list-toolbar { padding: 16px; }
+  .field input, .field select, .field textarea { font-size: 16px; }
+  .icon-button { min-width: 44px; min-height: 44px; }
+  .icon-button.row-action { min-width: 44px; min-height: 44px; }
+  .calendar-panel .calendar-toolbar { flex-wrap: wrap; gap: 12px; }
+  .calendar-toolbar > div { margin-left: auto; }
+  .calendar-toolbar .icon-button { min-width: 44px; min-height: 44px; }
+}
+@media print {
+  .operations-band, .profit-band { background: var(--color-print); color: var(--color-print-ink); }
+}
