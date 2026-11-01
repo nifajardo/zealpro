@@ -13,3 +13,5 @@ Year calendar and logo-guided white/neutral refinement are implemented; see `doc
 Latest visual authority: the owner screenshot restores navy navigation, lime selection, blue actions and white working panels. Read `design.md` and `docs/QA_BRAND_RESTORATION.md`; preserve this scheme unless the owner changes it. Calendar and mobile usability fixes remain implemented.
 
 Vercel hosting: `npm run build` creates browser-only `dist/`, and `vercel.json` selects Other with that output. The local Node/PGlite API is deliberately excluded. Read `docs/VERCEL_HOSTING.md` before changing hosting or retrying the existing project; preserve browser-local records.
+
+Live acceptance after `0814dd0`: https://zealpro-demo.vercel.app/ returns 200; static assets, security headers, private-path 404s and browser Year/refresh checks passed. This is the browser-local presentation, not a hosted database deployment.

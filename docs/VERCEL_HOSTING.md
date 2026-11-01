@@ -54,3 +54,11 @@ Configuration was checked against [Vercel's project configuration](https://verce
 ## Readiness verification
 
 All 41 tests passed with zero failures or skips; syntax and whitespace checks passed. The built artifact loaded in connected Brave with the correct logo and styles, all four calendar view links and twelve Year cards. A fragment-route reload retained Year selection, with no browser warnings/errors. Local static HTTP checks returned 200 for app assets and 404 for API, server, database and source-paperwork paths. Independent source review found no must-fix code issues. Hosted acceptance is checked separately after the Git-connected deployment builds this commit.
+
+## Live acceptance: 2026-11-02
+
+After pushing `0814dd0` to the existing GitHub-connected main branch, `https://zealpro-demo.vercel.app/` returned HTTP 200 instead of the previous function error. HTML, JavaScript, CSS, logo and both fonts matched the committed Git source bytes and had correct content types. Comparing Git blobs avoids Windows working-copy newline differences.
+
+The API, local server/backend, database, environment and source-paperwork paths listed above all returned 404. The configured CSP, nosniff, frame-denial, referrer and cache headers were present. In connected Brave the live overview, logo and General Sans loaded; Schedule and Year navigation worked; Year survived refresh with twelve month cards; browser warning/error logs were empty. [Live screenshot](screenshots/vercel-live-overview.jpg).
+
+This verifies the static client demonstration on the existing domain. No hosted database, function, credentials or production business integration was introduced.
