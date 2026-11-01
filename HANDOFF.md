@@ -26,6 +26,12 @@ The latest owner screenshot supersedes the lighter chrome and exploratory hue di
 
 Shared interface improvements include clearer type and table spacing, a contained mobile ledger with a visible 44-pixel row action, inset focus rings, 960-pixel menu collapse and two-column summary metrics below 1100 pixels. Calendar Year/Month/Week/Day still use equal 720-pixel desktop frames, full-width day actions, visible outside cells and preserved scroll. Final evidence is `docs/QA_BRAND_RESTORATION.md`; independent visual review says ship. All 39 tests pass. UI persistence remains browser-local and no records were reset.
 
+## Vercel static hosting
+
+The repository now has an explicit static hosting build. `npm run build` copies ten browser assets into ignored `dist/`; `vercel.json` selects Other and that output directory. No local server, PGlite instance or API is deployed. The UI remains browser-local. `docs/VERCEL_HOSTING.md` records the existing `zealpro-demo.vercel.app` project, repository-root settings, fragment routing, response headers and troubleshooting.
+
+Before this change the production URL returned HTTP 500 `FUNCTION_INVOCATION_FAILED`; the precise exception was not available from public responses. The static deployment removes the local server invocation path. All 41 tests, syntax checks and the static build pass. Two artifact/config regression tests were added, including stale/private canaries and byte-identical browser assets. The built site was verified in Brave: overview, calendar, Year and fragment refresh work with no browser errors; static private/API paths return 404. Independent review found no must-fix code issues; the README and CLI-upload boundary were corrected. Public isolation comes from the output allowlist, not an assumption that Git deployments honour CLI ignore rules.
+
 ## Run and live state
 
 - Install with `npm ci` (Node.js 22+). `npm start` runs the loopback server and opens `.local/db` by default. Migrations run on startup; seeding never runs implicitly.
@@ -44,7 +50,7 @@ Shared interface improvements include clearer type and table spacing, a containe
 
 ## Verification
 
-- `npm test`: 39 passed, zero failed. `npm run check`: passed. `npm audit --omit=dev`: zero vulnerabilities.
+- `npm test`: 41 passed, zero failed. `npm run check`: passed. `npm audit --omit=dev`: zero vulnerabilities.
 - Tests cover disk reopen, exclusive ownership, migration drift, relational constraints, atomic completion/payment, exact replay, stale concurrent commands, import preservation, SQL write-failure rollback, and portable SQL restore with receipt replay.
 - HTTP checks cover foreign origins, Host rebinding, body type/size, unsupported commands, private paths and malformed URLs.
 - Independent review found one Important issue: malformed HTTP request targets crashed URL parsing and left a recovery lock. A regression reproduced ECONNRESET; guarded parsing now returns 400 and subsequent health requests succeed. Reviewer confirmed resolution; no outstanding Important/Critical findings.

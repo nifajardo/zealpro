@@ -1,0 +1,8 @@
+# Upload only the sources needed for the browser build.
+/*
+!package.json
+!package-lock.json
+!vercel.json
+!public
+!src
+!scripts

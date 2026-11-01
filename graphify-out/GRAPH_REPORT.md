@@ -4,12 +4,12 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 323 nodes · 832 edges · 25 communities (21 shown, 4 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 35 edges (avg confidence: 0.92)
+- 372 nodes · 891 edges · 31 communities (26 shown, 5 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 38 edges (avg confidence: 0.92)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4d014041`
+- Built from commit: `f335192a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -17,28 +17,33 @@
 - app.js
 - model.js
 - server.mjs
+- scripts
 - Repository Guidelines
-- Project.md
-- Zealpro handoff
-- Zealpro UI demonstration design
-- Zealpro operations workspace
-- Local PostgreSQL foundation
 - Revision 2: service catalog, products and calendar profit
-- api.test.js
-- Zealpro UI verification
+- Zealpro handoff
+- Zealpro operations workspace
+- Zealpro UI demonstration design
+- Zealpro project
+- Zealpro architecture
+- Vercel hosting
+- vercel.json
+- Design: Zealpro operations workspace
+- Local PostgreSQL foundation
 - Service payment standing QA
-- SRS and paperwork traceability
 - Local database implementation plan
 - Zealpro UI Demonstration Implementation Plan
 - Local database and backend foundation
-- Zealpro project
-- Local database QA
+- Brand restoration and usability QA
+- Calendar and brand refinement QA
+- SRS and paperwork traceability
 - Calendar year view and visual refinement
-- Zealpro architecture
+- Client and branch editing QA
+- Local database QA
 - Services, products and calendar profitability revision
 - Services and calendar profitability implementation plan
 - Calendar refinement implementation plan
 - CONTINUE.md
+- brand-spec.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `e()` - 30 edges
@@ -57,17 +62,17 @@
   docs/QA_CLIENT_EDIT.md → src/app.js
 - `Completion ledger` --references--> `button()`  [INFERRED]
   docs/superpowers/plans/2026-11-01-ui-demo.md → src/app.js
+- `Calendar and brand refinement` --references--> `moveCalendar()`  [INFERRED]
+  HANDOFF.md → src/model.js
 - `HTTP contract` --references--> `client()`  [INFERRED]
   docs/LOCAL_DATABASE.md → src/app.js
-- `HTTP contract` --references--> `restock()`  [INFERRED]
-  docs/LOCAL_DATABASE.md → src/model.js
-- `Model and migrations` --references--> `services()`  [INFERRED]
-  docs/LOCAL_DATABASE.md → src/app.js
+- `Connected workflow` --references--> `yearCalendar()`  [INFERRED]
+  knowledge/Architecture.md → src/app.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (25 total, 4 thin omitted)
+## Communities (31 total, 5 thin omitted)
 
 ### Community 0 - "app.js"
 Cohesion: 0.13
@@ -78,98 +83,118 @@ Cohesion: 0.14
 Nodes (47): collections, nested, operations, Connected workflow, Payment standing, CALENDAR_VIEWS, createDemo(), DEMO_DATE (+39 more)
 
 ### Community 2 - "server.mjs"
-Cohesion: 0.05
-Nodes (39): handleApi(), json(), readCommand(), exportBackup(), exportSql(), readImport(), openDatabase(), canonical() (+31 more)
+Cohesion: 0.07
+Nodes (23): handleApi(), json(), readCommand(), exportBackup(), exportSql(), readImport(), openDatabase(), canonical() (+15 more)
 
-### Community 3 - "Repository Guidelines"
+### Community 3 - "scripts"
+Cohesion: 0.08
+Nodes (23): dependencies, @electric-sql/pglite, @electric-sql/pglite-tools, engines, node, name, private, scripts (+15 more)
+
+### Community 4 - "Repository Guidelines"
 Cohesion: 0.13
 Nodes (13): Build, Test, and Development Commands, Coding Style & Naming Conventions, Commit & Pull Request Guidelines, Project Preferences, Project Structure & Module Organization, Repository Guidelines, Security & Configuration, Testing Guidelines (+5 more)
 
-### Community 4 - "Project.md"
-Cohesion: 0.25
-Nodes (4): Client and branch editing QA, Implemented behavior, Limits, Verification
+### Community 5 - "Revision 2: service catalog, products and calendar profit"
+Cohesion: 0.14
+Nodes (12): Automated checks, Browser walkthrough, Independent review, Limits, Automated evidence, Browser evidence, Calendar scroll regression, Limits (+4 more)
 
-### Community 5 - "Zealpro handoff"
+### Community 6 - "Zealpro handoff"
+Cohesion: 0.15
+Nodes (12): Backend implementation, Boundaries and next step, Calendar and brand refinement, Client editing follow-up, Current milestones, Owner reference palette restoration, Run and live state, Skills and source navigation (+4 more)
+
+### Community 7 - "Zealpro operations workspace"
 Cohesion: 0.22
-Nodes (9): Backend implementation, Boundaries and next step, Client editing follow-up, Current milestones, Run and live state, Skills and source navigation, UI and record preservation, Verification (+1 more)
+Nodes (9): Checks, Demonstration boundary, Design and assets, Layout, Presentation walkthrough, Profit and saved records, Run, Vercel hosting (+1 more)
 
-### Community 6 - "Zealpro UI demonstration design"
+### Community 9 - "Zealpro UI demonstration design"
 Cohesion: 0.25
 Nodes (7): Acceptance and limits, Architecture and constraints, Demonstration scope, Intent and authority, Product and visual decisions, Source inventory, Zealpro UI demonstration design
 
-### Community 7 - "Zealpro operations workspace"
+### Community 10 - "Zealpro project"
 Cohesion: 0.25
-Nodes (8): Checks, Demonstration boundary, Design and assets, Layout, Presentation walkthrough, Profit and saved records, Run, Zealpro operations workspace
+Nodes (8): Asset provenance, Calendar refinement, Client contacts, Decisions, Local database milestone, Navigation, Shared visual system, Zealpro project
 
-### Community 8 - "Local PostgreSQL foundation"
+### Community 11 - "Zealpro architecture"
 Cohesion: 0.29
+Nodes (5): Graphify, Local backend foundation, Production seam, Static hosting seam, Zealpro architecture
+
+### Community 12 - "Vercel hosting"
+Cohesion: 0.29
+Nodes (7): Deployment shape, Existing GitHub-connected project, Local verification, Readiness verification, References, Reported function failure, Vercel hosting
+
+### Community 13 - "vercel.json"
+Cohesion: 0.29
+Nodes (6): buildCommand, framework, headers, installCommand, outputDirectory, $schema
+
+### Community 14 - "Design: Zealpro operations workspace"
+Cohesion: 0.33
+Nodes (5): Composition and controls, Design: Zealpro operations workspace, Motion and exports, System, Tokens
+
+### Community 15 - "Local PostgreSQL foundation"
+Cohesion: 0.33
 Nodes (6): Backup, import and SQL export, Hosted path and recommendation, HTTP contract, Local PostgreSQL foundation, Lock recovery, Setup and run
 
-### Community 9 - "Revision 2: service catalog, products and calendar profit"
-Cohesion: 0.29
-Nodes (7): Automated evidence, Browser evidence, Calendar scroll regression, Limits, Presentation screenshots, Review and repairs, Revision 2: service catalog, products and calendar profit
-
-### Community 11 - "Zealpro UI verification"
-Cohesion: 0.33
-Nodes (5): Automated checks, Browser walkthrough, Independent review, Limits, Zealpro UI verification
-
-### Community 12 - "Service payment standing QA"
+### Community 16 - "Service payment standing QA"
 Cohesion: 0.33
 Nodes (5): Automated checks, Behavior, Browser verification, Limits, Service payment standing QA
 
-### Community 13 - "SRS and paperwork traceability"
-Cohesion: 0.33
-Nodes (5): Assumptions needing client decisions, Owner payment-standing follow-up, Owner revision 2, Paperwork mapping, SRS and paperwork traceability
-
-### Community 14 - "Local database implementation plan"
+### Community 17 - "Local database implementation plan"
 Cohesion: 0.33
 Nodes (5): Execution ledger, Global constraints, Local database implementation plan, Review focus, Tasks and verification
 
-### Community 15 - "Zealpro UI Demonstration Implementation Plan"
+### Community 18 - "Zealpro UI Demonstration Implementation Plan"
 Cohesion: 0.33
 Nodes (5): Completion ledger, Global constraints, Review focus, Tasks, Zealpro UI Demonstration Implementation Plan
 
-### Community 16 - "Local database and backend foundation"
+### Community 19 - "Local database and backend foundation"
 Cohesion: 0.33
 Nodes (5): Acceptance, Implementation decisions, Intent and scope, Local database and backend foundation, Provider direction
 
-### Community 17 - "Zealpro project"
-Cohesion: 0.33
-Nodes (6): Asset provenance, Client contacts, Decisions, Local database milestone, Navigation, Zealpro project
-
-### Community 18 - "Local database QA"
+### Community 20 - "Brand restoration and usability QA"
 Cohesion: 0.40
-Nodes (4): Commands, Limits, Local database QA, Verified
+Nodes (5): Brand restoration and usability QA, Checks and review, Evidence, Final captures, Final direction
 
-### Community 19 - "Calendar year view and visual refinement"
+### Community 21 - "Calendar and brand refinement QA"
+Cohesion: 0.40
+Nodes (5): Automated and source checks, Calendar and brand refinement QA, Real browser evidence, Result, Visual record and design review
+
+### Community 22 - "SRS and paperwork traceability"
+Cohesion: 0.40
+Nodes (5): Assumptions needing client decisions, Owner payment-standing follow-up, Owner revision 2, Paperwork mapping, SRS and paperwork traceability
+
+### Community 23 - "Calendar year view and visual refinement"
 Cohesion: 0.40
 Nodes (4): Behavior, Calendar year view and visual refinement, Direction, Verification and completion
 
-### Community 20 - "Zealpro architecture"
-Cohesion: 0.40
-Nodes (4): Graphify, Local backend foundation, Production seam, Zealpro architecture
+### Community 24 - "Client and branch editing QA"
+Cohesion: 0.50
+Nodes (4): Client and branch editing QA, Implemented behavior, Limits, Verification
 
-### Community 21 - "Services, products and calendar profitability revision"
+### Community 25 - "Local database QA"
+Cohesion: 0.50
+Nodes (4): Commands, Limits, Local database QA, Verified
+
+### Community 26 - "Services, products and calendar profitability revision"
 Cohesion: 0.50
 Nodes (3): Decisions, Scope and checks, Services, products and calendar profitability revision
 
 ## Knowledge Gaps
-- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Zealpro architecture` connect `Zealpro architecture` to `model.js`?**
-  _High betweenness centrality (0.127) - this node is a cross-community bridge._
+  _High betweenness centrality (0.142) - this node is a cross-community bridge._
 - **Should `app.js` be split into smaller, more focused modules?**
   _Cohesion score 0.13128729752770674 - nodes in this community are weakly interconnected._
-- **Why does `Local PostgreSQL foundation` connect `Local PostgreSQL foundation` to `app.js`?**
-  _High betweenness centrality (0.123) - this node is a cross-community bridge._
+- **Why does `Connected workflow` connect `model.js` to `app.js`, `Zealpro architecture`?**
+  _High betweenness centrality (0.114) - this node is a cross-community bridge._
 - **Should `model.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.14160401002506265 - nodes in this community are weakly interconnected._
-- **Why does `Connected workflow` connect `model.js` to `Zealpro architecture`?**
-  _High betweenness centrality (0.101) - this node is a cross-community bridge._
+  _Cohesion score 0.14223057644110276 - nodes in this community are weakly interconnected._
+- **Why does `Local PostgreSQL foundation` connect `Local PostgreSQL foundation` to `README.md`, `app.js`?**
+  _High betweenness centrality (0.114) - this node is a cross-community bridge._
 - **Should `server.mjs` be split into smaller, more focused modules?**
-  _Cohesion score 0.05323653962492438 - nodes in this community are weakly interconnected._
-- **Should `Repository Guidelines` be split into smaller, more focused modules?**
-  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07180851063829788 - nodes in this community are weakly interconnected._
+- **Should `scripts` be split into smaller, more focused modules?**
+  _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._

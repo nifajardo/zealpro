@@ -23,7 +23,13 @@ npm start
 
 The server initializes a local database in `.local/db` and exposes `/api/health`; startup never seeds or overwrites existing data. To populate only a new empty database with illustrative records, run `npm run db:seed` before starting the server. Offline database commands require the server to be stopped.
 
-There is no compilation or production build step. The browser loads native JavaScript modules. The server exposes an explicit allowlist of application assets; it does not expose the repository or source paperwork.
+The browser loads native JavaScript modules without compilation. `npm run build` creates an explicit browser-only `dist/` artifact for static hosting. The local server and the hosting build each allowlist application assets; neither publishes the repository or source paperwork.
+
+## Vercel hosting
+
+The repository is configured for **Other**, build command **`npm run build`**, output directory **`dist`**, and repository-root deployment. Vercel serves the browser demonstration without invoking the local Node/PGlite server. No environment variables are required. Local browser records remain on their existing origin; a new hosted origin has its own sample workspace.
+
+See [Vercel setup and function-failure recovery](docs/VERCEL_HOSTING.md) for the existing `zealpro-demo.vercel.app` project, verification and the separate hosted-database milestone.
 
 ## Presentation walkthrough
 
@@ -44,6 +50,7 @@ Select **Demo guide → Reset sample data → Reset sample records** to restore 
 ```powershell
 npm test
 npm run check
+npm run build
 git diff --check
 ```
 
@@ -64,6 +71,9 @@ src/data.js             Fixed demonstration date, controlled vocabularies and sa
 src/model.js            Catalogs, migration, profit ranges, reporting, stock and payments
 src/app.js              Nine views, product-line forms, calendar and browser persistence
 backend/                Local PostgreSQL lifecycle, SQL migrations, transaction repository/API and exports
+scripts/build.mjs       Explicit ten-file static hosting artifact builder
+dist/                   Ignored static browser output for Vercel
+vercel.json             Static framework/build/output settings and response headers
 .local/                 Ignored database and private backups
 server.mjs              Dependency-free loopback server with a file allowlist
 tests/                  State invariants and HTTP exposure tests

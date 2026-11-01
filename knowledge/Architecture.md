@@ -45,3 +45,7 @@ The local engine reports PostgreSQL 18.6. SQL export restores locally with schem
 ## Production seam
 
 Replace localStorage mutations with authenticated transactional server operations before any real use. Preserve validation, stock-delta handling, captured costs and duplicate-submission protection at the server boundary. Multiple product lines and cost snapshots exist locally; role permissions, durable correction history, multiple personnel and approved report/invoice rules remain production work.
+
+## Static hosting seam
+
+`npm run build` executes `scripts/build.mjs` and copies an explicit browser-only allowlist to `dist/`. Vercel uses Other, the build command and `dist` from `vercel.json`; no function wraps the local server. Hash navigation does not need catch-all rewrites. Private files, local database state and backend code stay outside the artifact. See [hosting setup](../docs/VERCEL_HOSTING.md).
