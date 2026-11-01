@@ -655,4 +655,9 @@ dd { margin: 0; font-size: 13px; overflow-wrap: anywhere; }
 .billing-table .text-button { display: block; margin-top: 6px; }
 .agenda-status { justify-self: start; }
 .field input[type="checkbox"] { width: 18px; min-height: 18px; margin-right: 7px; vertical-align: middle; }
+.clients-table .client-contact-cell { min-width: 180px; max-width: 260px; overflow-wrap: anywhere; }
+.client-profile .detail-grid dd { overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  form[data-form="client"] .field-pair, form[data-form="client-edit"] .field-pair { grid-template-columns: minmax(0, 1fr); }
+}
 @media (max-width: 600px) { .service-payment > .badge { font-size: 10px; } .agenda-status { grid-column: 2; } .form-footer { flex-wrap: wrap; } }

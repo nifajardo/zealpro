@@ -227,13 +227,25 @@ export function restock(state, materialId, quantity) {
   material.stock = Math.round((material.stock + quantity) * 100) / 100;
 }
 
-export function enrollClient(state, input) {
-  need(['name', 'branch', 'address', 'contact', 'duration', 'package'].every(key => text(input[key])), 'Complete all client and agreement fields.');
+function validClientContacts(input) {
+  return ['contact', 'contactPerson', 'phone', 'email'].every(key => input[key] === undefined || text(input[key], false)) &&
+    (!input.phone?.trim() || (input.phone.trim().length <= 50 && /^\+?[0-9()\s.-]+(?:\s*(?:ext\.?|x|#)\s*\d+)?$/i.test(input.phone.trim()) && input.phone.replace(/\D/g, '').length >= 5)) &&
+    (!input.email?.trim() || (input.email.trim().length <= 254 && /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(input.email.trim())));
+}
+
+export function enrollClient(state, input, id) {
+  const existing = id ? state.clients.find(c => c.id === id) : null;
+  need(!id || existing, 'Client branch was not found.');
+  need(['name', 'branch', 'address', 'duration', 'package'].every(key => text(input[key])), 'Complete all client and agreement details.');
+  need(validClientContacts(input), 'Enter valid contact details, a phone number with at least five digits, and an email address such as name@example.com. Contact fields may be left blank.');
   need(validNumber(input.rate) && validDate(input.since), 'Enter a valid rate and agreement start date.');
-  need(!state.clients.some(c => c.name.toLowerCase() === input.name.trim().toLowerCase() && c.branch.toLowerCase() === input.branch.trim().toLowerCase()), 'This client branch is already enrolled.');
+  need(!state.clients.some(c => c.id !== id && c.name.toLowerCase() === input.name.trim().toLowerCase() && c.branch.toLowerCase() === input.branch.trim().toLowerCase()), 'This client branch is already enrolled.');
+  need(!id || !input.assessmentId, 'Client edits cannot relink an assessment.');
   const assessment = input.assessmentId ? state.assessments.find(a => a.id === input.assessmentId) : null;
   need(!input.assessmentId || (assessment && !assessment.clientId), 'This assessment is already linked or no longer available.');
-  const client = { id: uid('client'), ...Object.fromEntries(['name', 'branch', 'address', 'contact', 'duration', 'package'].map(key => [key, input[key].trim()])), rate: roundMoney(input.rate), since: input.since };
+  const values = { ...Object.fromEntries(['name', 'branch', 'address', 'duration', 'package'].map(key => [key, input[key].trim()])), ...Object.fromEntries(['contact', 'contactPerson', 'phone', 'email'].map(key => [key, (input[key] ?? '').trim()])), rate: roundMoney(input.rate), since: input.since };
+  if (existing) { Object.assign(existing, values); return existing; }
+  const client = { id: uid('client'), ...values };
   state.clients.push(client);
   if (assessment) assessment.clientId = client.id;
   return client;
@@ -299,7 +311,7 @@ export function validateState(state) {
     const hasMaterial = row => state.materials.some(m => m.id === row.materialId);
     const validLines = (lines, snapshots = false) => Array.isArray(lines) && lines.length <= 50 && new Set(lines.map(p => p?.productId)).size === lines.length && lines.every(p => p && state.materials.some(m => m.id === p.productId) && validNumber(p.quantity, 0.01) && (state.materials.find(m => m.id === p.productId).unit !== 'pcs' || Number.isSafeInteger(p.quantity) || (snapshots && p.legacyQuantity === true)) && (!snapshots || (text(p.name) && text(p.unit) && validNumber(p.unitCost))));
     return state.services.every(s => text(s.name) && text(s.description) && validNumber(s.price) && validNumber(s.plannedExpense) && typeof s.active === 'boolean' && validLines(s.products)) &&
-      state.clients.every(c => ['name', 'branch', 'address', 'contact', 'duration', 'package'].every(k => text(c[k])) && validNumber(c.rate) && validDate(c.since)) &&
+      state.clients.every(c => ['name', 'branch', 'address', 'duration', 'package'].every(k => text(c[k])) && validClientContacts(c) && validNumber(c.rate) && validDate(c.since)) &&
       state.materials.every(m => ['name', 'description', 'category'].every(k => text(m[k])) && ['mL', 'L', 'g', 'kg', 'pcs'].includes(m.unit) && typeof m.active === 'boolean' && validNumber(m.stock) && validNumber(m.minimum, 0.01) && validNumber(m.cost) && (m.unit !== 'pcs' || m.legacyFractionalPieces === true || (Number.isSafeInteger(m.stock) && Number.isSafeInteger(m.minimum)))) &&
       state.visits.every(v => hasClient(v) && state.services.some(s => s.id === v.serviceId) && validDate(v.date) && validTime(v.time) && STAFF.includes(v.technician) && text(v.treatment) && ['Scheduled', 'In progress', 'Completed'].includes(v.status) && validLines(v.estimatedProducts, true) && validNumber(v.plannedExpense) && validNumber(v.rate)) &&
       new Set(state.invoices.filter(i => i.visitId).map(i => i.visitId)).size === state.invoices.filter(i => i.visitId).length &&

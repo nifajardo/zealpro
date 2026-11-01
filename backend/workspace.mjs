@@ -13,7 +13,7 @@ const operations = {
   'report-revision': (state, id, values) => reviseReport(state, id, values),
   payment: (state, id, values) => recordPayment(state, id, values.amount, values.method, values.reference),
   restock: (state, id, values) => restock(state, id, values.quantity),
-  client: (state, id, values) => enrollClient(state, values),
+  client: (state, id, values) => enrollClient(state, values, id),
   assessment: (state, id, values) => addAssessment(state, values),
   'service-payment': (state, id, values) => linkServicePayment(state, id, values.invoiceId),
 };

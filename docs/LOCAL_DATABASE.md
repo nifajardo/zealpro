@@ -61,7 +61,7 @@ Command shape:
 }
 ```
 
-Successful commands return `{ revision, state, result, replayed }`. Supported actions are `service`, `product`, `catalog-active`, `visit`, `complete`, `report-revision`, `payment`, `restock`, `client`, `assessment`, `service-payment`, `seed` and `import`. Values use the existing `src/model.js` inputs; `catalog-active` takes `collection` and `active`, and import takes `{ state }`. Client creation takes an optional `assessmentId` inside values.
+Successful commands return `{ revision, state, result, replayed }`. Supported actions are `service`, `product`, `catalog-active`, `visit`, `complete`, `report-revision`, `payment`, `restock`, `client`, `assessment`, `service-payment`, `seed` and `import`. Values use the existing `src/model.js` inputs; `catalog-active` takes `collection` and `active`, and import takes `{ state }`. The `client` action creates a branch when `id` is omitted and edits that branch when its existing `id` is provided. Values may include optional `contactPerson`, `contact` (role), `phone` and `email`. Creation takes an optional `assessmentId` inside values; edits cannot relink an assessment.
 
 The server loads the workspace, runs the shared domain operation, writes relational records, advances the revision and stores its receipt in one transaction. Completion therefore commits stock deduction, the service report, completion status and its 30-day payment record together. Corrections and payments use the existing guards. The initial repository rewrites this single small workspace inside the transaction; targeted row updates are required before multi-user scale.
 

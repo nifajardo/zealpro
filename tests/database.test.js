@@ -83,3 +83,21 @@ test('SQL write failure rolls back deleted rows, stock and command receipts toge
     assert.equal((await database.db.query("SELECT count(*)::int AS count FROM zealpro.command_receipts WHERE request_id = 'rollback-write'")).rows[0].count, 0);
   } finally { await database.close(); }
 });
+
+test('client commands persist contact edits without creating a second branch or rewriting historical charges', async () => {
+  const database = await openDatabase();
+  try {
+    const store = new WorkspaceStore(database.db);
+    await store.execute({ requestId: 'contact-seed', revision: 0, action: 'seed', values: {} });
+    const before = await store.snapshot(), client = before.state.clients[0];
+    const command = { requestId: 'contact-edit', revision: 1, action: 'client', id: client.id, values: { ...client, contactPerson: 'Demo Contact', phone: '+63 900 000 0000', email: 'demo@example.invalid', address: 'Updated city', rate: 4900 } };
+    const edited = await store.execute(command);
+    assert.equal(edited.state.clients.length, before.state.clients.length);
+    assert.equal(edited.state.clients[0].email, 'demo@example.invalid');
+    assert.equal(edited.state.clients[0].address, 'Updated city');
+    assert.deepEqual(edited.state.visits, before.state.visits);
+    assert.deepEqual(edited.state.invoices, before.state.invoices);
+    assert.equal((await store.execute(command)).replayed, true);
+    assert.equal((await store.snapshot()).state.clients[0].contactPerson, 'Demo Contact');
+  } finally { await database.close(); }
+});

@@ -30,6 +30,10 @@ The first milestone is a local UI presentation for Zealpro Solutions Incorporate
 
 A filesystem-backed PostgreSQL/API foundation now exists under `backend/` and `.local/db`. Migrations, relational references, transactional domain commands, revision conflicts, idempotency receipts and JSON/SQL exports are implemented. The presentation UI remains browser-local pending a deliberate import/persistence cutover. No hosted provider is provisioned. See [database contract](../docs/LOCAL_DATABASE.md) and [database QA](../docs/QA_LOCAL_DATABASE.md).
 
+## Client contacts
+
+Clients & branches now supports Edit details for identity/address, agreement fields, contact person, role, phone and email. New contact fields are optional and do not reinterpret legacy roles as names. Stable branch IDs retain service/payment history; captured historical charges are unchanged. Search and reminder previews use the new contact fields. See [client editing QA](../docs/QA_CLIENT_EDIT.md).
+
 ## Navigation
 
 - [[Architecture]] describes code ownership and the source map.

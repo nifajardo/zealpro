@@ -6,6 +6,12 @@ The UI milestone is committed and pushed as `f9d221b` on `origin/main`. It inclu
 
 The local PostgreSQL/database API foundation is complete. This milestone deliberately leaves the presentation UI browser-local; it does not silently replace existing localStorage records or mix browser and server writes. The next milestone is an explicit UI persistence cutover with reviewed import and retry recovery.
 
+## Client editing follow-up
+
+The local UI now supports Edit details from client rows and profiles. The shared form edits account/branch/address, agreement values and optional contact person, role, phone and email. Existing contact strings remain roles; no person names are inferred. Search includes contacts and reminder previews use the named person/email when available. Edits preserve the client ID and linked historical charges/payments. Duplicate branches, invalid contacts and assessment relinking are rejected before mutation. The backend client command now passes its optional client ID through the same domain operation; client JSONB needs no SQL migration.
+
+Browser checks used isolated port 4177 and restored only its sample records. The persistent API on 4176 was restarted gracefully to load the edit command. Current evidence is `docs/QA_CLIENT_EDIT.md`; the edit UI remains browser-local. Source changes are on the existing backend branch.
+
 ## Run and live state
 
 - Install with `npm ci` (Node.js 22+). `npm start` runs the loopback server and opens `.local/db` by default. Migrations run on startup; seeding never runs implicitly.
@@ -24,7 +30,7 @@ The local PostgreSQL/database API foundation is complete. This milestone deliber
 
 ## Verification
 
-- `npm test`: 32 passed, zero failed. `npm run check`: passed. `npm audit --omit=dev`: zero vulnerabilities.
+- `npm test`: 36 passed, zero failed. `npm run check`: passed. `npm audit --omit=dev`: zero vulnerabilities.
 - Tests cover disk reopen, exclusive ownership, migration drift, relational constraints, atomic completion/payment, exact replay, stale concurrent commands, import preservation, SQL write-failure rollback, and portable SQL restore with receipt replay.
 - HTTP checks cover foreign origins, Host rebinding, body type/size, unsupported commands, private paths and malformed URLs.
 - Independent review found one Important issue: malformed HTTP request targets crashed URL parsing and left a recovery lock. A regression reproduced ECONNRESET; guarded parsing now returns 400 and subsequent health requests succeed. Reviewer confirmed resolution; no outstanding Important/Critical findings.
