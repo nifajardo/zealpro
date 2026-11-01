@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.reference-review/
+.taste-skill/
+.env
+.env.*
+!.env.example
+test-results/
+graphify-out/cache/
+graphify-out/20??-??-??/
+graphify-out/.graphify*
+graphify-out/manifest.json
+# Client requirements and signed reference paperwork remain local.
+ZEALPRO - SRS.pdf
+a14ba4fb-89db-47c3-aa8a-19723c748653.jfif
+aeb8d181-7279-45f2-9947-8fd31b2648af.jfif
+b44b72fd-ce2d-4bfb-930d-f3337ef9edf8.jfif

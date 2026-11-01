@@ -1,0 +1,58 @@
+{
+  "runs": [
+    {
+      "date": "2026-11-01",
+      "project": "Zealpro operations UI demo",
+      "scope": "app",
+      "genre": "modern-minimal",
+      "theme": "coral",
+      "deal": "3/3, seed zealpro-pest-control-operations-7e5d",
+      "brand_override": "navy, lime and cyan sampled from supplied logo",
+      "taste_direction": "accent-ladder",
+      "signature": "service queue connected to treatment completion and service reports",
+      "waived": [
+        "24b: compact table and calendar optical spacing"
+      ],
+      "answered": [
+        "F4: outlined base buttons are not a second filled primary",
+        "F24: modal overlay retains an edge and elevation"
+      ],
+      "states": [
+        "full",
+        "empty",
+        "validation error",
+        "storage warning"
+      ],
+      "limits": [
+        "illustrative data",
+        "browser-local persistence",
+        "no production integrations"
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "project": "Zealpro revision 2",
+      "mode": "redesign",
+      "depth": "full",
+      "scope": "app",
+      "brand": "unchanged original logo and sampled navy/lime/cyan",
+      "direction": "strong navy workspace shell, lime active navigation, scoped profit band and right-hand dispatch panel",
+      "preserved": [
+        "original references",
+        "existing routes",
+        "existing record histories",
+        "native-module stack"
+      ],
+      "added": [
+        "service catalog",
+        "product definitions",
+        "multiple actual products",
+        "calendar profit scopes"
+      ],
+      "waived": [
+        "24b: compact optical spacing"
+      ],
+      "verification": "18 tests; connected-browser desktop and phone walkthrough; independent review repaired migration and stable service references"
+    }
+  ]
+}

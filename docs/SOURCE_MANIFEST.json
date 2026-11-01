@@ -1,0 +1,26 @@
+{
+  "originals": [
+    {
+      "path": "ZEALPRO - SRS.pdf",
+      "sha256": "0c9f19fc527f5c2bdf7e5bac393e3d8ff63c05e8a29d7c3e11d2b00795e55c74"
+    },
+    {
+      "path": "375958077_122113076180026477_5273206052510758923_n.png",
+      "sha256": "8f9000c62ad03d03eeebf2d50a5f59d2beef054838ee16fe0b5a05bde23d4368"
+    },
+    {
+      "path": "a14ba4fb-89db-47c3-aa8a-19723c748653.jfif",
+      "sha256": "e8dddf6016c9bc45d7e853843fb6994917c383f8f306026137d7418eaaf7bd2a"
+    },
+    {
+      "path": "aeb8d181-7279-45f2-9947-8fd31b2648af.jfif",
+      "sha256": "00eea1585c9f0d2a494ede49461fd1c642e0a7c42e2930752fde7a3cfdf075d8"
+    },
+    {
+      "path": "b44b72fd-ce2d-4bfb-930d-f3337ef9edf8.jfif",
+      "sha256": "acc7a2be6601c8791375049cd515b3643e1c25b819faa08192d5f4edc690b59e"
+    }
+  ],
+  "logo_copy_identical": true,
+  "font_source": "https://api.fontshare.com/v2/fonts/download/general-sans"
+}

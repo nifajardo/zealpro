@@ -1,0 +1,53 @@
+:root {
+  --color-paper: #eef2f6;
+  --color-surface: #feffff;
+  --color-ink: #17283d;
+  --color-muted: #606e80;
+  --color-faint: #919aa7;
+  --color-rule: #e7ebef;
+  --color-border: #d7dfe7;
+  --color-navy: #0f346e;
+  --color-navy-hover: #0d2a5b;
+  --color-navy-tint: #edf2f9;
+  --color-lime: #84c225;
+  --color-lime-ink: #3c6610;
+  --color-lime-tint: #f0f7e7;
+  --color-cyan: #3bb3c2;
+  --color-cyan-ink: #08687b;
+  --color-cyan-tint: #eaf7fa;
+  --color-warning: #946019;
+  --color-warning-tint: #fff6e7;
+  --color-danger: #a13d36;
+  --color-danger-tint: #fff1ee;
+  --color-track: #edf0f3;
+  --color-overlay: #17283d66;
+  --color-clear: transparent;
+  --color-print: #feffff;
+  --color-print-ink: #17283d;
+  --color-shell: #102d53;
+  --color-shell-raised: #1c3e66;
+  --color-shell-rule: #315073;
+  --color-shell-muted: #bfd0e2;
+  --color-shell-ink: #f3f7fc;
+  --color-shell-warning: #ffd5b1;
+  --font-body: 'General Sans', 'Segoe UI', sans-serif;
+  --font-display: var(--font-body);
+  --radius: 12px;
+  --gutter: 32px;
+  --dur-micro: 120ms;
+  --dur-short: 180ms;
+}
+@font-face {
+  font-family: 'General Sans';
+  src: url('/assets/general-sans.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'General Sans';
+  src: url('/assets/general-sans-semibold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+}
