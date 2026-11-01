@@ -30,7 +30,7 @@ There is no compilation or production build step. The browser loads native JavaS
 1. **Services and products:** open **Products & stock → Define product** to add a name, description, unit, unit cost, opening quantity and reorder level. Open **Services → Define service** to set a description, default charge, planned expenses and multiple estimated product quantities. Definitions can be edited, archived and restored; history is retained.
 2. **Ocular visits:** create an assessment for a new prospect, using the problem, solution and material lists. Select **Enroll client** to carry its account and branch into the service agreement. Existing branches can also be assessed directly.
 3. **Clients & branches:** select **Edit details** in a row or client profile to update the account, branch, address, agreement and optional contact person, role, phone and email. Search also matches contact details. Saving keeps the branch ID and existing service/payment records; previously captured charges remain unchanged.
-4. **Schedule:** switch between Month, Week and Day. Profit totals cover the displayed range; selected-day details sit on the right at desktop widths. Select a service definition to copy its charge, planned expenses and product estimates into a new visit. Adjust those values before saving. Insufficient available stock and technician conflicts are rejected.
+4. **Schedule:** switch between Year, Month, Week and Day. Year shows twelve equal month cards with month totals; select a card to open that month. Profit totals cover the displayed range; selected-day details sit on the right at desktop widths. Select a service definition to copy its charge, planned expenses and product estimates into a new visit. Adjust those values before saving. Insufficient available stock and technician conflicts are rejected.
 5. **Actual reporting:** open Northpoint Residences’ 11:00 service and select **Record service report**, or start from **Service reports → Record service report**. Enter actual products and quantities, actual unit costs, actual charge, expenses and findings. Add different products or remove unused products. Completion deducts actual usage once.
 6. **Service reports:** compare estimated and actual quantities in the report. **Edit actual usage** corrects the report and adjusts stock by the difference. Charges and product costs are captured, so later catalog edits do not rewrite past profits. The print button opens the browser print flow; pagination remains unverified. Signatures are explicitly uncollected.
 7. **Products & stock:** inspect on-hand, allocated and available quantities. Restock the low-stock gel bait. Referenced units cannot be changed; products required by active recipes or open visits cannot be archived.
@@ -47,7 +47,7 @@ npm run check
 git diff --check
 ```
 
-Tests live in `tests/*.test.js`, use Node’s built-in test runner, and need no running development server. The HTTP tests launch their own ephemeral loopback server. See [client editing QA](docs/QA_CLIENT_EDIT.md), [database QA evidence](docs/QA_LOCAL_DATABASE.md), [payment QA evidence](docs/QA_SERVICE_PAYMENTS.md) and [revision 2 QA](docs/QA_REVISION2.md) for current coverage and remaining verification limits.
+Tests live in `tests/*.test.js`, use Node’s built-in test runner, and need no running development server. The HTTP tests launch their own ephemeral loopback server. See [calendar and brand QA](docs/QA_CALENDAR_REFINEMENT.md), [client editing QA](docs/QA_CLIENT_EDIT.md), [database QA evidence](docs/QA_LOCAL_DATABASE.md), [payment QA evidence](docs/QA_SERVICE_PAYMENTS.md) and [revision 2 QA](docs/QA_REVISION2.md) for current coverage and remaining verification limits.
 
 ## Profit and saved records
 
@@ -83,8 +83,8 @@ The SRS spells the treatment category **Gel bathing**. The demo preserves it. Co
 
 ## Design and assets
 
-- Brand: supplied Zealpro logo, with navy, lime and cyan interface tokens.
-- Design workflows: Taste accent-ladder app direction and Hallmark app rules; the supplied brand overrides the dealt theme colors.
+- Brand: the supplied Zealpro logo defines navy actions, cyan calendar highlights and green completion states on white surfaces. Darker accent shades preserve text contrast.
+- Design workflows: Taste achromatic-ledger app refinement and Hallmark app rules; the supplied brand overrides the dealt theme colors.
 - Typeface: General Sans, supplied by [Fontshare](https://www.fontshare.com/fonts/general-sans), downloaded from the official Fontshare API. The unmodified license is included at `public/assets/General-Sans-FFL.txt`.
 - Reference mapping: [SRS traceability](docs/SRS_TRACEABILITY.md).
-- Current screenshots: [workspace](docs/screenshots/overview-desktop-v2.png), [actual-product entry](docs/screenshots/report-actual-entry-v2.png), [phone calendar](docs/screenshots/calendar-phone-v2.png), [phone report form](docs/screenshots/report-phone-entry-v2.png). The live calendar contains the complete desktop layout; additional full-page capture was unavailable.
+- Current refinement: [overview](docs/screenshots/overview-after-refinement.png), [Year calendar](docs/screenshots/calendar-year-after-refinement.png) and [calendar/detail alignment](docs/screenshots/calendar-detail-after-refinement.png). Earlier screenshots: [workspace](docs/screenshots/overview-desktop-v2.png), [actual-product entry](docs/screenshots/report-actual-entry-v2.png), [phone calendar](docs/screenshots/calendar-phone-v2.png), [phone report form](docs/screenshots/report-phone-entry-v2.png). The live calendar contains the complete desktop layout; additional full-page capture was unavailable.

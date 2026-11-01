@@ -1,4 +1,4 @@
-import { STAFF, PROBLEMS, PESTS, seedServices } from './data.js';
+import { STAFF, PROBLEMS, PESTS, seedServices, CALENDAR_VIEWS } from './data.js';
 
 export const money = value => new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP', maximumFractionDigits: 2, minimumFractionDigits: 0 }).format(value);
 export const uid = prefix => `${prefix}-${globalThis.crypto.randomUUID()}`;
@@ -191,11 +191,29 @@ export function reviseReport(state, reportId, input) {
 }
 
 export function calendarRange(date, view = 'month') {
-  need(validDate(date) && ['month', 'week', 'day'].includes(view), 'Choose a valid calendar date and view.');
+  need(validDate(date) && CALENDAR_VIEWS.includes(view), 'Choose a valid calendar date and view.');
   const start = new Date(`${date}T12:00:00Z`), end = new Date(start);
+  if (view === 'year') { start.setUTCMonth(0, 1); end.setUTCMonth(11, 31); }
   if (view === 'month') { start.setUTCDate(1); end.setUTCMonth(end.getUTCMonth() + 1, 0); }
   if (view === 'week') { start.setUTCDate(start.getUTCDate() - (start.getUTCDay() + 6) % 7); end.setTime(start.getTime()); end.setUTCDate(end.getUTCDate() + 6); }
   return { start: start.toISOString().slice(0, 10), end: end.toISOString().slice(0, 10) };
+}
+
+export function moveCalendar(date, view, direction) {
+  need(validDate(date) && CALENDAR_VIEWS.includes(view) && [-1, 1].includes(direction), 'Choose a valid calendar period and direction.');
+  const target = new Date(`${date}T12:00:00Z`);
+  if (view === 'year' || view === 'month') {
+    const day = target.getUTCDate();
+    target.setUTCDate(1);
+    if (view === 'year') target.setUTCFullYear(target.getUTCFullYear() + direction);
+    else target.setUTCMonth(target.getUTCMonth() + direction);
+    const last = new Date(target);
+    last.setUTCMonth(last.getUTCMonth() + 1, 0);
+    target.setUTCDate(Math.min(day, last.getUTCDate()));
+  } else target.setUTCDate(target.getUTCDate() + direction * (view === 'week' ? 7 : 1));
+  const result = target.toISOString().slice(0, 10);
+  need(validDate(result), 'This calendar period is outside the supported date range.');
+  return result;
 }
 
 export function calendarProfit(state, start, end) {

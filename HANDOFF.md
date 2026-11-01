@@ -12,6 +12,14 @@ The local UI now supports Edit details from client rows and profiles. The shared
 
 Browser checks used isolated port 4177 and restored only its sample records. The persistent API on 4176 was restarted gracefully to load the edit command. Current evidence is `docs/QA_CLIENT_EDIT.md`; the edit UI remains browser-local. Client-edit source changes are integrated into `main`.
 
+## Calendar and brand refinement
+
+The calendar now supports Year, Month, Week and Day. Annual totals and monthly drill-down reuse captured contribution calculations. Shared `moveCalendar()` clamps leap-day and month-end movement and rejects unsupported bounds. At desktop widths, both calendar and detail frames are 720 pixels high with internal overflow. On narrow screens they stack naturally. The day action fills its card, and white day cells, darker rules and a separate outside-month fill make empty spaces visible. Calendar date selection preserves page scroll.
+
+The supplied logo remains unchanged and defines navy actions, cyan data accents and green completion states on white chrome. Taste's achromatic-ledger app direction was adapted to that explicit brand instruction. Evidence, screenshots, contrast, independent review and limitations are in `docs/QA_CALENDAR_REFINEMENT.md`. All 39 tests and syntax checks pass. Owner data and the persistent database were not reset; only disposable QA data on port 4389 was restored after a large-value check.
+
+Drafting work now stays directly on `main`, followed by verified commit/push. Do not create feature branches or ceremonial merges. This refinement changes no storage schema or persistence boundary.
+
 ## Run and live state
 
 - Install with `npm ci` (Node.js 22+). `npm start` runs the loopback server and opens `.local/db` by default. Migrations run on startup; seeding never runs implicitly.
@@ -30,7 +38,7 @@ Browser checks used isolated port 4177 and restored only its sample records. The
 
 ## Verification
 
-- `npm test`: 36 passed, zero failed. `npm run check`: passed. `npm audit --omit=dev`: zero vulnerabilities.
+- `npm test`: 39 passed, zero failed. `npm run check`: passed. `npm audit --omit=dev`: zero vulnerabilities.
 - Tests cover disk reopen, exclusive ownership, migration drift, relational constraints, atomic completion/payment, exact replay, stale concurrent commands, import preservation, SQL write-failure rollback, and portable SQL restore with receipt replay.
 - HTTP checks cover foreign origins, Host rebinding, body type/size, unsupported commands, private paths and malformed URLs.
 - Independent review found one Important issue: malformed HTTP request targets crashed URL parsing and left a recovery lock. A regression reproduced ECONNRESET; guarded parsing now returns 400 and subsequent health requests succeed. Reviewer confirmed resolution; no outstanding Important/Critical findings.
@@ -39,7 +47,7 @@ Browser checks used isolated port 4177 and restored only its sample records. The
 
 ## UI and record preservation
 
-Nine presentation destinations cover overview, scheduling, service definitions, assessments, clients, reporting, products/stock, collection and pest analytics. Visits retain estimates; reports retain actual quantities/costs and allow stock-delta corrections. Calendar Month/Week/Day contribution is independent of payment collection. Service fulfillment remains Completed while its linked balance is unpaid, partial, paid or overdue. Older unlinked services require explicit payment-link review; no aggregate invoice is guessed into a service relationship.
+Nine presentation destinations cover overview, scheduling, service definitions, assessments, clients, reporting, products/stock, collection and pest analytics. Visits retain estimates; reports retain actual quantities/costs and allow stock-delta corrections. Calendar Year/Month/Week/Day contribution is independent of payment collection. Service fulfillment remains Completed while its linked balance is unpaid, partial, paid or overdue. Older unlinked services require explicit payment-link review; no aggregate invoice is guessed into a service relationship.
 
 Browser storage remains `zealpro.demo.v1`, schema version two. Earlier version-one raw data is backed up before upgraded/recovery save. Legacy report financials require confirmation; reconstructed estimates and fractional piece history remain flagged. Payment calculations still use the fixed November 2, 2026 sample date.
 

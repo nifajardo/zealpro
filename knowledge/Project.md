@@ -17,13 +17,13 @@ The first milestone is a local UI presentation for Zealpro Solutions Incorporate
 ## Decisions
 
 - Use native browser modules and a Node loopback server. The local backend now uses pinned PGlite and pg_dump tooling; install with `npm ci`.
-- Apply the supplied navy, lime and cyan brand to a restrained operations interface.
+- Use the supplied logo as the brand authority: white chrome, navy actions, cyan calendar highlights and green completion states.
 - Keep the initial ocular assessment possible before formal enrollment.
 - Complete treatment, deduct stock and compile its report in one validated local action.
 - Record pest type explicitly; never infer it from the treatment method.
 - Keep missing observations distinct from observed zero counts and label November as partial.
 - Services and products now have editable definitions with reversible archival. Visits capture estimates; reports capture actual product quantities and prices.
-- Calendar Month, Week and Day totals use the displayed range. Desktop day details sit to the right. Profit is charge less product costs and entered expenses, before unrecorded overhead and tax.
+- Calendar Year, Month, Week and Day totals use the displayed range. Desktop day details sit to the right. Profit is charge less product costs and entered expenses, before unrecorded overhead and tax.
 - Version-one records are preserved through migration and an origin-local backup before the first upgraded save. Old reports need financial confirmation; imported fractional piece quantities remain flagged rather than silently rounded.
 
 ## Local database milestone
@@ -45,3 +45,7 @@ Clients & branches now supports Edit details for identity/address, agreement fie
 ## Asset provenance
 
 The original SRS, three paperwork photographs and logo are preserved. The public logo is an unmodified copy. No handwritten signature was reproduced. The locally served General Sans fonts have their original Fontshare license bundled.
+
+## Calendar refinement
+
+Year provides twelve equal month cards with monthly contribution and drill-down. Shared period navigation clamps invalid leap-day/month-end selections. Desktop calendar/detail panels align at 720 pixels; narrow panels stack, and long values wrap without changing month-card heights. Blank outside-month cells have a distinct fill. See [calendar QA](../docs/QA_CALENDAR_REFINEMENT.md). Drafting changes stay directly on main, followed by verification and commit/push.

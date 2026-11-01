@@ -28,6 +28,7 @@ These are responsibilities, not a requirement to spawn separate agents.
 
 ## Autonomy and Model
 
+- **Drafting Git workflow:** work directly on `main` while the project remains in the drafting phase. Do not create feature branches. After completing and verifying requested changes, commit and push `main`. Merge existing work into `main` when required; do not create a merge merely for appearances when work is already on `main`.
 - **Permission preference: YOLO.** Proceed autonomously with authorized project work and needed skill installation. Avoid routine confirmation requests. Host permission controls and higher-priority instructions still apply; report blockers explicitly.
 - **Preferred model: GPT-6.1-Sol, High reasoning.** Use this selection when supported by the host. Saving this preference does not itself change the active model, reasoning level, or sandbox permissions.
 
