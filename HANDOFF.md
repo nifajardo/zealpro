@@ -2,7 +2,7 @@
 
 ## Current milestones
 
-The UI milestone is committed and pushed as `f9d221b` on `origin/main`. It includes all six owner revisions, the calendar scroll fix, and separate completion/payment standing with 30-day service terms. Current backend work is on `feature/local-database`.
+The UI milestone is committed and pushed as `f9d221b` on `origin/main`. It includes all six owner revisions, the calendar scroll fix, and separate completion/payment standing with 30-day service terms. The backend and client-edit commits through `531488c` were fast-forward merged from `feature/local-database` into `main` at the owner's request. `main` is the current working branch.
 
 The local PostgreSQL/database API foundation is complete. This milestone deliberately leaves the presentation UI browser-local; it does not silently replace existing localStorage records or mix browser and server writes. The next milestone is an explicit UI persistence cutover with reviewed import and retry recovery.
 
@@ -10,7 +10,7 @@ The local PostgreSQL/database API foundation is complete. This milestone deliber
 
 The local UI now supports Edit details from client rows and profiles. The shared form edits account/branch/address, agreement values and optional contact person, role, phone and email. Existing contact strings remain roles; no person names are inferred. Search includes contacts and reminder previews use the named person/email when available. Edits preserve the client ID and linked historical charges/payments. Duplicate branches, invalid contacts and assessment relinking are rejected before mutation. The backend client command now passes its optional client ID through the same domain operation; client JSONB needs no SQL migration.
 
-Browser checks used isolated port 4177 and restored only its sample records. The persistent API on 4176 was restarted gracefully to load the edit command. Current evidence is `docs/QA_CLIENT_EDIT.md`; the edit UI remains browser-local. Source changes are on the existing backend branch.
+Browser checks used isolated port 4177 and restored only its sample records. The persistent API on 4176 was restarted gracefully to load the edit command. Current evidence is `docs/QA_CLIENT_EDIT.md`; the edit UI remains browser-local. Client-edit source changes are integrated into `main`.
 
 ## Run and live state
 
