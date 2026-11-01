@@ -2,7 +2,7 @@ import test, { after } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 
-const server = spawn(process.execPath, ['server.mjs'], { env: { ...process.env, PORT: '0' }, stdio: ['ignore', 'pipe', 'pipe'] });
+const server = spawn(process.execPath, ['server.mjs'], { env: { ...process.env, PORT: '0', ZEALPRO_DB_DIR: ':memory:' }, stdio: ['ignore', 'pipe', 'pipe'] });
 after(() => server.kill());
 const origin = await new Promise((resolve, reject) => {
   const timer = setTimeout(() => reject(new Error('Demo server did not start within 10 seconds.')), 10000);

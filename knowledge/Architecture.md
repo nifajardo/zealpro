@@ -32,7 +32,15 @@ The local AST source map in `graphify-out/graph.json` and `graphify-out/graph.ht
 graphify query "completeVisit materials reports inventory" --budget 1600
 ```
 
-The map covers `src/` only. It does not claim semantic extraction of the PDF or photographs. The source files and SRS remain authoritative. Automatic community labeling was unavailable because the configured Claude command was not logged in; source navigation itself succeeded. No token-saving claim is made.
+The map now covers application/backend/server code and supported repository sources. Optional SQL AST extraction is unavailable, and some test/CLI sources expose no symbols; consult migration SQL and runtime tests directly. It does not claim semantic extraction of the private PDF or photographs. The source files and SRS remain authoritative. Automatic community labeling was unavailable because the configured Claude command was not logged in; source navigation itself succeeded. No token-saving claim is made.
+
+## Local backend foundation
+
+`backend/database.mjs` owns one embedded PostgreSQL process, its filesystem lock and checksum-verified SQL migrations. `workspace.mjs` reconstructs domain arrays from relational records and executes existing model operations inside one transaction with a revision and durable idempotency receipt. `api.mjs` validates local Host/Origin and HTTP input boundaries. `backup.mjs` and `cli.mjs` provide explicit data import and SQL export. Storage sits in ignored `.local/`; no backend files are static assets.
+
+The current UI remains a separate browser-local demonstration. Its later cutover must send commands to the server rather than upload arbitrary post-mutation snapshots, preserve ambiguous-request IDs across retry, and explicitly review existing browser imports before replacing a shared workspace.
+
+The local engine reports PostgreSQL 18.6. SQL export restores locally with schema, data and request receipts; provider major-version compatibility still needs staging acceptance. JSON import is a logical data operation and retains destination receipts rather than restoring the source receipt ledger.
 
 ## Production seam
 

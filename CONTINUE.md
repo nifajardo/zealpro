@@ -1,7 +1,7 @@
 # Continue Zealpro
 
-Read `PROJECT_PREFERENCES.md`, then `HANDOFF.md`, before further work. `HANDOFF.md` is the current resume authority.
+Read `PROJECT_PREFERENCES.md` and `HANDOFF.md` first. The current branch is `feature/local-database`; the UI baseline `f9d221b` is on `origin/main`.
 
-Revision 2 is ready for local presentation. Run `npm start`, open `http://127.0.0.1:4173/#schedule`, and follow the README walkthrough. The running isolated preview at port 4174 contains clean sample data. See `docs/QA_REVISION2.md`. Preserve origin-local backups and do not treat illustrative records as real client evidence.
+Local database/API foundation is verified with 32 passing tests. The live backend at port 4176 owns ignored `.local/db`. Read `docs/LOCAL_DATABASE.md` before database administration. The presentation UI still saves browser-local records; preserve existing owner data and do not infer that old Node processes have the new API.
 
-Next work should follow client feedback. Production backend, authorization, durable transactions, approved reporting/billing rules and live integrations are separate milestones.
+Next milestone: explicit UI persistence cutover, command retry/conflict recovery and reviewed legacy import. Hosted provider provisioning, authentication and live integrations remain separate work.

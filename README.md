@@ -1,13 +1,14 @@
-# Zealpro operations UI demo
+# Zealpro operations workspace
 
-A local browser demonstration of the Zealpro Web-Based Management System. The supplied SRS, Zealpro service paperwork and original logo informed the interface. All operational records, staff, account examples, prices and pest counts are illustrative.
+A local browser demonstration of the Zealpro Web-Based Management System. The supplied SRS, Zealpro service paperwork and original logo informed the interface. All operational records, staff, account examples, prices and pest counts are illustrative. A persistent local PostgreSQL/API foundation is now available; the presentation UI continues to use browser-local records until a separate persistence cutover. See [local database setup and contract](docs/LOCAL_DATABASE.md).
 
 ## Run
 
-Requires Node.js 22 or newer. No package installation, environment file, account or API key is required.
+Requires Node.js 22 or newer and npm. Install the two pinned local database packages with `npm ci`. No Docker, hosted account, API key or environment file is required.
 
 ```powershell
 cd D:\zealpro
+npm ci
 npm start
 ```
 
@@ -19,6 +20,8 @@ If port 4173 is occupied:
 $env:PORT = '4174'
 npm start
 ```
+
+The server initializes a local database in `.local/db` and exposes `/api/health`; startup never seeds or overwrites existing data. To populate only a new empty database with illustrative records, run `npm run db:seed` before starting the server. Offline database commands require the server to be stopped.
 
 There is no compilation or production build step. The browser loads native JavaScript modules. The server exposes an explicit allowlist of application assets; it does not expose the repository or source paperwork.
 
@@ -43,7 +46,7 @@ npm run check
 git diff --check
 ```
 
-Tests live in `tests/*.test.js`, use Node’s built-in test runner, and need no running development server. The HTTP tests launch their own ephemeral loopback server. See [payment QA evidence](docs/QA_SERVICE_PAYMENTS.md) and [revision 2 QA](docs/QA_REVISION2.md) for current coverage and remaining verification limits.
+Tests live in `tests/*.test.js`, use Node’s built-in test runner, and need no running development server. The HTTP tests launch their own ephemeral loopback server. See [database QA evidence](docs/QA_LOCAL_DATABASE.md), [payment QA evidence](docs/QA_SERVICE_PAYMENTS.md) and [revision 2 QA](docs/QA_REVISION2.md) for current coverage and remaining verification limits.
 
 ## Profit and saved records
 
@@ -59,6 +62,8 @@ public/assets/          Unmodified supplied logo, locally served fonts and font 
 src/data.js             Fixed demonstration date, controlled vocabularies and sample records
 src/model.js            Catalogs, migration, profit ranges, reporting, stock and payments
 src/app.js              Nine views, product-line forms, calendar and browser persistence
+backend/                Local PostgreSQL lifecycle, SQL migrations, transaction repository/API and exports
+.local/                 Ignored database and private backups
 server.mjs              Dependency-free loopback server with a file allowlist
 tests/                  State invariants and HTTP exposure tests
 docs/                   Design, implementation plan, QA, screenshots and SRS traceability
@@ -71,7 +76,7 @@ The SRS, logo and three original reference photographs remain untouched at the r
 
 ## Demonstration boundary
 
-This is not a production system. Changes persist only in the current browser and origin; tabs do not coordinate concurrent edits. Do not enter real personal, financial or confidential client data. There is no backend, login, role authorization, multi-user database, live reminder delivery, payment processing, proof upload, customer signature capture or durable audit trail. Scheduling reserves a fixed one-hour window and treatment completion is same-day. Up to 50 distinct products can be planned or reported per service. Client agreements are demonstration fields, not signed contracts. Billing uses sample account invoices and linked service receivables; these are not issued tax invoices. Legal invoice issuance, tax rules and recurrence need client validation.
+This is not a production system. Changes persist only in the current browser and origin; tabs do not coordinate concurrent edits. Do not enter real personal, financial or confidential client data. The local API/backend foundation is separate from the browser UI. There is no production login, role authorization, live reminder delivery, payment processing, proof upload or customer signature capture. Backend command receipts protect retries but are not a complete business audit trail. Scheduling reserves a fixed one-hour window and treatment completion is same-day. Up to 50 distinct products can be planned or reported per service. Client agreements are demonstration fields, not signed contracts. Billing uses sample account invoices and linked service receivables; these are not issued tax invoices. Legal invoice issuance, tax rules and recurrence need client validation.
 
 The SRS spells the treatment category **Gel bathing**. The demo preserves it. Confirm this terminology with the client before production.
 

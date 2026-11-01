@@ -16,7 +16,7 @@ The first milestone is a local UI presentation for Zealpro Solutions Incorporate
 
 ## Decisions
 
-- Use native browser modules and a Node loopback server, with no runtime dependency installation.
+- Use native browser modules and a Node loopback server. The local backend now uses pinned PGlite and pg_dump tooling; install with `npm ci`.
 - Apply the supplied navy, lime and cyan brand to a restrained operations interface.
 - Keep the initial ocular assessment possible before formal enrollment.
 - Complete treatment, deduct stock and compile its report in one validated local action.
@@ -25,6 +25,10 @@ The first milestone is a local UI presentation for Zealpro Solutions Incorporate
 - Services and products now have editable definitions with reversible archival. Visits capture estimates; reports capture actual product quantities and prices.
 - Calendar Month, Week and Day totals use the displayed range. Desktop day details sit to the right. Profit is charge less product costs and entered expenses, before unrecorded overhead and tax.
 - Version-one records are preserved through migration and an origin-local backup before the first upgraded save. Old reports need financial confirmation; imported fractional piece quantities remain flagged rather than silently rounded.
+
+## Local database milestone
+
+A filesystem-backed PostgreSQL/API foundation now exists under `backend/` and `.local/db`. Migrations, relational references, transactional domain commands, revision conflicts, idempotency receipts and JSON/SQL exports are implemented. The presentation UI remains browser-local pending a deliberate import/persistence cutover. No hosted provider is provisioned. See [database contract](../docs/LOCAL_DATABASE.md) and [database QA](../docs/QA_LOCAL_DATABASE.md).
 
 ## Navigation
 
