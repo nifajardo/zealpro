@@ -53,3 +53,7 @@ Year provides twelve equal month cards with monthly contribution and drill-down.
 ## Shared visual system
 
 `design.md` records the restored navy/lime system. Mobile table actions and focus containment were improved while retaining all business workflows. See [brand restoration QA](../docs/QA_BRAND_RESTORATION.md) and the final screenshots.
+
+## Roles, reporting and inspection findings
+
+Owner, Supervisor and Technician sample logins preview the proposed SRS hierarchy allocation. `access.js` controls screen scope and actions; full workspace persistence remains separate. These public credentials are not secure authentication. Cumulative account/branch/date reports use the existing branded PDF preview and Print / Save as PDF flow, without CSV. Multiple ocular findings preserve individual products/notes and general inspection instructions. Pest graphs combine labeled historical sample observations and saved service-report counts. See [credentials and report guide](../docs/ROLES_AND_REPORTS.md), [QA evidence](../docs/QA_ROLES_REPORTS_OCULAR.md) and [[Architecture]].

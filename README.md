@@ -33,17 +33,19 @@ See [Vercel setup and function-failure recovery](docs/VERCEL_HOSTING.md) for the
 
 ## Presentation walkthrough
 
+Sign in with a public sample account from [roles, credentials and reporting](docs/ROLES_AND_REPORTS.md). Owner has the full walkthrough below; Supervisor has operational access and Technician sees assigned work. These logins preview workflows and are not secure authentication.
+
 1. **Services and products:** open **Products & stock → Define product** to add a name, description, unit, unit cost, opening quantity and reorder level. Open **Services → Define service** to set a description, default charge, planned expenses and multiple estimated product quantities. Definitions can be edited, archived and restored; history is retained.
-2. **Ocular visits:** create an assessment for a new prospect, using the problem, solution and material lists. Select **Enroll client** to carry its account and branch into the service agreement. Existing branches can also be assessed directly.
+2. **Ocular visits:** create an assessment for a new prospect or existing branch. Add up to 20 independent findings, each with an inspected area, problem, recommended service, multiple products and optional notes. General notes remain separate. Select **Enroll client** to carry a prospect's account and branch into the service agreement.
 3. **Clients & branches:** select **Edit details** in a row or client profile to update the account, branch, address, agreement and optional contact person, role, phone and email. Search also matches contact details. Saving keeps the branch ID and existing service/payment records; previously captured charges remain unchanged.
 4. **Schedule:** switch between Year, Month, Week and Day. Year shows twelve equal month cards with month totals; select a card to open that month. Profit totals cover the displayed range; selected-day details sit on the right at desktop widths. Select a service definition to copy its charge, planned expenses and product estimates into a new visit. Adjust those values before saving. Insufficient available stock and technician conflicts are rejected.
 5. **Actual reporting:** open Northpoint Residences’ 11:00 service and select **Record service report**, or start from **Service reports → Record service report**. Enter actual products and quantities, actual unit costs, actual charge, expenses and findings. Add different products or remove unused products. Completion deducts actual usage once.
-6. **Service reports:** compare estimated and actual quantities in the report. **Edit actual usage** corrects the report and adjusts stock by the difference. Charges and product costs are captured, so later catalog edits do not rewrite past profits. The print button opens the browser print flow; pagination remains unverified. Signatures are explicitly uncollected.
+6. **Service reports:** compare estimated and actual quantities in the report. **Edit actual usage** corrects the report and adjusts stock by the difference. Charges and product costs are captured, so later catalog edits do not rewrite past profits. Owner and Supervisor can open **Cumulative client / branch report**, choose account/branch/dates, **Apply filters**, then **Generate PDF report → Print / save PDF**. The branded layout matches the existing reports; there is no CSV export. Saved-PDF pagination remains unverified. Signatures are explicitly uncollected.
 7. **Products & stock:** inspect on-hand, allocated and available quantities. Restock the low-stock gel bait. Referenced units cannot be changed; products required by active recipes or open visits cannot be archived.
 8. **Billing & collection:** completing a service creates a linked local payment record due 30 calendar days after its delivery date. Service status remains **Completed** while payment moves through **Unpaid**, **Partially paid**, **Paid** or **Overdue**. Calendar and service views say **Awaiting payment** or **Payment overdue** and show a balance/countdown. Payment status uses the fixed sample date, 2 November 2026. Existing invoice due dates and payments are retained. Older completed services without an invoice link show **Payment not linked**; open the visit and select **Review payment link** after confirming report financials. Link a matching single-service invoice or explicitly confirm a new balance after reviewing existing billing. Consolidated account invoices require separate reconciliation. No money moves and no reminder is sent.
-9. **Pest analytics:** filter by client branch and inspect dated observations. Missing observations remain gaps. November is partial; these sample counts do not demonstrate treatment effectiveness.
+9. **Pest analytics:** filter by client branch and inspect each graph's source records. Data combine 15 illustrative historical counts and saved service-report pest counts, including three initial sample reports. Missing observations remain gaps; qualitative ocular findings add no counts. There is no external/live feed, and these counts do not prove treatment effectiveness.
 
-Select **Demo guide → Reset sample data → Reset sample records** to restore the starting dataset. This resets only the app’s localStorage key, `zealpro.demo.v1`, on the current origin.
+As Owner, select **Demo guide → Reset sample data → Reset sample records** to restore the starting dataset. This resets only the app’s localStorage key, `zealpro.demo.v1`, on the current origin.
 
 ## Checks
 
@@ -69,9 +71,11 @@ public/                 HTML, token stylesheet, responsive styles and public ass
 public/assets/          Unmodified supplied logo, locally served fonts and font license
 src/data.js             Fixed demonstration date, controlled vocabularies and sample records
 src/model.js            Catalogs, migration, profit ranges, reporting, stock and payments
+src/access.js           Public demo credentials, role capabilities, scope and action guards
+src/reporting.js        Cumulative report data, account grouping and pest-source provenance
 src/app.js              Nine views, product-line forms, calendar and browser persistence
 backend/                Local PostgreSQL lifecycle, SQL migrations, transaction repository/API and exports
-scripts/build.mjs       Explicit ten-file static hosting artifact builder
+scripts/build.mjs       Explicit twelve-file static hosting artifact builder
 dist/                   Ignored static browser output for Vercel
 vercel.json             Static framework/build/output settings and response headers
 .local/                 Ignored database and private backups
@@ -87,7 +91,7 @@ The SRS, logo and three original reference photographs remain untouched at the r
 
 ## Demonstration boundary
 
-This is not a production system. Changes persist only in the current browser and origin; tabs do not coordinate concurrent edits. Do not enter real personal, financial or confidential client data. The local API/backend foundation is separate from the browser UI. There is no production login, role authorization, live reminder delivery, payment processing, proof upload or customer signature capture. Backend command receipts protect retries but are not a complete business audit trail. Scheduling reserves a fixed one-hour window and treatment completion is same-day. Up to 50 distinct products can be planned or reported per service. Client agreements are demonstration fields, not signed contracts. Billing uses sample account invoices and linked service receivables; these are not issued tax invoices. Legal invoice issuance, tax rules and recurrence need client validation.
+This is not a production system. Changes persist only in the current browser and origin; tabs do not coordinate concurrent edits. Do not enter real personal, financial or confidential client data. Public sample logins and browser role checks are not secure authentication or server authorization. The local API/backend foundation is separate from the browser UI and remains loopback-only. There is no live reminder delivery, payment processing, proof upload or customer signature capture. Backend command receipts protect retries but are not a complete business audit trail. Scheduling reserves a fixed one-hour window and treatment completion is same-day. Up to 50 distinct products can be planned or reported per service. Client agreements are demonstration fields, not signed contracts. Billing uses sample account invoices and linked service receivables; these are not issued tax invoices. Legal invoice issuance, tax rules and recurrence need client validation. See [roles/reporting QA](docs/QA_ROLES_REPORTS_OCULAR.md) for current verification.
 
 The SRS spells the treatment category **Gel bathing**. The demo preserves it. Confirm this terminology with the client before production.
 

@@ -28,6 +28,12 @@ The six follow-up comments extend the initial demonstration: services now includ
 
 The approved follow-up separates fulfillment from payment standing. Completed services retain their fulfillment status while payment is unpaid, partial, paid or overdue. New completion creates a linked local receivable due 30 calendar days after delivery, with due/countdown labels across the workflow. This extends SRS step 6 and checklist 7. Existing invoices retain captured dates and payments; unlinked historical services require explicit billing review rather than an assumed unpaid balance. See `QA_SERVICE_PAYMENTS.md`.
 
+## Roles, cumulative reporting and multiple findings follow-up
+
+The three rendered SRS pages were reviewed again for this change. Page 1's hierarchy maps provisionally to Owner (General Manager/Administrator), Supervisor (1/2) and Technician; the detailed feature allocation is implementation judgment because the SRS does not prescribe it. Public demo login checks cover routes, actions, record identity and protected finance inputs. Secure authentication and server authorization remain production work.
+
+Ocular assessments now accept multiple findings and multiple recommended products per finding, with non-destructive legacy migration. Cumulative account/branch/date reports extend SRS page 3's account history and report compilation requirements. At the owner's direction they use the existing branded PDF preview/print format, without CSV. Account names are normalized for grouping; durable parent-account entities, signed copies and audited revisions remain future work. Pest analytics now identifies illustrative historical observations and saved service-report counts; qualitative inspections are excluded from numerical counts. See [role/report guide](ROLES_AND_REPORTS.md) and [QA](QA_ROLES_REPORTS_OCULAR.md).
+
 ## Paperwork mapping
 
 The Zealpro service report photographs supply account name, address, report number, date, time-in/out, service category, treatment location/method/count, materials, findings, recommendation, remarks, and customer/representative acknowledgment. Their handwritten signatures and uncertain entries were not copied into the dataset. The demo reports explicitly say that signatures were not collected.

@@ -269,23 +269,51 @@ export function enrollClient(state, input, id) {
   return client;
 }
 
+export function assessmentFindings(assessment) {
+  return assessment.findings === undefined ? [{ location: assessment.location, problem: assessment.problem, serviceId: assessment.serviceId || '', materialIds: [assessment.materialId], notes: assessment.notes }] : assessment.findings;
+}
+
+function validAssessmentFindings(state, findings, { active = false, legacy } = {}) {
+  return Array.isArray(findings) && findings.length >= 1 && findings.length <= 20 && Array.from(findings).every(finding => {
+    if (!finding || !text(finding.location) || !PROBLEMS.includes(finding.problem) || !text(finding.notes, false)) return false;
+    const service = state.services.find(s => s.id === finding.serviceId);
+    const unresolvedLegacy = !active && finding.serviceId === '' && !legacy?.serviceId && text(legacy?.solution) && findings.length === 1 && finding.location === legacy.location && finding.problem === legacy.problem;
+    return ((service && (!active || service.active)) || unresolvedLegacy) && Array.isArray(finding.materialIds) && finding.materialIds.length >= 1 && finding.materialIds.length <= 20 &&
+      new Set(finding.materialIds).size === finding.materialIds.length && Array.from(finding.materialIds).every(id => state.materials.some(m => m.id === id && (!active || m.active))) &&
+      (!unresolvedLegacy || (finding.materialIds.length === 1 && finding.materialIds[0] === legacy.materialId));
+  });
+}
+
 export function addAssessment(state, input) {
   need(state.clients.some(c => c.id === input.clientId) || (!input.clientId && text(input.accountName) && text(input.branch)), 'Choose an existing branch or enter the prospect account and branch.');
   need(validDate(input.date) && validTime(input.time) && STAFF.includes(input.assessor), 'Choose a valid date, time and assessor.');
-  need(PROBLEMS.includes(input.problem) && state.services.some(s => s.active && s.name === input.solution) && state.materials.some(m => m.id === input.materialId && m.active), 'Choose the problem, solution and material.');
-  need(text(input.location) && text(input.notes, false), 'Enter an inspected area and keep notes under 2,000 characters.');
-  const assessment = { id: uid('ocular'), ...Object.fromEntries(['clientId', 'date', 'time', 'assessor', 'location', 'problem', 'solution', 'materialId', 'notes'].map(key => [key, input[key]])) };
-  assessment.serviceId = state.services.find(s => s.active && s.name === input.solution).id;
+  const legacyService = input.findings === undefined ? state.services.find(s => input.serviceId ? s.id === input.serviceId : s.name === input.solution) : null;
+  const findings = input.findings === undefined ? assessmentFindings({ ...input, serviceId: legacyService?.id || '' }) : input.findings;
+  need(validAssessmentFindings(state, findings, { active: true }), 'Enter 1–20 findings with an inspected area, problem, active recommended service, 1–20 unique active materials and notes under 2,000 characters.');
+  const notes = input.notes ?? '';
+  need(text(notes, false), 'Keep assessment notes under 2,000 characters.');
+  const first = findings[0];
+  const assessment = { id: uid('ocular'), ...Object.fromEntries(['clientId', 'date', 'time', 'assessor'].map(key => [key, input[key]])), location: first.location, problem: first.problem, solution: state.services.find(s => s.id === first.serviceId).name, serviceId: first.serviceId, materialId: first.materialIds[0], notes,
+    findings: findings.map(finding => ({ location: finding.location, problem: finding.problem, serviceId: finding.serviceId, materialIds: [...finding.materialIds], notes: finding.notes })) };
   if (!input.clientId) { assessment.accountName = input.accountName.trim(); assessment.branch = input.branch.trim(); }
   state.assessments.push(assessment);
   return assessment;
+}
+
+function migrateAssessments(state) {
+  state.assessments?.forEach(a => {
+    if (a.findings === undefined) {
+      if (!a.serviceId) a.serviceId = state.services?.find(s => s.name === a.solution)?.id || '';
+      a.findings = assessmentFindings(a);
+    }
+  });
 }
 
 export function migrateState(input) {
   need(input && [1, 2].includes(input.version), 'Saved data has an unsupported version.');
   const state = structuredClone(input);
   if (state.version === 2) {
-    state.assessments?.forEach(a => { if (!a.serviceId) a.serviceId = state.services?.find(s => s.name === a.solution)?.id || ''; });
+    migrateAssessments(state);
     need(validateState(state), 'Saved data is invalid.'); return state;
   }
   need(['clients', 'visits', 'materials', 'reports', 'observations', 'assessments', 'invoices'].every(k => Array.isArray(state[k])), 'Saved collections are invalid.');
@@ -312,7 +340,7 @@ export function migrateState(input) {
     r.actualRevenue = visit.rate;
     r.financialsConfirmed = false;
   });
-  state.assessments.forEach(a => { a.serviceId = state.services.find(s => s.name === a.solution)?.id || ''; });
+  migrateAssessments(state);
   state.version = 2;
   need(validateState(state), 'Saved data could not be upgraded safely.');
   return state;
@@ -334,7 +362,7 @@ export function validateState(state) {
       state.visits.every(v => hasClient(v) && state.services.some(s => s.id === v.serviceId) && validDate(v.date) && validTime(v.time) && STAFF.includes(v.technician) && text(v.treatment) && ['Scheduled', 'In progress', 'Completed'].includes(v.status) && validLines(v.estimatedProducts, true) && validNumber(v.plannedExpense) && validNumber(v.rate)) &&
       new Set(state.invoices.filter(i => i.visitId).map(i => i.visitId)).size === state.invoices.filter(i => i.visitId).length &&
       state.invoices.every(i => hasClient(i) && validDate(i.date) && validDate(i.due) && text(i.treatment) && validNumber(i.amount) && validNumber(i.paid) && i.paid <= i.amount && (i.visitId === undefined || (text(i.visitId) && state.visits.some(v => v.id === i.visitId && v.status === 'Completed' && v.clientId === i.clientId) && state.reports.some(r => r.visitId === i.visitId && r.financialsConfirmed && r.actualRevenue === i.amount))) && Array.isArray(i.payments) && i.payments.every(p => validNumber(p.amount, 0.01) && text(p.method) && text(p.reference) && text(p.recordedAt))) &&
-      state.assessments.every(a => (hasClient(a) || (!a.clientId && text(a.accountName) && text(a.branch))) && hasMaterial(a) && validDate(a.date) && validTime(a.time) && STAFF.includes(a.assessor) && PROBLEMS.includes(a.problem) && text(a.solution) && text(a.location) && text(a.notes, false)) &&
+      state.assessments.every(a => (hasClient(a) || (!a.clientId && text(a.accountName) && text(a.branch))) && hasMaterial(a) && validDate(a.date) && validTime(a.time) && STAFF.includes(a.assessor) && PROBLEMS.includes(a.problem) && text(a.solution) && text(a.location) && text(a.notes, false) && (a.serviceId === undefined || a.serviceId === '' || state.services.some(s => s.id === a.serviceId)) && validAssessmentFindings(state, assessmentFindings(a), { legacy: a })) &&
       state.observations.every(o => hasClient(o) && validDate(o.date) && PESTS.includes(o.pest) && Number.isSafeInteger(o.count) && o.count >= 0) &&
       new Set(state.reports.map(r => r.visitId)).size === state.reports.length &&
       state.reports.every(r => hasClient(r) && state.visits.some(v => v.id === r.visitId && v.status === 'Completed' && v.clientId === r.clientId && v.date === r.date) && validDate(r.date) && validTime(r.timeIn) && validTime(r.timeOut) && r.timeOut > r.timeIn && STAFF.includes(r.technician) && text(r.treatment) && PESTS.includes(r.pest) && ['location', 'method', 'findings', 'recommendation'].every(k => text(r[k])) && text(r.remarks, false) && validLines(r.products, true) && validNumber(r.actualRevenue) && typeof r.financialsConfirmed === 'boolean' && validNumber(r.expense) && Number.isSafeInteger(r.pestCount) && r.pestCount >= 0);

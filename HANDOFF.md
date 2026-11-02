@@ -1,5 +1,15 @@
 # Zealpro handoff
 
+## Latest milestone: roles, cumulative PDF and ocular findings
+
+Owner, Supervisor and Technician public demo sign-ins are implemented, with capability/route/action/record guards and protected financial inputs. The SRS hierarchy is mapped provisionally to those three roles; the private SRS has no detailed permission matrix. Technician sees assigned work; Supervisor operates across branches without financial visibility; Owner manages financials, agreements and catalogs. Sample credentials and the exact matrix are in `docs/ROLES_AND_REPORTS.md`.
+
+Service reports now includes cumulative account/branch/date reporting with **Apply filters → Generate PDF report → Print / save PDF**. It uses the existing branded report masthead/account/acknowledgment layout, with operational copies for Supervisor and contribution figures for Owner. CSV was removed at the owner's explicit request. Each inspection supports 1–20 independent findings and multiple products; legacy fields and general notes are preserved. Pest graphs identify their historical sample and saved service-report sources; qualitative inspection findings do not add counts.
+
+`src/access.js` and `src/reporting.js` join the browser allowlist; the static build now contains twelve files. All 63 tests, syntax/build/whitespace checks and dependency audit pass. Connected Brave role, foreign-route, quantity/completion, multi-finding validation, account-filter, source and narrow-preview checks passed on disposable origin 4490. Independent domain/UI re-review found no outstanding Important/Critical issues. Details and screenshots are in `docs/QA_ROLES_REPORTS_OCULAR.md`.
+
+These are browser-local demo role previews, not secure hosted authentication. No password/token is persisted; reload signs out while records remain. The full workspace is retained on scoped saves. The unauthenticated local API remains loopback-only and unchanged in access policy. Native print was invoked, but PDF saving/pagination could not be accepted because its minimized native browser window was inaccessible to supported controls. Owner data, persistent database and source paperwork were not reset. Production authentication/server authorization and a reviewed persistence cutover remain the next security milestone.
+
 ## Current milestones
 
 The UI milestone is committed and pushed as `f9d221b` on `origin/main`. It includes all six owner revisions, the calendar scroll fix, and separate completion/payment standing with 30-day service terms. The backend and client-edit commits through `531488c` were fast-forward merged from `feature/local-database` into `main` at the owner's request. `main` is the current working branch.
@@ -28,7 +38,7 @@ Shared interface improvements include clearer type and table spacing, a containe
 
 ## Vercel static hosting
 
-The repository now has an explicit static hosting build. `npm run build` copies ten browser assets into ignored `dist/`; `vercel.json` selects Other and that output directory. No local server, PGlite instance or API is deployed. The UI remains browser-local. `docs/VERCEL_HOSTING.md` records the existing `zealpro-demo.vercel.app` project, repository-root settings, fragment routing, response headers and troubleshooting.
+The repository now has an explicit static hosting build. `npm run build` copies twelve browser assets into ignored `dist/`; `vercel.json` selects Other and that output directory. No local server, PGlite instance or API is deployed. The UI remains browser-local. `docs/VERCEL_HOSTING.md` records the existing `zealpro-demo.vercel.app` project, repository-root settings, fragment routing, response headers and troubleshooting.
 
 Before this change the production URL returned HTTP 500 `FUNCTION_INVOCATION_FAILED`; the precise exception was not available from public responses. The static deployment removes the local server invocation path. All 41 tests, syntax checks and the static build pass. Two artifact/config regression tests were added, including stale/private canaries and byte-identical browser assets. The built site was verified in Brave: overview, calendar, Year and fragment refresh work with no browser errors; static private/API paths return 404. Independent review found no must-fix code issues; the README and CLI-upload boundary were corrected. Public isolation comes from the output allowlist, not an assumption that Git deployments honour CLI ignore rules. After pushing `0814dd0`, the existing production URL returned 200; all runtime assets matched committed Git blobs, configured security headers were present and API/private paths returned 404. Live Brave navigation and Year refresh passed with no warnings/errors. See the live acceptance section and screenshot in `docs/VERCEL_HOSTING.md`.
 
@@ -50,7 +60,7 @@ Before this change the production URL returned HTTP 500 `FUNCTION_INVOCATION_FAI
 
 ## Verification
 
-- `npm test`: 41 passed, zero failed. `npm run check`: passed. `npm audit --omit=dev`: zero vulnerabilities.
+- Current `npm test`: 63 passed, zero failed. `npm run check`: passed. `npm audit --omit=dev`: zero vulnerabilities. Earlier milestone counts below are historical evidence.
 - Tests cover disk reopen, exclusive ownership, migration drift, relational constraints, atomic completion/payment, exact replay, stale concurrent commands, import preservation, SQL write-failure rollback, and portable SQL restore with receipt replay.
 - HTTP checks cover foreign origins, Host rebinding, body type/size, unsupported commands, private paths and malformed URLs.
 - Independent review found one Important issue: malformed HTTP request targets crashed URL parsing and left a recovery lock. A regression reproduced ECONNRESET; guarded parsing now returns 400 and subsequent health requests succeed. Reviewer confirmed resolution; no outstanding Important/Critical findings.
@@ -77,4 +87,4 @@ The local engine is PostgreSQL 18.6. SQL restore was tested against a fresh loca
 
 Next: connect UI mutations to server commands with durable same-payload retry, revision-conflict handling and explicit import review. Do not substitute full client-written snapshots for server domain commands. Review billing/tax rules, report financial visibility, recurrence, multiple technicians and the SRS Gel bathing terminology before production decisions.
 
-Origin `nifajardo/zealpro` is public. The SRS and three signed reference photographs remain unchanged locally and ignored by Git. The logo and synthetic UI evidence are versioned. No hosted deployment or hosted migration occurred.
+Origin `nifajardo/zealpro` is public. The SRS and three signed reference photographs remain unchanged locally and ignored by Git. The logo and synthetic UI evidence are versioned. The existing Vercel project serves static browser assets; no hosted database migration occurred.

@@ -8,7 +8,7 @@ tags:
 
 # Zealpro architecture
 
-[[Project]] uses three small native modules. `data.js` owns controlled vocabularies and sample fixtures. `model.js` owns state invariants. `app.js` owns view rendering, native dialogs, URL navigation and storage feedback.
+[[Project]] uses five native modules. `data.js` owns controlled vocabularies and sample fixtures. `model.js` owns state invariants. `access.js` owns public demo roles, view scoping and action guards. `reporting.js` owns cumulative report selection and pest-count provenance. `app.js` owns view rendering, native dialogs, URL navigation and storage feedback. Role-scoped `screen` data are read-only view input; mutations and persistence always use the full `state` workspace.
 
 ## Connected workflow
 

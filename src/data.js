@@ -51,8 +51,9 @@ export function createDemo() {
     { clientId: 'c2', date, pest: 'Cockroaches', count: [22, 20, 15, 12, 7][i] },
     { clientId: 'c4', date, pest: 'Rodents', count: [9, 7, 8, 5, 3][i] },
   ]);
+  observations.forEach(o => { o.source = 'Illustrative historical seed'; });
   return { version: 2, services, clients, visits, materials, reports, observations,
-    assessments: [{ id: 'a1', clientId: 'c2', serviceId: 's5', date: '2026-10-29', time: '10:00', assessor: 'Marco Reyes', location: 'Ground floor service area', problem: 'Termite activity', solution: 'Termicide', materialId: 'm4', notes: 'Activity near timber fixtures. Inspect adjacent areas before treatment.' }],
+    assessments: [{ id: 'a1', clientId: 'c2', serviceId: 's5', findings: [{ location: 'Ground floor service area', problem: 'Termite activity', serviceId: 's5', materialIds: ['m4'], notes: '' }], date: '2026-10-29', time: '10:00', assessor: 'Marco Reyes', location: 'Ground floor service area', problem: 'Termite activity', solution: 'Termicide', materialId: 'm4', notes: 'Activity near timber fixtures. Inspect adjacent areas before treatment.' }],
     invoices: [
       ...reports.map((r, index) => ({ id: `INV-SERVICE-${index + 1}`, visitId: r.visitId, clientId: r.clientId, date: r.date, due: '2026-12-02', amount: r.actualRevenue, paid: [0, 1000, r.actualRevenue][index], treatment: r.treatment, payments: [] })),
       { id: 'INV-2026-0108', clientId: 'c1', date: '2026-10-15', due: '2026-10-30', amount: 18000, paid: 4500, treatment: 'General pest control', payments: [] },

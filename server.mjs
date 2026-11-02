@@ -9,7 +9,7 @@ const files = new Map([
   ['/', ['public/index.html', 'text/html; charset=utf-8']],
   ['/index.html', ['public/index.html', 'text/html; charset=utf-8']],
   ...['styles.css', 'tokens.css'].map(name => [`/${name}`, [`public/${name}`, 'text/css; charset=utf-8']]),
-  ...['app.js', 'model.js', 'data.js'].map(name => [`/src/${name}`, [`src/${name}`, 'text/javascript; charset=utf-8']]),
+  ...['app.js', 'model.js', 'data.js', 'access.js', 'reporting.js'].map(name => [`/src/${name}`, [`src/${name}`, 'text/javascript; charset=utf-8']]),
   ['/assets/zealpro-logo.png', ['public/assets/zealpro-logo.png', 'image/png']],
   ['/assets/general-sans.woff2', ['public/assets/general-sans.woff2', 'font/woff2']],
   ['/assets/general-sans-semibold.woff2', ['public/assets/general-sans-semibold.woff2', 'font/woff2']],
