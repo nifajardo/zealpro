@@ -10,6 +10,8 @@ Service reports now includes cumulative account/branch/date reporting with **App
 
 These are browser-local demo role previews, not secure hosted authentication. No password/token is persisted; reload signs out while records remain. The full workspace is retained on scoped saves. The unauthenticated local API remains loopback-only and unchanged in access policy. Native print was invoked, but PDF saving/pagination could not be accepted because its minimized native browser window was inaccessible to supported controls. Owner data, persistent database and source paperwork were not reset. Production authentication/server authorization and a reviewed persistence cutover remain the next security milestone.
 
+Implementation `51f3e76` and correction `1d60430` were pushed directly to main. The existing Vercel domain serves their twelve browser assets byte-identically to Git; private/API paths are 404 and security headers remain present. Live Brave verified all three sign-ins, Owner financial/Supervisor operational PDF copies and Technician restrictions without modifying live records. The final source-navigation graph has no dangling endpoints or generated/private workspace nodes; SQL AST support remains unavailable. Only the disposable QA static server on 4490 was stopped. Latest evidence is `docs/QA_ROLES_REPORTS_OCULAR.md`.
+
 ## Current milestones
 
 The UI milestone is committed and pushed as `f9d221b` on `origin/main`. It includes all six owner revisions, the calendar scroll fix, and separate completion/payment standing with 30-day service terms. The backend and client-edit commits through `531488c` were fast-forward merged from `feature/local-database` into `main` at the owner's request. `main` is the current working branch.

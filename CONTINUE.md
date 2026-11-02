@@ -4,6 +4,8 @@ Read `PROJECT_PREFERENCES.md` and `HANDOFF.md` first. The current branch is `mai
 
 Latest implementation: three public demo roles, cumulative PDF reports matching the existing report layout, source-aware pest charts and multiple ocular findings. Read `docs/ROLES_AND_REPORTS.md` for credentials, the proposed SRS permission matrix and usage; `docs/QA_ROLES_REPORTS_OCULAR.md` has current evidence. All 63 tests pass. Build output is twelve browser files. Role previews are not secure authentication; the local API remains unauthenticated/loopback-only. UI saves must always retain the full workspace, never a scoped view. Saved-PDF pagination remains unverified.
 
+Live acceptance: `51f3e76` and `1d60430` pushed to main; all twelve assets match Git on the existing Vercel domain, private/API paths are 404, and all three role sign-ins plus cumulative PDF copies passed connected-browser checks. No live operational records were changed.
+
 Local database/API foundation is verified with 41 passing tests. The live backend at port 4176 owns ignored `.local/db`. Read `docs/LOCAL_DATABASE.md` before database administration. The presentation UI still saves browser-local records; preserve existing owner data and do not infer that old Node processes have the new API.
 
 Client editing and optional person/role/phone/email fields are implemented on this branch; see `docs/QA_CLIENT_EDIT.md`.

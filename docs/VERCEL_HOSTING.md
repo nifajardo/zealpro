@@ -62,3 +62,7 @@ After pushing `0814dd0` to the existing GitHub-connected main branch, `https://z
 The API, local server/backend, database, environment and source-paperwork paths listed above all returned 404. The configured CSP, nosniff, frame-denial, referrer and cache headers were present. In connected Brave the live overview, logo and General Sans loaded; Schedule and Year navigation worked; Year survived refresh with twelve month cards; browser warning/error logs were empty. [Live screenshot](screenshots/vercel-live-overview.jpg).
 
 This verifies the static client demonstration on the existing domain. No hosted database, function, credentials or production business integration was introduced.
+
+## Live role/report update: 2026-11-03
+
+Implementation `51f3e76` and follow-up `1d60430` add public demo roles and cumulative PDF previews. All twelve public browser files, including `access.js` and `reporting.js`, matched their committed Git blobs. Root/assets returned 200; private/API paths returned 404 and configured security headers remained present. Connected Brave verified all three role sign-ins, Owner/Supervisor PDF-copy visibility and Technician assigned-work restrictions with no console warnings/errors. No operational records were created or reset on the live origin. See [role/report QA](QA_ROLES_REPORTS_OCULAR.md) and [credentials and limitations](ROLES_AND_REPORTS.md).

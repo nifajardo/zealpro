@@ -43,4 +43,8 @@ Public sample logins preview workflows; they do not secure browser data. Server 
 
 ## Hosted acceptance
 
-The existing Git-connected Vercel deployment is verified separately after pushing main. Results are appended here after that deployment is live.
+After pushing implementation `51f3e76` and the Technician overview correction `1d60430`, the existing `https://zealpro-demo.vercel.app/` returned 200. All twelve browser files matched committed Git blobs byte-for-byte, including both new modules, with suitable content types. API, local server, backend, environment, database and SRS paths returned 404. CSP, nosniff, frame-denial and referrer headers were present.
+
+Connected Brave loaded all three public sample logins without changing live operational records. Owner retained all ten visits and three initial reports and generated a financial PDF preview. Supervisor generated an operational copy with no currency/profit figures. Technician showed three assigned visits, no billing/cumulative access and, after the correction, no analytics teaser or link. Browser warning/error logs were empty. The live Supervisor PDF preview was left open for review. [Live Owner preview](screenshots/roles-live-cumulative.jpg).
+
+The final saved-PDF pagination limitation remains unchanged; hosted preview acceptance does not establish exported-page acceptance. No hosted database or authentication provider was provisioned. The disposable local static QA server was stopped after verification.

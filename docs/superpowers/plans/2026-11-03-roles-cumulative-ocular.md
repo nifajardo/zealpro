@@ -35,7 +35,7 @@ Role checks apply to routes, dialog actions and submit handlers, including recor
 - [x] Integrate role-aware views, forms, cumulative PDF preview/printing and multi-finding ocular entry.
 - [x] Update static build/local asset allowlists, tests and public documentation.
 - [x] Run full tests, build, syntax/whitespace checks, independent review and browser role/record/report checks.
-- [ ] Commit/push main; verify the existing Vercel deployment and provide sample credentials.
+- [x] Commit/push main; verify the existing Vercel deployment and provide sample credentials in the report guide and sign-in screen.
 
 ## Task ownership
 
