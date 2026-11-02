@@ -4,12 +4,12 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 445 nodes · 1133 edges · 36 communities (31 shown, 5 thin omitted)
+- 445 nodes · 1134 edges · 36 communities (31 shown, 5 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 39 edges (avg confidence: 0.92)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `43e6d24f`
+- Built from commit: `51f3e768`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -53,8 +53,8 @@
 ## God Nodes (most connected - your core abstractions)
 1. `e()` - 39 edges
 2. `button()` - 27 edges
-3. `schedule()` - 22 edges
-4. `can()` - 21 edges
+3. `can()` - 22 edges
+4. `schedule()` - 22 edges
 5. `icon()` - 21 edges
 6. `need()` - 20 edges
 7. `render()` - 19 edges
@@ -212,7 +212,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `Zealpro architecture` connect `Zealpro architecture` to `model.js`?**
   _High betweenness centrality (0.147) - this node is a cross-community bridge._
 - **Should `app.js` be split into smaller, more focused modules?**
-  _Cohesion score 0.11842491918895093 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11871877754922128 - nodes in this community are weakly interconnected._
 - **Why does `Connected workflow` connect `model.js` to `app.js`, `Zealpro architecture`?**
   _High betweenness centrality (0.120) - this node is a cross-community bridge._
 - **Should `model.js` be split into smaller, more focused modules?**

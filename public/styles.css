@@ -965,6 +965,7 @@ body:not([data-role="owner"]) .operations-band .metrics, body:not([data-role="ow
 body:not([data-role="owner"]) .product-line-fields { grid-template-columns: minmax(0, 1fr) 130px; }
 body:not([data-role="owner"]) .year-month { grid-template-rows: 34px 14px 90px; }
 .field-pair:empty { display: none; }
+body[data-role="technician"] .recent-panel { grid-column: 1 / -1; }
 .cumulative-filters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: end; gap: 16px; padding: 20px; margin-bottom: 24px; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); }
 .cumulative-filters > .button { grid-column: 1 / -1; justify-self: end; }
 .cumulative-summary h2 { font-size: 20px; }

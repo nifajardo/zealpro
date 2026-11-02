@@ -25,6 +25,7 @@ New tests cover fail-closed demo credentials and permissions, foreign record rej
 Testing used connected Brave and a fresh static QA origin, `http://127.0.0.1:4490/`, serving the generated artifact. Only this origin received synthetic QA entries. Owner browser origins and `.local/db` were not reset or imported.
 
 - Technician sign-in displayed only Marco Reyes's three assigned visits. Billing/analytics/scheduling and financial totals were absent. Direct Billing navigation returned to Overview with an access notice.
+- A final hosted check found the Technician Overview still offered its analytics teaser even though the destination was denied. The teaser now uses the same analytics capability check; the remaining recent-reports panel spans that row. This was verified again in the browser after rebuilding.
 - Completing an assigned visit captured quantity, expense and pest counts without charge/unit-cost fields. Re-entering as Owner retained all ten visits and showed four reports, proving the scoped Technician screen did not overwrite other records.
 - A two-finding assessment selected separate areas, services and two products per finding. An incomplete second row rejected the whole save and preserved both rows. After correction, both findings and their products appeared in the detail. General instructions remained independent of the first finding's note.
 - Supervisor scheduling changed the selected service and updated description/products without accessing absent pricing inputs.
