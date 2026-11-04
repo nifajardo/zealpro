@@ -1086,7 +1086,16 @@ body[data-role="technician"] .recent-panel { grid-column: 1 / -1; }
 .workflow-overview h2 { font-size: 21px; margin: 8px 0; }
 .workflow-overview p { font-size: 13px; color: var(--color-muted); }
 .workflow-overview > .button { flex-shrink: 0; }
-.sidebar nav { min-height: 0; overflow-y: auto; }
+.sidebar nav { min-height: 0; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--color-shell-rule) var(--color-clear); scrollbar-gutter: stable; }
+.sidebar nav:hover, .sidebar nav:focus-within { scrollbar-color: var(--color-shell-muted) var(--color-clear); }
+.sidebar nav::-webkit-scrollbar { width: 6px; }
+.sidebar nav::-webkit-scrollbar-track { background: var(--color-clear); }
+.sidebar nav::-webkit-scrollbar-thumb { background: var(--color-shell-rule); border-radius: 6px; }
+.sidebar nav:hover::-webkit-scrollbar-thumb, .sidebar nav:focus-within::-webkit-scrollbar-thumb { background: var(--color-shell-muted); }
+.sidebar nav::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+@media (forced-colors: active) {
+  .sidebar nav, .sidebar nav:hover, .sidebar nav:focus-within { scrollbar-color: auto; }
+}
 .sidebar > .brand, .sidebar > .workspace, .sidebar > .nav-label, .sidebar-foot { flex-shrink: 0; }
 .workflow-steps { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; counter-reset: step; }
 .workflow-steps span { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 2px solid var(--color-rule); color: var(--color-muted); font-size: 12px; }

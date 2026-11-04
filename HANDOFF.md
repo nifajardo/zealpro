@@ -107,6 +107,8 @@ Implementation `74f7dbc` is pushed to main. All fourteen browser assets match Gi
 
 ## Login collage refresh
 
+Sidebar scrollbar follow-up: the navigation now uses a thin transparent-track scrollbar with navy thumb, brighter hover/keyboard-focus state, no legacy arrow buttons and forced-colors fallback. Scrolling and stable gutter remain. Static build, whitespace and Hallmark source scan pass; current browser visual verification remains unavailable as documented above. This is a scoped CSS change only.
+
 The login now pairs a clearer sign-in form and demo-role selector with three photographs extracted unchanged from the owner-supplied company presentation. The collage covers a site visit, hygiene inspection and silo work; the original logo/navy/lime palette remains. A finite entrance animation respects reduced-motion preference. The form comes first on narrow screens, and choosing a sample role fills public credentials without signing in. Manual credentials and activation checks remain intact.
 
 The two reference decks are unchanged and Git-ignored; only three allowlisted JPEGs are public. Static output now contains seventeen files. Source hashes and provenance are in `docs/SOURCE_MANIFEST.json` and `docs/QA_LOGIN_REFRESH.md`. Full regression and focused login/hosting/HTTP checks passed; independent source review resolved an intrinsic portrait-image sizing risk by positioning photos inside layout-owned frames. Current browser visual/crop/mobile/animation acceptance remains unverified because Computer Use stopped on Windows URL safety verification. No backend business logic or owner records changed.
