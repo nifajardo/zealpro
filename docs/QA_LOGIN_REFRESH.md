@@ -30,3 +30,7 @@ All three published JPEGs are unaltered image extractions: the main image is xre
 The in-app browser was unavailable. Brave's extension bridge failed navigation. Native Computer Use was then stopped because it could not identify the Windows browser URL safely enough to enforce policy. No further Computer Use or alternate browser automation was attempted. Consequently this change has no verified current screenshot, measured mobile layout, visual inspection or browser interaction pass. Source/controller/static checks do not replace that acceptance.
 
 The existing demo remains browser-local with public role presets, not production authentication. Owner records, local database and backend business modules were not reset or changed.
+
+## Hosted acceptance
+
+Implementation `3441314` was pushed directly to main. All seventeen browser assets match committed Git blobs on `https://zealpro-demo.vercel.app/`, including the three JPEGs, with HTTP 200 and suitable content types. Private/API paths, both requirements PDFs and both company reference decks return 404; configured security headers remain present. An initial check preceded deployment completion; the later check matched all files. The disposable loopback preview on port 4496 was stopped. This is HTTP/artifact acceptance; the browser visual limitation above remains.
