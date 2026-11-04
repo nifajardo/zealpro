@@ -57,3 +57,7 @@ Year provides twelve equal month cards with monthly contribution and drill-down.
 ## Roles, reporting and inspection findings
 
 Owner, Supervisor and Technician sample logins preview the proposed SRS hierarchy allocation. `access.js` controls screen scope and actions; full workspace persistence remains separate. These public credentials are not secure authentication. Cumulative account/branch/date reports use the existing branded PDF preview and Print / Save as PDF flow, without CSV. Multiple ocular findings preserve individual products/notes and general inspection instructions. Pest graphs combine labeled historical sample observations and saved service-report counts. See [credentials and report guide](../docs/ROLES_AND_REPORTS.md), [QA evidence](../docs/QA_ROLES_REPORTS_OCULAR.md) and [[Architecture]].
+
+## Updated requirements presentation
+
+The 4 November update separates Administrator from Owner and scopes two Supervisor accounts. Approval-led browser workflows, stock/payment/reminder previews and staff/access/activity screens are implemented without backend integration. Read [current role/workflow guide](../docs/ROLES_AND_REPORTS.md), [updated QA](../docs/QA_UPDATED_REQUIREMENTS_UI.md) and [[Architecture]]. Browser visual acceptance is blocked by Computer Use URL verification; source/controller checks are separate evidence.

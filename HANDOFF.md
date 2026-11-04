@@ -1,6 +1,16 @@
 # Zealpro handoff
 
-## Latest milestone: roles, cumulative PDF and ocular findings
+## Updated requirements UI: 2026-11-04
+
+The owner's updated 11-page PDF supersedes the provisional role allocation. Four roles now use five public accounts: Owner, Administrator, Supervisor 1, Supervisor 2 and Technician. Field scope combines team membership, branch mapping and co-assignment. Administrator sees commercial values without margins; Supervisor sees assigned material costs/expenses without commercial figures; Technician sees quantities and personal expense submissions only.
+
+Browser-only `src/presentation.js` adds draft/submission/return/approval/amendment histories, all-personnel scheduling/conflicts, cancellation/reservations, stock movements/requests, pending/proof/verified/reversed payments, simulated reminders, profiles/team/activation/delegation, pricing requests and client lifecycle. `src/workspace-ui.js` integrates new workspace panels; the app now has eleven destinations. Submission posts stock once, approval creates billing, correction applies net usage and staged amended charges wait for approval. Existing core/backend files and SQL migrations remain unchanged; full browser state persists with presentation metadata, never a scoped replacement.
+
+All 90 tests passed, including actual template/controller checks for five profiles and eleven screens, isolated DB regressions and new policy/workflow cases. Independent reviews and scoped re-reviews resolved expense ownership, early billing, cross-team personnel, legacy contribution/linking and staged-charge correction issues. See `docs/QA_UPDATED_REQUIREMENTS_UI.md` and `docs/ROLES_AND_REPORTS.md` for current scope, credentials and acceptance limits.
+
+Computer Use stopped current browser QA because the Windows browser URL could not be identified safely. No substitute browser automation was used. Current visual/mobile acceptance and saved-PDF pagination remain unverified. No real reminders, invitations, credentials, payments, hosted Auth/RLS/storage or migrations were created. The Owner explicitly requested UI-first work; backend integration remains deferred. The updated PDF is private, unchanged and excluded from Git/static output. The static artifact now contains fourteen files.
+
+## Previous milestone: roles, cumulative PDF and ocular findings
 
 Owner, Supervisor and Technician public demo sign-ins are implemented, with capability/route/action/record guards and protected financial inputs. The SRS hierarchy is mapped provisionally to those three roles; the private SRS has no detailed permission matrix. Technician sees assigned work; Supervisor operates across branches without financial visibility; Owner manages financials, agreements and catalogs. Sample credentials and the exact matrix are in `docs/ROLES_AND_REPORTS.md`.
 

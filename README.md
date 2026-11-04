@@ -4,7 +4,7 @@ A local browser demonstration of the Zealpro Web-Based Management System. The su
 
 ## Run
 
-Requires Node.js 22 or newer and npm. Install the two pinned local database packages with `npm ci`. No Docker, hosted account, API key or environment file is required.
+Requires Node.js 22 or newer and npm. Install the two pinned local database packages with `npm ci`. No Docker, hosted account, API key or environment file is required. For a UI-only presentation without starting the existing local API/database, run `npm run build` then `python -m http.server 4494 --bind 127.0.0.1 --directory dist` and open port 4494. Python is only a static preview server; the hosted Vercel version also serves static files.
 
 ```powershell
 cd D:\zealpro
@@ -33,19 +33,23 @@ See [Vercel setup and function-failure recovery](docs/VERCEL_HOSTING.md) for the
 
 ## Presentation walkthrough
 
-Sign in with a public sample account from [roles, credentials and reporting](docs/ROLES_AND_REPORTS.md). Owner has the full walkthrough below; Supervisor has operational access and Technician sees assigned work. These logins preview workflows and are not secure authentication.
+The 4 November updated requirements now define four roles and five public demo accounts. Read [credentials and workflows](docs/ROLES_AND_REPORTS.md). This is a browser-local client presentation; no backend integration or real authentication/delivery is enabled.
 
-1. **Services and products:** open **Products & stock → Define product** to add a name, description, unit, unit cost, opening quantity and reorder level. Open **Services → Define service** to set a description, default charge, planned expenses and multiple estimated product quantities. Definitions can be edited, archived and restored; history is retained.
-2. **Ocular visits:** create an assessment for a new prospect or existing branch. Add up to 20 independent findings, each with an inspected area, problem, recommended service, multiple products and optional notes. General notes remain separate. Select **Enroll client** to carry a prospect's account and branch into the service agreement.
-3. **Clients & branches:** select **Edit details** in a row or client profile to update the account, branch, address, agreement and optional contact person, role, phone and email. Search also matches contact details. Saving keeps the branch ID and existing service/payment records; previously captured charges remain unchanged.
-4. **Schedule:** switch between Year, Month, Week and Day. Year shows twelve equal month cards with month totals; select a card to open that month. Profit totals cover the displayed range; selected-day details sit on the right at desktop widths. Select a service definition to copy its charge, planned expenses and product estimates into a new visit. Adjust those values before saving. Insufficient available stock and technician conflicts are rejected.
-5. **Actual reporting:** open Northpoint Residences’ 11:00 service and select **Record service report**, or start from **Service reports → Record service report**. Enter actual products and quantities, actual unit costs, actual charge, expenses and findings. Add different products or remove unused products. Completion deducts actual usage once.
-6. **Service reports:** compare estimated and actual quantities in the report. **Edit actual usage** corrects the report and adjusts stock by the difference. Charges and product costs are captured, so later catalog edits do not rewrite past profits. Owner and Supervisor can open **Cumulative client / branch report**, choose account/branch/dates, **Apply filters**, then **Generate PDF report → Print / save PDF**. The branded layout matches the existing reports; there is no CSV export. Saved-PDF pagination remains unverified. Signatures are explicitly uncollected.
-7. **Products & stock:** inspect on-hand, allocated and available quantities. Restock the low-stock gel bait. Referenced units cannot be changed; products required by active recipes or open visits cannot be archived.
-8. **Billing & collection:** completing a service creates a linked local payment record due 30 calendar days after its delivery date. Service status remains **Completed** while payment moves through **Unpaid**, **Partially paid**, **Paid** or **Overdue**. Calendar and service views say **Awaiting payment** or **Payment overdue** and show a balance/countdown. Payment status uses the fixed sample date, 2 November 2026. Existing invoice due dates and payments are retained. Older completed services without an invoice link show **Payment not linked**; open the visit and select **Review payment link** after confirming report financials. Link a matching single-service invoice or explicitly confirm a new balance after reviewing existing billing. Consolidated account invoices require separate reconciliation. No money moves and no reminder is sent.
-9. **Pest analytics:** filter by client branch and inspect each graph's source records. Data combine 15 illustrative historical counts and saved service-report pest counts, including three initial sample reports. Missing observations remain gaps; qualitative ocular findings add no counts. There is no external/live feed, and these counts do not prove treatment effectiveness.
+1. **Owner** sees company-wide records and contribution after direct job costs; **Administrator** sees commercial operations without margins; **Supervisor 1/2** see assigned operations/costs; **Technician** sees assigned work and personal claims.
+2. **Services/products:** Owner maintains services/pricing. Administrator manages products/restock and requests service-rate changes for Owner review. Field users get applicable instructions/quantities and permitted scoped costs.
+3. **Ocular visits:** save incomplete drafts, submit independent findings, return with a reason and approve. Only approved recommendations inform enrollment/planning.
+4. **Clients & branches:** office roles manage contacts, approved commercial terms and Draft/Active/Archived lifecycle. Field roles get assigned contacts/location/history without agreement terms.
+5. **Schedule:** Year/Month/Week/Day remain. Assign a lead and additional personnel; everyone participates in conflicts. Reschedule/cancel with preserved identity/history and safe reservations.
+6. **Fieldwork:** Technician saves a draft or submits actual quantities/findings/expense. Submission posts actual use once and releases reservations; billing waits for approval.
+7. **Service reports:** Supervisor returns or **Approves & finalizes**. Approved reports lock; authorized amendments preserve versions and apply net stock corrections. Customer signatures remain uncollected.
+8. **Cumulative PDF:** choose account/branch/dates, **Apply filters → Generate PDF report → Print / save PDF**. Existing branding remains, with approval/personnel/comparison information. No CSV export. Saved-PDF pagination remains unverified.
+9. **Products & stock:** inspect scoped quantities/costs, movement history and stock-adjustment requests. Supervisor requests do not directly change inventory.
+10. **Billing:** office roles record pending evidence, optionally attach a local proof up to 1 MB, verify partial payments and review history. Owner can reverse with a reason. Reminder scheduling and delivery/retry logs are explicit simulations; no messages are sent.
+11. **Staff & access / Activity:** Owner manages roles, activation, teams and collection delegation. Administrator maintains safe profiles/prepares invitations. Field directory and history are scoped. Invitations/reset are previews only.
 
-As Owner, select **Demo guide → Reset sample data → Reset sample records** to restore the starting dataset. This resets only the app’s localStorage key, `zealpro.demo.v1`, on the current origin.
+Pest graphs combine labeled historical samples and approved report counts, with previous/current branch/pest comparisons. Missing observations remain gaps and do not prove effectiveness. Qualitative ocular findings add no counts.
+
+As Owner, **Demo guide → Reset sample records** resets only the current origin's browser workspace. Do not reset an owner's existing records for QA. Current verification and browser limitations are in [updated requirements QA](docs/QA_UPDATED_REQUIREMENTS_UI.md).
 
 ## Checks
 
@@ -73,9 +77,11 @@ src/data.js             Fixed demonstration date, controlled vocabularies and sa
 src/model.js            Catalogs, migration, profit ranges, reporting, stock and payments
 src/access.js           Public demo credentials, role capabilities, scope and action guards
 src/reporting.js        Cumulative report data, account grouping and pest-source provenance
-src/app.js              Nine views, product-line forms, calendar and browser persistence
+src/presentation.js     Browser-only approvals, reservations, ledger and demo account workflows
+src/workspace-ui.js     Staff/settings/activity and billing/stock workflow panels
+src/app.js              Eleven destinations, forms, calendar and browser persistence
 backend/                Local PostgreSQL lifecycle, SQL migrations, transaction repository/API and exports
-scripts/build.mjs       Explicit twelve-file static hosting artifact builder
+scripts/build.mjs       Explicit fourteen-file static hosting artifact builder
 dist/                   Ignored static browser output for Vercel
 vercel.json             Static framework/build/output settings and response headers
 .local/                 Ignored database and private backups

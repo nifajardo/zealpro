@@ -7,7 +7,7 @@ const files = [
   ['public/index.html', 'index.html'],
   ['public/styles.css', 'styles.css'],
   ['public/tokens.css', 'tokens.css'],
-  ...['app.js', 'model.js', 'data.js', 'access.js', 'reporting.js'].map(name => [`src/${name}`, `src/${name}`]),
+  ...['app.js', 'model.js', 'data.js', 'access.js', 'reporting.js', 'presentation.js', 'workspace-ui.js'].map(name => [`src/${name}`, `src/${name}`]),
   ...['zealpro-logo.png', 'general-sans.woff2', 'general-sans-semibold.woff2', 'General-Sans-FFL.txt'].map(name => [`public/assets/${name}`, `assets/${name}`]),
 ];
 

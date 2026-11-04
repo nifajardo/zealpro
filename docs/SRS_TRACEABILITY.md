@@ -43,3 +43,7 @@ The Diversey report supplies a secondary example of inspected premises, sanitati
 ## Assumptions needing client decisions
 
 Confirm the spelling and meaning of “Gel bathing,” whether materials and amounts require independent approvals, invoice/tax rules, account-to-branch structure, role permissions, pest severity/count conventions, multiple technicians per visit, and whether the client-facing report should include financial contribution data. The current report includes a demonstration financial section to make SRS profit-versus-expectation behavior reviewable; it needs approval before real client use.
+
+## Updated requirements: 4 November 2026
+
+The private 11-page update replaces the earlier provisional role allocation with Owner, Administrator, Supervisor and Technician roles and five sample accounts. UI-01 through UI-11 are mapped in [current QA](QA_UPDATED_REQUIREMENTS_UI.md). Approvals, multiple personnel, scoped costs, financial boundaries, stock posting, report versions, payment verification/reversal, reminder simulation and account settings are presented browser-locally. The owner explicitly deferred backend work; the PDF’s Auth/RLS, transaction security, private files, real messages and production acceptance requirements remain pending. Read [the current guide](ROLES_AND_REPORTS.md) for the implemented presentation defaults and unresolved business choices.

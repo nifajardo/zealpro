@@ -24,7 +24,7 @@ test('public assets serve with local-only security headers', async () => {
 });
 
 test('paperwork, secrets, repository files and traversal paths are not served', async () => {
-  for (const path of ['/ZEALPRO%20-%20SRS.pdf', '/a14ba4fb-89db-47c3-aa8a-19723c748653.jfif', '/PROJECT_PREFERENCES.md', '/.env', '/.git/config', '/server.mjs', '/src/../server.mjs', '/%2e%2e/server.mjs', '/assets/%2e%2e/%2e%2e/.env']) {
+  for (const path of ['/ZEALPRO%20-%20SRS.pdf', '/ZEALPRO%20UPDATED%20REQUIREMENTS.pdf', '/a14ba4fb-89db-47c3-aa8a-19723c748653.jfif', '/PROJECT_PREFERENCES.md', '/.env', '/.git/config', '/server.mjs', '/src/../server.mjs', '/%2e%2e/server.mjs', '/assets/%2e%2e/%2e%2e/.env']) {
     assert.equal((await fetch(`${origin}${path}`)).status, 404, path);
   }
   assert.equal((await fetch(origin, { method: 'POST', body: 'test' })).status, 404);

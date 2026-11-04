@@ -1,63 +1,76 @@
-# Demo roles and cumulative reports
+# Demo roles and report workflows
 
-## Role allocation
+## Current requirements
 
-The private SRS page 1 names General Manager, Administrator, Supervisor 1/2 and Technicians. It does not define a detailed permission matrix. This demonstration combines General Manager/Administrator as **Owner**, combines Supervisor 1/2 as **Supervisor**, and applies the following proposed allocation for client review.
-
-| Feature | Technician | Supervisor | Owner |
-| --- | --- | --- | --- |
-| Work and service reports | Own assigned services | All operational services | All services |
-| Complete services, actual quantities and expenses | Own services | All services | All services |
-| Correct existing reports | No | Operational values | Full values |
-| Ocular inspections | Own assessor identity | All inspections | All inspections |
-| Client contacts/history | Assigned branches | Read all | Manage contacts and agreements |
-| Schedule/assign services | No | Yes; default/captured pricing | Yes |
-| Product/service definitions | Read availability | Read availability | Create, edit and archive |
-| Restock | No | Yes | Yes |
-| Financials, prices, costs, billing/payments | No | No | Yes |
-| Pest analytics and cumulative reports | No | Operational copy | Operational and financial copy |
-| Reset sample workspace | No | No | Yes |
-
-Technician visibility also includes branches linked to their own assessments. New inspections can describe an unenrolled prospect. A Technician cannot select another assessor or complete another technician's service. Supervisor forms cannot change service charges or captured unit costs. Reloading signs out; existing workspace records remain. Sign out clears the open dialog as well as the in-memory profile.
+The owner's 4 November 2026 updated requirements replace the earlier provisional three-role allocation. This implementation presents UI-01 through UI-11 in the existing browser-local demonstration. Supabase, authentication, database authorization, private storage and real delivery remain deferred by the owner's explicit UI-first instruction. See [the implementation specification](superpowers/specs/2026-11-04-updated-requirements-ui.md).
 
 ## Public sample credentials
 
-These presets are deliberately public and are also listed on the sign-in screen. They are not real accounts or secrets. Do not reuse these passwords elsewhere.
-
-| Role | Email | Password |
+| Account | Email | Password |
 | --- | --- | --- |
-| Owner | `owner@zealpro.demo` | `OwnerDemo!2026` |
-| Supervisor | `supervisor@zealpro.demo` | `SupervisorDemo!2026` |
-| Technician | `technician@zealpro.demo` | `TechnicianDemo!2026` |
+| Owner / General Manager | `owner@zealpro.demo` | `OwnerDemo!2026` |
+| Administrator | `admin@zealpro.demo` | `AdminDemo!2026` |
+| Supervisor 1 / North team | `supervisor@zealpro.demo` | `SupervisorDemo!2026` |
+| Supervisor 2 / South team | `supervisor2@zealpro.demo` | `SupervisorDemo!2026` |
+| Technician / Marco Reyes | `technician@zealpro.demo` | `TechnicianDemo!2026` |
 
-The Technician represents the illustrative Marco Reyes. No authentication token or password is saved in browser storage. Role checks cover navigation, actions, record IDs and form submissions, but all demo data and code remain accessible to the browser. This is not a confidentiality boundary or secure hosted authentication. The local API has no authenticated role policy and must remain loopback-only. A production cutover requires authenticated server authorization on every command and query, consistent with [OWASP authorization guidance](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html).
+These presets are deliberately public and listed on the sign-in screen. They are not real accounts or secrets. No password/token is saved in browser storage. Reload ends the role session while preserving the workspace. Owner-disabled presets cannot sign in. Prepared invitations and password-reset previews send nothing and create no real credentials.
 
-## Cumulative PDF workflow
+## Permissions and scope
 
-1. Sign in as Owner or Supervisor.
-2. Open **Service reports → Cumulative client / branch report**.
-3. Choose an account, all its branches or one branch, and an inclusive date range. Select **Apply filters**.
-4. Select **Generate PDF report** to review the branded document.
-5. Select **Print / save PDF**, choose **Save as PDF** in the browser print destination, and save.
+| Feature | Owner | Administrator | Supervisor | Technician |
+| --- | --- | --- | --- | --- |
+| Operational records | All | All office records | Assigned team and branches | Co-assigned jobs and own inspections |
+| Charges, revenue, receivables and payments | Yes | Yes | No | No |
+| Contribution / margin | Yes | No | No | No |
+| Material costs and field expenses | Yes | Yes | Assigned operations | No costs; own expense submissions only |
+| Service definitions / pricing | Manage | View; request rate change | Operational view | Method/instructions |
+| Client contacts and agreements | Manage | Manage approved terms | Assigned contacts/history, no terms | Assigned contacts/history, no terms |
+| Schedule and multiple personnel | Yes | Yes | Own team and branches | View assigned |
+| Report draft / submit | Yes | No | Review only | Assigned jobs |
+| Approve / return fieldwork | Yes | No | Assigned operations, no self-review | No |
+| Product catalog / restock | Manage | Manage | View costs; request adjustment | Job-relevant quantities |
+| Analytics / cumulative PDFs | Company-wide management copy | Company-wide operational copy | Assigned operational copy | No analytics/cumulative |
+| Staff / invitations | Manage access and profiles | Safe profiles; prepare Technician invite | Read own team | Read self |
+| Roles, activation, team mapping, collection delegation | Yes | No | No | No |
+| Activity | All | Office actions | Team operations | Own/assigned operations |
 
-This reuses the existing service-report masthead, original logo, account/period blocks and acknowledgment area. It includes branch summaries, services, actual product quantities, service findings/recommendations and all linked ocular findings. General assessment notes remain separate from each finding's notes. Owner copies include contribution figures; Supervisor copies omit pricing, costs, billing and profit. Signatures remain explicitly uncollected. There is no CSV export.
+North team includes Marco Reyes and Paolo Santos, with Abenson, Northpoint and The Green Table. South team includes Luis Mendoza and Carlo Garcia, with Northpoint, Eastbridge and Willow. Northpoint is deliberately shared: branch association alone does not reveal the other team's appointments/report-derived observations. Owner edits these demo mappings in **Staff & access**. Immutable assignment names preserve work when display names change.
 
-Dates filter each record's service/inspection date, not payment dates. Account grouping normalizes case and whitespace in existing client names; it does not create a new parent-account database entity. Product totals retain their captured units. Unconfirmed legacy financial records do not become confirmed merely by generating a report. Unenrolled prospect inspections are excluded until linked to a branch.
+Administrator collection verification is delegated by default, following the proposal's presentation default; Owner can withdraw it. Administrator scheduling uses the branch's agreed rate. Agreement choices use existing or Owner-approved catalog rates. Other pricing changes use **Services → Suggest rate change**, then Owner **Staff & access → Pricing requests** review. A master rate change does not rewrite captured charges.
 
-## Multiple ocular findings
+## Fieldwork and stock
 
-An inspection supports 1–20 findings. Each finding records its inspected area, problem, recommended service, 1–20 selected products and optional notes. General inspection notes remain available separately. **Add finding** and **Remove finding** manage rows. Invalid rows reject the whole assessment before any write, retaining the entered form for correction. Selecting **Plan this treatment** on a finding uses that finding's recommended service.
+1. Technician opens **Schedule → assigned visit → Record fieldwork** and enters time, area, activities, quantities, findings, pest count, recommendation and a personal expense claim. Charges and material unit costs are absent.
+2. **Save draft** retains incomplete work without stock/billing effects. Draft authorship remains stable; other Technicians cannot take it over.
+3. **Submit for review** posts actual stock once and releases planned reservations. Status becomes Submitted; no new receivable is created.
+4. Assigned Supervisor opens **Service reports → Submitted → Review submission**. **Return for correction** requires a reason and retains posted consumption.
+5. Technician correction/resubmission changes only the net usage. Another worker's expense stays preserved and hidden.
+6. **Approve & finalize** locks the report, records a reference and creates billing once. Approval does not mark an invoice paid.
+7. Authorized **Request amendment** preserves versions/approvals and requires resubmission. A staged charge change does not alter the approved invoice until approval.
 
-Existing single-finding assessments migrate in memory without discarding their original fields or general notes. Stable service/product IDs preserve archived references. The local backend stores findings in its existing JSONB assessment record; no applied SQL migration was changed.
+Legacy records are labeled demonstrations without invented historical reviewers/signatures. Unconfirmed legacy amounts remain excluded from contribution. Owner can **Review historical financials** with explicit charge/unit costs, then separately **Review payment link** against existing billing.
 
-## Pest graph data
+Scheduling supports a lead and additional personnel. Everyone participates in the one-hour conflict check; Supervisor selection stays within the team. Rescheduling retains identity/captured estimates. Cancellation requires a reason, releases unconsumed reservations and preserves the old plan; it cannot erase posted consumption. **Products & stock** includes quantities, permitted costs, movements and adjustment requests. Supervisor requests do not change stock; Owner/Administrator restocks post a ledger entry.
 
-The original dataset contains **15 illustrative historical observations** for June–October 2026 and **3 illustrative completed service reports** for November 2, 2026. The graphs now combine those historical observations with the pest counts from saved service reports. New reports contribute their recorded counts; correcting a report changes its contribution. The source table identifies each source and links contributing service reports.
+## Inspections and client lifecycle
 
-Monthly graphs show up to 12 calendar months ending at the latest observation. Missing records remain gaps rather than zero. Counts are sightings, not unique pests, and incomplete periods or synthetic starting data do not prove treatment effectiveness. Qualitative ocular findings do not add numeric pest counts. No external or live pest feed is connected.
+Inspections retain independent areas/problems/recommendations/products and general/per-finding notes. Draft, Submitted, Returned and Approved states and review history are available. Only approved findings inform enrollment/planning; a performing Supervisor cannot approve their own inspection. Client profiles support Draft, Active and Archived status without deleting history. Field roles see contacts/location/job history rather than commercial terms.
 
-## Persistence and verification limits
+## Payments and reminder previews
 
-The UI remains browser-local on each origin. Demo role scoping never replaces the full workspace during saves. The separate local PostgreSQL/API workspace is not uploaded or implicitly merged. Existing owner data and private paperwork were not reset.
+Owner/delegated Administrator records a pending payment with optional local image/PDF proof up to 1 MB. Pending evidence does not reduce the balance. Verification credits once; partial history reconciles. Owner reversal requires a reason and retains the original entry. Payments awaiting amendment approval cannot be verified.
 
-Desktop and narrow browser previews were checked. The print button invoked the browser print flow, but a PDF was not saved and its pagination was not visually accepted: the native browser window was minimized and inaccessible to the available native controls. The document preview is verified; exported pages, physical printing, physical phones and screen readers remain unverified. See [QA evidence](QA_ROLES_REPORTS_OCULAR.md).
+Outstanding invoices offer reminder scheduling, paused/enabled simulation, success/failure simulation and retry logs. No email/SMS is sent. Actual channels, consent, timing and costs remain business/backend decisions. Customer signatures remain uncollected.
+
+## Reports and pest sources
+
+Owner, Administrator and Supervisor open **Service reports → Cumulative client / branch report**, select an inclusive account/branch/date range, **Apply filters**, then **Generate PDF report → Print / save PDF**. The logo, account/period blocks and acknowledgment layout remain. Only approved reports/inspections feed finalized findings and actual product totals. Narratives include personnel, approval references and prior/current observations. Only Owner management copies include contribution. No CSV export exists.
+
+Graphs combine 15 illustrative historical observations with approved service-report counts, including three initial samples. Sources and previous/current branch/pest comparisons are explicit. Missing records are not zero and sightings do not prove effectiveness. Qualitative ocular findings add no numerical counts; no external feed is connected.
+
+## Persistence and acceptance limits
+
+The UI saves the full origin-local workspace, with metadata under `presentation`; scoped screens never replace full state. Existing local database/API records are not merged or migrated. No backend business module or SQL migration changed. Browser role checks are not secure authentication or confidentiality against developer tools; do not enter real confidential data. The separate unauthenticated local API remains loopback-only.
+
+Source-level templates/controllers and domain checks pass. Computer Use stopped browser QA because it could not safely identify the Windows browser URL. Current visual/mobile acceptance, saved-PDF pagination and physical printing remain unverified. See [current QA](QA_UPDATED_REQUIREMENTS_UI.md).

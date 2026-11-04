@@ -1026,3 +1026,42 @@ body[data-role="technician"] .recent-panel { grid-column: 1 / -1; }
   .cumulative-pdf .report-sections > section { padding: 12px 0; }
 }
 @page { size: A4; margin: 16mm; }
+
+/* Updated requirements keep the existing working surfaces and explicit workflow actions. */
+.workflow-overview { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 24px 0; padding: 24px; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); }
+.workflow-overview h2 { font-size: 21px; margin: 8px 0; }
+.workflow-overview p { font-size: 13px; color: var(--color-muted); }
+.workflow-overview > .button { flex-shrink: 0; }
+.sidebar nav { min-height: 0; overflow-y: auto; }
+.sidebar > .brand, .sidebar > .workspace, .sidebar > .nav-label, .sidebar-foot { flex-shrink: 0; }
+.workflow-steps { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; counter-reset: step; }
+.workflow-steps span { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 2px solid var(--color-rule); color: var(--color-muted); font-size: 12px; }
+.workflow-steps span::before { counter-increment: step; content: counter(step); color: var(--color-navy); font-weight: 700; }
+.personnel-picker { margin: 20px 0; padding: 16px; border: 1px solid var(--color-rule); border-radius: 8px; }
+.personnel-picker legend { padding: 0 8px; font-size: 13px; font-weight: 600; }
+.personnel-picker > label { display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 14px; }
+.personnel-picker input { width: 18px; height: 18px; accent-color: var(--color-navy); }
+.review-banner { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px; margin: 20px 0; background: var(--color-cyan-tint); font-size: 13px; }
+.review-history, .version-history, .restricted-agreement { margin: 24px 0; padding-top: 20px; border-top: 1px solid var(--color-rule); }
+.review-history h3, .draft-strip h2 { font-size: 17px; margin-bottom: 12px; }
+.activity-timeline { margin: 20px 0 0 20px; padding: 0; }
+.activity-timeline li { padding: 0 0 20px 12px; border-left: 1px solid var(--color-rule); }
+.activity-timeline li > span { display: block; font-size: 12px; color: var(--color-muted); margin-top: 8px; overflow-wrap: anywhere; }
+.activity-timeline p { margin-top: 8px; }
+.version-history summary { cursor: pointer; padding: 12px 0; font-weight: 600; }
+.version-history > section { padding: 16px 0; border-bottom: 1px solid var(--color-rule); }
+.draft-strip { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; padding: 20px; margin: 20px 0; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius); }
+.draft-strip h2 { margin: 0 12px 0 0; }
+.canvas > .panel + .panel { margin-top: 24px; }
+.canvas .inline-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+@media (max-width: 600px) {
+  .workflow-overview { flex-direction: column; align-items: stretch; padding: 20px; gap: 16px; }
+  .workflow-overview > .button { width: 100%; }
+  .workflow-steps span { flex: 1 1 40%; }
+  .review-banner { align-items: flex-start; flex-direction: column; }
+  .form-footer { flex-wrap: wrap; }
+}
+@media print {
+  .review-history h3 { break-after: avoid; }
+  .activity-timeline li { break-inside: avoid; }
+}

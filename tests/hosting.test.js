@@ -15,13 +15,14 @@ test('hosting build includes browser dependencies, removes stale output and excl
     await mkdir(join(fixture, 'dist'), { recursive: true });
     await writeFile(join(fixture, 'dist', 'stale-secret.txt'), 'Must not survive a rebuild.');
     await writeFile(join(fixture, 'public', 'private-paperwork.pdf'), 'Must not be published.');
+    await writeFile(join(fixture, 'ZEALPRO UPDATED REQUIREMENTS.pdf'), 'Must stay private.');
     await writeFile(join(fixture, 'src', 'server-secret.js'), 'Must not be published.');
     await writeFile(join(fixture, '.env'), 'SECRET=private');
     execFileSync(process.execPath, [join(fixture, 'scripts/build.mjs')], { cwd: fixture });
 
     const files = (await readdir(join(fixture, 'dist'), { recursive: true, withFileTypes: true })).filter(entry => entry.isFile());
-    assert.equal(files.length, 12);
-    for (const file of ['index.html', 'styles.css', 'tokens.css', 'src/app.js', 'src/model.js', 'src/data.js', 'src/access.js', 'src/reporting.js', 'assets/zealpro-logo.png', 'assets/general-sans.woff2', 'assets/general-sans-semibold.woff2', 'assets/General-Sans-FFL.txt']) {
+    assert.equal(files.length, 14);
+    for (const file of ['index.html', 'styles.css', 'tokens.css', 'src/app.js', 'src/model.js', 'src/data.js', 'src/access.js', 'src/reporting.js', 'src/presentation.js', 'src/workspace-ui.js', 'assets/zealpro-logo.png', 'assets/general-sans.woff2', 'assets/general-sans-semibold.woff2', 'assets/General-Sans-FFL.txt']) {
       const source = file.startsWith('src/') ? file : `public/${file}`;
       assert.deepEqual(await readFile(join(fixture, 'dist', file)), await readFile(join(root, source)), file);
     }
