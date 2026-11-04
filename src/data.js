@@ -1,7 +1,7 @@
 export const DEMO_DATE = '2026-11-02';
 export const CALENDAR_VIEWS = ['year', 'month', 'week', 'day'];
 export const TREATMENTS = ['Surface spraying', 'Misting', 'Gel bathing', 'Rodenticide', 'Termicide', 'Rodent traps'];
-export const STAFF = ['Marco Reyes', 'Paolo Santos', 'Luis Mendoza', 'Carlo Garcia'];
+export const STAFF = ['Marco Reyes', 'Paolo Santos', 'Luis Mendoza', 'Carlo Garcia', 'Nina Cruz', 'Adrian Ramos', 'Bea Torres', 'Diego Santos'];
 export const PROBLEMS = ['Cockroach activity', 'Rodent activity', 'Termite activity', 'Flying insects', 'No activity observed'];
 export const PESTS = ['Cockroaches', 'Rodents', 'Termites', 'Flying insects'];
 

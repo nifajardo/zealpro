@@ -58,6 +58,9 @@ const ui = app.namespace.templateTest;
 assert(mount.innerHTML.includes('/assets/zealpro-field-visit.jpg'));
 assert(mount.innerHTML.includes('/assets/zealpro-hygiene-inspection.jpg') && mount.innerHTML.includes('/assets/zealpro-site-work.jpg'));
 assert(mount.innerHTML.includes('data-demo-account') && mount.innerHTML.includes('data-form="demo-login"'));
+for (const user of modules.get(resolve('src/access.js')).namespace.DEMO_USERS.filter(user => user.role === 'technician')) {
+  assert(mount.innerHTML.includes(`Technician / ${user.name}`), `${user.name}: missing login label`);
+}
 const demoFields = { email: { value: '' }, password: { value: '' } }, loginError = { hidden: false };
 handlers.change({ target: { value: 'admin', matches: selector => selector === '[data-demo-account]', form: { elements: demoFields, querySelector: () => loginError } } });
 assert.equal(demoFields.email.value, 'admin@zealpro.demo');
@@ -89,6 +92,14 @@ for (const [id, email, password] of logins) {
   if (id === 'technician') assert(!report.includes('Captured unit cost') && !report.includes('Commercial record'), 'Technician report contains financial fields');
   if (id.startsWith('supervisor')) assert(report.includes('Captured unit cost') && !report.includes('Commercial record') && !report.includes('Contribution after direct job costs'), 'Supervisor report boundaries');
   if (id === 'admin') assert(report.includes('Commercial record') && !report.includes('Contribution after direct job costs'), 'Admin report boundaries');
+}
+for (const user of modules.get(resolve('src/access.js')).namespace.DEMO_USERS.filter(user => user.role === 'technician')) {
+  ui.signIn(user.email, user.password);
+  for (const view of ['overview', 'schedule', 'services', 'clients', 'ocular', 'reports', 'inventory', 'billing', 'analytics', 'settings', 'activity']) {
+    const html = ui.screen(view);
+    assert(!html.includes('undefined'), `${user.name}/${view}: undefined field`);
+    assert(!html.includes('href="#billing"'), `${user.name}/${view}: billing link`);
+  }
 }
 ui.signIn('technician@zealpro.demo', 'TechnicianDemo!2026');
 ui.screen('overview');
@@ -137,4 +148,4 @@ const form = {
 await handlers.submit({ target: form, preventDefault() {}, submitter: {} });
 assert(error.hidden, error.textContent);
 assert.equal(state.presentation.reports[current.id].pendingRevenue, staged, 'UI correction overwrote staged amendment revenue');
-console.log('Five profiles, eleven route templates, report dialogs and submission projection passed.');
+console.log('Twelve profiles, eleven route templates, report dialogs and submission projection passed.');

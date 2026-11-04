@@ -13,6 +13,13 @@ The owner's 4 November 2026 updated requirements replace the earlier provisional
 | Supervisor 1 / North team | `supervisor@zealpro.demo` | `SupervisorDemo!2026` |
 | Supervisor 2 / South team | `supervisor2@zealpro.demo` | `SupervisorDemo!2026` |
 | Technician / Marco Reyes | `technician@zealpro.demo` | `TechnicianDemo!2026` |
+| Technician / Paolo Santos | `paolo@zealpro.demo` | `TechnicianDemo!2026` |
+| Technician / Luis Mendoza | `luis@zealpro.demo` | `TechnicianDemo!2026` |
+| Technician / Carlo Garcia | `carlo@zealpro.demo` | `TechnicianDemo!2026` |
+| Technician / Nina Cruz | `nina@zealpro.demo` | `TechnicianDemo!2026` |
+| Technician / Adrian Ramos | `adrian@zealpro.demo` | `TechnicianDemo!2026` |
+| Technician / Bea Torres | `bea@zealpro.demo` | `TechnicianDemo!2026` |
+| Technician / Diego Santos | `diego@zealpro.demo` | `TechnicianDemo!2026` |
 
 These presets are deliberately public and listed on the sign-in screen. They are not real accounts or secrets. No password/token is saved in browser storage. Reload ends the role session while preserving the workspace. Owner-disabled presets cannot sign in. Prepared invitations and password-reset previews send nothing and create no real credentials.
 
@@ -35,7 +42,9 @@ These presets are deliberately public and listed on the sign-in screen. They are
 | Roles, activation, team mapping, collection delegation | Yes | No | No | No |
 | Activity | All | Office actions | Team operations | Own/assigned operations |
 
-North team includes Marco Reyes and Paolo Santos, with Abenson, Northpoint and The Green Table. South team includes Luis Mendoza and Carlo Garcia, with Northpoint, Eastbridge and Willow. Northpoint is deliberately shared: branch association alone does not reveal the other team's appointments/report-derived observations. Owner edits these demo mappings in **Staff & access**. Immutable assignment names preserve work when display names change.
+North team includes Marco Reyes, Paolo Santos, Nina Cruz and Adrian Ramos, with Abenson, Northpoint and The Green Table. South team includes Luis Mendoza, Carlo Garcia, Bea Torres and Diego Santos, with Northpoint, Eastbridge and Willow. Northpoint is deliberately shared: branch association alone does not reveal the other team's appointments/report-derived observations. Owner edits these demo mappings in **Staff & access**. Immutable assignment names preserve work when display names change.
+
+Existing browser workspaces receive the additional sample profiles and new team members once, without resetting jobs, stock, custom branch mappings or existing profile overrides. Later Owner edits remain intact. The four new names have no fabricated job history; schedule work for them to populate their assigned views.
 
 Administrator collection verification is delegated by default, following the proposal's presentation default; Owner can withdraw it. Administrator scheduling uses the branch's agreed rate. Agreement choices use existing or Owner-approved catalog rates. Other pricing changes use **Services → Suggest rate change**, then Owner **Staff & access → Pricing requests** review. A master rate change does not rewrite captured charges.
 

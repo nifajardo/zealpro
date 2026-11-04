@@ -65,3 +65,9 @@ The 4 November update separates Administrator from Owner and scopes two Supervis
 ## Login presentation
 
 Three unaltered company-reference photos now form the login collage. Taste's editorial-greeting direction keeps the form clear, with public demo-role selection and a finite reduced-motion-aware entrance. Navy/lime branding and all role behavior remain. [Login source/QA](../docs/QA_LOGIN_REFRESH.md) records asset provenance and the unresolved browser visual acceptance limitation.
+
+## Additional sample technicians — 5 November 2026
+
+Eight technicians now have distinct public demo logins: Marco Reyes, Paolo Santos, Luis Mendoza, Carlo Garcia, Nina Cruz, Adrian Ramos, Bea Torres and Diego Santos. North and South each contain four members. Scheduling, co-personnel, inspection assessor and team controls use the expanded staff list. Login choices and credential rows identify the actual technician; credentials are in docs/ROLES_AND_REPORTS.md.
+
+Existing browser workspaces receive missing profiles and the four new team members once. Existing records, activation/profile overrides and branch mappings remain intact; later Owner team changes are not reseeded. New names have no fabricated jobs. No backend integration occurred. All 93 tests, syntax checks, static build and whitespace checks passed; the template harness exercises all twelve profiles. Browser visual acceptance remains unverified.

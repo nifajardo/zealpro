@@ -9,9 +9,9 @@ const technician = () => authenticateDemo('technician@zealpro.demo', 'Technician
 const administrator = () => authenticateDemo('admin@zealpro.demo', 'AdminDemo!2026');
 const supervisor2 = () => authenticateDemo('supervisor2@zealpro.demo', 'SupervisorDemo!2026');
 
-test('four roles have five public profiles, current activation and immutable assignment identities', () => {
+test('four roles retain current activation and immutable assignment identities', () => {
   const state = createDemo();
-  assert.equal(DEMO_USERS.length, 5);
+  assert.equal(DEMO_USERS.length, 12);
   assert.equal(new Set(DEMO_USERS.map(user => user.role)).size, 4);
   assert.equal(administrator().role, 'admin');
   assert.equal(supervisor2().teamId, 't2');
@@ -63,7 +63,7 @@ test('administrator sees commercial operations but owner alone sees margins and 
 
 test('supervisor scope needs team personnel and branch mapping even at an overlapping branch', () => {
   const state = createDemo(), before = structuredClone(state);
-  assert.deepEqual(DEFAULT_TEAMS[0].memberNames, ['Marco Reyes', 'Paolo Santos']);
+  assert.deepEqual(DEFAULT_TEAMS[0].memberNames, ['Marco Reyes', 'Paolo Santos', 'Nina Cruz', 'Adrian Ramos']);
   assert.deepEqual(scopeWorkspace(state, supervisor()).visits.map(visit => visit.id), ['v1', 'v2', 'v4', 'v6', 'v8']);
   assert.deepEqual(scopeWorkspace(state, supervisor2()).visits.map(visit => visit.id), ['v3', 'v5', 'v7', 'v9', 'v10']);
   assert.throws(() => assertDemoAction(supervisor(), 'visit', state, 'v7'), /assigned/);

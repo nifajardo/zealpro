@@ -14,6 +14,21 @@ export function ensurePresentation(state) {
   const p = state.presentation ??= {};
   p.users ??= DEMO_USERS.map(({ password, ...profile }) => ({ ...profile, active: true, displayName: profile.name }));
   p.teams ??= structuredClone(DEFAULT_TEAMS);
+  if (!p.technicianSamplesAdded) {
+    for (const { password, ...sample } of DEMO_USERS) {
+      if (!p.users.some(user => user.id === sample.id || user.email === sample.email)) p.users.push({ ...sample, displayName: sample.name });
+    }
+    for (const name of STAFF.slice(4)) {
+      if (p.teams.some(team => team.memberNames.includes(name))) continue;
+      const sample = DEMO_USERS.find(user => user.name === name), team = p.teams.find(team => team.id === sample.teamId);
+      if (team) team.memberNames.push(name);
+    }
+    for (const meta of Object.values(p.reports || {})) {
+      const author = DEMO_USERS.find(user => user.role === 'technician' && user.name === meta.expenseOwnerId);
+      if (author) meta.expenseOwnerId = author.id;
+    }
+    p.technicianSamplesAdded = true;
+  }
   for (const key of ['jobs', 'reports', 'assessments', 'drafts', 'assessmentDrafts', 'clients']) p[key] ??= {};
   for (const key of ['movements', 'stockRequests', 'payments', 'reminders', 'rateRequests', 'audit']) p[key] ??= [];
   for (const visit of state.visits) p.jobs[visit.id] ??= { personnel: [visit.technician], history: [] };

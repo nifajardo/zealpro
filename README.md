@@ -33,7 +33,7 @@ See [Vercel setup and function-failure recovery](docs/VERCEL_HOSTING.md) for the
 
 ## Presentation walkthrough
 
-The 4 November updated requirements now define four roles and five public demo accounts. Read [credentials and workflows](docs/ROLES_AND_REPORTS.md). This is a browser-local client presentation; no backend integration or real authentication/delivery is enabled.
+The 4 November updated requirements define four roles. Twelve public demo accounts now include eight technicians across two teams. Read [credentials and workflows](docs/ROLES_AND_REPORTS.md). This is a browser-local client presentation; no backend integration or real authentication/delivery is enabled.
 
 1. **Owner** sees company-wide records and contribution after direct job costs; **Administrator** sees commercial operations without margins; **Supervisor 1/2** see assigned operations/costs; **Technician** sees assigned work and personal claims.
 2. **Services/products:** Owner maintains services/pricing. Administrator manages products/restock and requests service-rate changes for Owner review. Field users get applicable instructions/quantities and permitted scoped costs.

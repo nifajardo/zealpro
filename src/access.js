@@ -5,10 +5,14 @@ export const DEMO_USERS = [
   { id: 'supervisor1', email: 'supervisor@zealpro.demo', password: 'SupervisorDemo!2026', name: 'Operations supervisor', role: 'supervisor', label: 'Supervisor 1', teamId: 't1', active: true, canCollect: false },
   { id: 'supervisor2', email: 'supervisor2@zealpro.demo', password: 'SupervisorDemo!2026', name: 'Regional supervisor', role: 'supervisor', label: 'Supervisor 2', teamId: 't2', active: true, canCollect: false },
   { id: 'technician', email: 'technician@zealpro.demo', password: 'TechnicianDemo!2026', name: 'Marco Reyes', role: 'technician', label: 'Technician', teamId: 't1', active: true, canCollect: false },
+  ...[
+    ['paolo', 'Paolo Santos', 't1'], ['luis', 'Luis Mendoza', 't2'], ['carlo', 'Carlo Garcia', 't2'],
+    ['nina', 'Nina Cruz', 't1'], ['adrian', 'Adrian Ramos', 't1'], ['bea', 'Bea Torres', 't2'], ['diego', 'Diego Santos', 't2'],
+  ].map(([id, name, teamId]) => ({ id, email: `${id}@zealpro.demo`, password: 'TechnicianDemo!2026', name, role: 'technician', label: 'Technician', teamId, active: true, canCollect: false })),
 ];
 export const DEFAULT_TEAMS = [
-  { id: 't1', name: 'North team', memberNames: ['Marco Reyes', 'Paolo Santos'], branchIds: ['c1', 'c2', 'c3'] },
-  { id: 't2', name: 'South team', memberNames: ['Luis Mendoza', 'Carlo Garcia'], branchIds: ['c2', 'c4', 'c5'] },
+  { id: 't1', name: 'North team', memberNames: ['Marco Reyes', 'Paolo Santos', 'Nina Cruz', 'Adrian Ramos'], branchIds: ['c1', 'c2', 'c3'] },
+  { id: 't2', name: 'South team', memberNames: ['Luis Mendoza', 'Carlo Garcia', 'Bea Torres', 'Diego Santos'], branchIds: ['c2', 'c4', 'c5'] },
 ];
 const permissions = {
   owner: ['finance', 'commercial', 'costs', 'manageClients', 'manageCatalog', 'manageServices', 'manageProducts', 'schedule', 'submitReports', 'approveReports', 'reviseReports', 'restock', 'requestStock', 'cumulative', 'analytics', 'staff', 'invite', 'manageUsers', 'audit', 'reset', 'collect'],
