@@ -8,7 +8,7 @@ const files = [
   ['public/styles.css', 'styles.css'],
   ['public/tokens.css', 'tokens.css'],
   ...['app.js', 'model.js', 'data.js', 'access.js', 'reporting.js', 'presentation.js', 'workspace-ui.js'].map(name => [`src/${name}`, `src/${name}`]),
-  ...['zealpro-logo.png', 'zealpro-field-visit.jpg', 'zealpro-hygiene-inspection.jpg', 'zealpro-site-work.jpg', 'general-sans.woff2', 'general-sans-semibold.woff2', 'General-Sans-FFL.txt'].map(name => [`public/assets/${name}`, `assets/${name}`]),
+  ...['zealpro-logo.png', 'zealpro-hygiene-inspection.jpg', 'zealpro-facility-equipment.jpg', 'general-sans.woff2', 'general-sans-semibold.woff2', 'General-Sans-FFL.txt'].map(name => [`public/assets/${name}`, `assets/${name}`]),
 ];
 
 await rm(output, { recursive: true, force: true });

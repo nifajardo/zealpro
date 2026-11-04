@@ -40,7 +40,7 @@ Keep General Sans for headings, data and controls. Headings use a fixed scale, n
 
 ## Login composition
 
-The entry screen uses a white form and company-supplied three-photo fieldwork collage in a centered split layout, with navy copy below the photograph and a restrained lime mark. On narrow screens the sign-in form precedes the collage. A one-time fade/8-pixel entrance uses a restrained stagger; reduced-motion disables it. No continuous animation. Keep the original logo, plain labels and one primary sign-in action. A public demo-role selector fills existing credentials without automatically signing in. Source provenance and verification limits are in `docs/QA_LOGIN_REFRESH.md`. This login-specific composition does not change the working-screen navigation or financial palette.
+The entry screen pairs a white form with a dominant portrait of a hygiene swab inspection, a smaller facility/equipment photograph and a navy copy panel. Both pictures come unchanged from the supplied company presentation; rear-facing group and silo-work pictures are retired. The portrait spans both rows on desktop; on narrow screens it sits above the smaller photograph and copy, after the sign-in form. A one-time fade/8-pixel entrance uses a restrained stagger; reduced-motion disables it. No continuous animation. Keep the original logo, plain labels and one primary sign-in action. A public demo-role selector fills existing credentials without automatically signing in. Source provenance and verification limits are in `docs/QA_LOGIN_REFRESH.md`. This login-specific composition does not change the working-screen navigation or financial palette.
 
 ## Motion and exports
 

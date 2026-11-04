@@ -46,3 +46,9 @@ The two reference decks are unchanged and Git-ignored; only three allowlisted JP
 Eight technicians now have distinct public demo logins: Marco Reyes, Paolo Santos, Luis Mendoza, Carlo Garcia, Nina Cruz, Adrian Ramos, Bea Torres and Diego Santos. North and South each contain four members. Scheduling, co-personnel, inspection assessor and team controls use the expanded staff list. Login choices and credential rows identify the actual technician; credentials are in docs/ROLES_AND_REPORTS.md.
 
 Existing browser workspaces receive missing profiles and the four new team members once. Existing records, activation/profile overrides and branch mappings remain intact; later Owner team changes are not reseeded. New names have no fabricated jobs. No backend integration occurred. All 93 tests, syntax checks, static build and whitespace checks passed; the template harness exercises all twelve profiles. Browser visual acceptance remains unverified.
+
+## QA imagery, logo and client actions — 5 November 2026
+
+The login now leads with the accepted swabbing portrait, with a non-human facility/equipment image and navy text alongside. Two rejected rear-facing photos are removed from public assets and both allowlists; output contains sixteen files. The sidebar visually centers the unchanged logo by compensating for unequal bitmap margins. Client branch actions now have explicit wrapping, spacing and 44-pixel targets.
+
+All 93 tests, syntax, static build, whitespace and Hallmark source checks passed. Reference originals remain unchanged. Current browser navigation/screenshot controls failed, so visual crops/alignment and iPad/phone acceptance remain unverified. See docs/QA_LOGIN_REFRESH.md and docs/SOURCE_MANIFEST.json. Role and persistence behavior are unchanged; no backend integration occurred.

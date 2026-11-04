@@ -764,6 +764,8 @@ h1 { font-size: 34px; line-height: 1.18; letter-spacing: -1px; }
 .sidebar { padding: 16px 16px 0; border-right: 1px solid var(--color-shell-rule); }
 .brand { min-height: 88px; margin-bottom: 24px; border-radius: 8px; }
 .brand img { width: 196px; max-width: 100%; }
+/* Compensate for the original bitmap's uneven white margins without changing the logo. */
+.sidebar .brand img { transform: translate(2.57%, 4.69%); }
 .workspace { gap: 8px; padding: 0 8px 24px; }
 .workspace-mark { width: 24px; border: 0; background: var(--color-clear); color: var(--color-shell-ink); }
 .workspace strong { font-size: 13px; }
@@ -974,35 +976,34 @@ tbody tr:hover { background: var(--color-navy-tint); }
 .login-credentials .table-scroll { margin-top: 12px; max-width: 100%; }
 .login-credentials td, .login-credentials th { padding: 10px 8px; font-size: 11px; }
 .login-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--color-rule); font-size: 10px; color: var(--color-muted); }
-.login-story { min-width: 0; min-height: 0; display: flex; flex-direction: column; background: var(--color-shell); color: var(--color-shell-ink); }
-.login-collage { min-height: 480px; flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: minmax(280px, 3fr) minmax(180px, 2fr); gap: 8px; }
+.login-story { min-width: 0; min-height: 660px; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); grid-template-rows: minmax(280px, 1fr) auto; gap: 8px; background: var(--color-shell); color: var(--color-shell-ink); }
 .login-photo-frame { position: relative; min-width: 0; min-height: 0; margin: 0; overflow: hidden; background: var(--color-shell-raised); }
-.login-photo-main { grid-column: 1 / -1; }
 .login-photo { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
-.login-photo-main .login-photo { object-position: center 58%; }
-.login-photo-inspection .login-photo { object-position: center 42%; }
-.login-photo-site .login-photo { object-position: center 60%; }
+.login-photo-inspection { grid-column: 1; grid-row: 1 / -1; }
+.login-photo-inspection .login-photo { object-position: 44% center; }
+.login-photo-equipment { grid-column: 2; grid-row: 1; }
+.login-photo-equipment .login-photo { object-position: center 52%; }
+.login-photo-frame figcaption { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px 16px; background: var(--color-shell); color: var(--color-shell-ink); font-size: 11px; line-height: 1.4; }
 .login-panel, .login-story-copy { animation: login-arrive 520ms ease-out both; }
 .login-photo-frame { animation: login-arrive 620ms ease-out both; }
-.login-photo-inspection { animation-delay: 80ms; }
-.login-photo-site { animation-delay: 160ms; }
+.login-photo-equipment { animation-delay: 80ms; }
 @keyframes login-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) {
   .login-panel, .login-story-copy, .login-photo-frame { animation: none; }
 }
-.login-story-copy { padding: 32px 40px; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px 20px; }
-.login-story-mark { color: var(--color-lime); padding-top: 4px; }
+.login-story-copy { grid-column: 2; grid-row: 2; padding: 28px 24px 32px; display: flex; flex-direction: column; gap: 20px; }
+.login-story-mark { color: var(--color-lime); }
 .login-story-mark .icon { width: 32px; height: 32px; stroke-width: 1.2; }
-.login-story-copy h2 { min-width: 0; font-size: 32px; line-height: 1.15; letter-spacing: -.6px; color: var(--color-shell-ink); margin: 0; }
-.login-story-copy p { grid-column: 2; font-size: 13px; line-height: 1.6; color: var(--color-shell-muted); }
-.login-photo-credit { grid-column: 2; font-size: 10px; color: var(--color-shell-muted); margin-top: 8px; }
+.login-story-copy h2 { min-width: 0; overflow-wrap: break-word; font-size: 32px; line-height: 1.15; letter-spacing: -.6px; color: var(--color-shell-ink); margin: 0; }
+.login-story-copy p { font-size: 13px; line-height: 1.6; color: var(--color-shell-muted); }
+.login-photo-credit { font-size: 11px; line-height: 1.5; color: var(--color-shell-muted); margin-top: auto; }
 @media (max-width: 1100px) {
   .login-page { padding: 24px; }
   .login-layout { min-height: calc(100dvh - 48px); }
   .login-panel { padding: 32px; }
   .login-panel h1 { font-size: 36px; }
   .login-brand { margin-bottom: 36px; width: 208px; }
-  .login-story-copy { padding: 28px; gap: 12px; grid-template-columns: 32px minmax(0, 1fr); }
+  .login-story-copy { padding: 24px 20px; gap: 16px; }
   .login-story-copy h2 { font-size: 28px; }
 }
 @media (max-width: 800px) {
@@ -1010,8 +1011,11 @@ tbody tr:hover { background: var(--color-navy-tint); }
   .login-panel { padding: 32px; }
   .login-form-wrap { max-width: none; }
   .login-brand { margin-bottom: 32px; }
-  .login-collage { min-height: 0; height: 420px; flex: none; grid-template-rows: minmax(0, 3fr) minmax(0, 2fr); }
-  .login-story-copy { padding: 28px 32px; }
+  .login-story { min-height: 0; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto; }
+  .login-photo-inspection { grid-column: 1 / -1; grid-row: 1; min-height: 440px; aspect-ratio: 5 / 6; }
+  .login-photo-inspection .login-photo { object-position: center 20%; }
+  .login-photo-equipment { grid-column: 1; grid-row: 2; }
+  .login-story-copy { padding: 24px 20px; }
   .login-footer { margin-top: 28px; }
 }
 .role-notice { font-size: 12px; color: var(--color-muted); padding: 12px 0; margin-bottom: 12px; }
@@ -1117,6 +1121,9 @@ body[data-role="technician"] .recent-panel { grid-column: 1 / -1; }
 .draft-strip h2 { margin: 0 12px 0 0; }
 .canvas > .panel + .panel { margin-top: 24px; }
 .canvas .inline-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.client-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; }
+.client-actions > button { flex: 0 0 auto; min-height: 44px; }
+.client-actions > .text-button { padding: 8px 4px; white-space: nowrap; }
 @media (max-width: 600px) {
   .workflow-overview { flex-direction: column; align-items: stretch; padding: 20px; gap: 16px; }
   .workflow-overview > .button { width: 100%; }

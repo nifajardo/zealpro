@@ -21,8 +21,8 @@ test('hosting build includes browser dependencies, removes stale output and excl
     execFileSync(process.execPath, [join(fixture, 'scripts/build.mjs')], { cwd: fixture });
 
     const files = (await readdir(join(fixture, 'dist'), { recursive: true, withFileTypes: true })).filter(entry => entry.isFile());
-    assert.equal(files.length, 17);
-    for (const file of ['index.html', 'styles.css', 'tokens.css', 'src/app.js', 'src/model.js', 'src/data.js', 'src/access.js', 'src/reporting.js', 'src/presentation.js', 'src/workspace-ui.js', 'assets/zealpro-logo.png', 'assets/zealpro-field-visit.jpg', 'assets/zealpro-hygiene-inspection.jpg', 'assets/zealpro-site-work.jpg', 'assets/general-sans.woff2', 'assets/general-sans-semibold.woff2', 'assets/General-Sans-FFL.txt']) {
+    assert.equal(files.length, 16);
+    for (const file of ['index.html', 'styles.css', 'tokens.css', 'src/app.js', 'src/model.js', 'src/data.js', 'src/access.js', 'src/reporting.js', 'src/presentation.js', 'src/workspace-ui.js', 'assets/zealpro-logo.png', 'assets/zealpro-hygiene-inspection.jpg', 'assets/zealpro-facility-equipment.jpg', 'assets/general-sans.woff2', 'assets/general-sans-semibold.woff2', 'assets/General-Sans-FFL.txt']) {
       const source = file.startsWith('src/') ? file : `public/${file}`;
       assert.deepEqual(await readFile(join(fixture, 'dist', file)), await readFile(join(root, source)), file);
     }

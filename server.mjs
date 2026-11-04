@@ -11,7 +11,7 @@ const files = new Map([
   ...['styles.css', 'tokens.css'].map(name => [`/${name}`, [`public/${name}`, 'text/css; charset=utf-8']]),
   ...['app.js', 'model.js', 'data.js', 'access.js', 'reporting.js', 'presentation.js', 'workspace-ui.js'].map(name => [`/src/${name}`, [`src/${name}`, 'text/javascript; charset=utf-8']]),
   ['/assets/zealpro-logo.png', ['public/assets/zealpro-logo.png', 'image/png']],
-  ...['zealpro-field-visit.jpg', 'zealpro-hygiene-inspection.jpg', 'zealpro-site-work.jpg'].map(name => [`/assets/${name}`, [`public/assets/${name}`, 'image/jpeg']]),
+  ...['zealpro-hygiene-inspection.jpg', 'zealpro-facility-equipment.jpg'].map(name => [`/assets/${name}`, [`public/assets/${name}`, 'image/jpeg']]),
   ['/assets/general-sans.woff2', ['public/assets/general-sans.woff2', 'font/woff2']],
   ['/assets/general-sans-semibold.woff2', ['public/assets/general-sans-semibold.woff2', 'font/woff2']],
 ]);

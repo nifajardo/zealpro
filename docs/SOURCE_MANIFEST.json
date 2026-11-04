@@ -45,7 +45,8 @@
       "bytes": 926075,
       "sha256": "d7f6828fbe9f51aacdb1882ca77399b464d64442aa262aa9675d8e1775821683",
       "source": "reference/ZEALPRO_20PRESENTATION_202025_20(2).pdf",
-      "unaltered_extraction": true
+      "unaltered_extraction": true,
+      "published": false
     },
     {
       "path": "public/assets/zealpro-hygiene-inspection.jpg",
@@ -56,7 +57,8 @@
       "bytes": 296950,
       "sha256": "5036eadd65bc8480f99feab7451d7d981713b2edb77bee4dab62a9c60aa39039",
       "source": "reference/ZEALPRO_20PRESENTATION_202025_20(2).pdf",
-      "unaltered_extraction": true
+      "unaltered_extraction": true,
+      "published": true
     },
     {
       "path": "public/assets/zealpro-site-work.jpg",
@@ -67,7 +69,20 @@
       "bytes": 356181,
       "sha256": "912ed6b3f6ff6433eef4fb14e1ba2347cee95532ddf5061f5252283819c1f0fd",
       "source": "reference/ZEALPRO_20PRESENTATION_202025_20(2).pdf",
-      "unaltered_extraction": true
+      "unaltered_extraction": true,
+      "published": false
+    },
+    {
+      "path": "public/assets/zealpro-facility-equipment.jpg",
+      "page": 3,
+      "xref": 503,
+      "width": 1536,
+      "height": 2048,
+      "bytes": 1004735,
+      "sha256": "f0bb6536755177b2436f2281fd9bc8886a10a6b2e87e1f6a7b9b0f5d5eea679a",
+      "source": "reference/ZEALPRO_20PRESENTATION_202025_20(2).pdf",
+      "unaltered_extraction": true,
+      "published": true
     }
   ]
 }

@@ -55,8 +55,7 @@ const app = moduleAt('src/app.js');
 await app.link((specifier, source) => moduleAt(resolve(dirname(source.identifier), specifier)));
 await app.evaluate();
 const ui = app.namespace.templateTest;
-assert(mount.innerHTML.includes('/assets/zealpro-field-visit.jpg'));
-assert(mount.innerHTML.includes('/assets/zealpro-hygiene-inspection.jpg') && mount.innerHTML.includes('/assets/zealpro-site-work.jpg'));
+assert(mount.innerHTML.includes('/assets/zealpro-hygiene-inspection.jpg') && mount.innerHTML.includes('/assets/zealpro-facility-equipment.jpg'));
 assert(mount.innerHTML.includes('data-demo-account') && mount.innerHTML.includes('data-form="demo-login"'));
 for (const user of modules.get(resolve('src/access.js')).namespace.DEMO_USERS.filter(user => user.role === 'technician')) {
   assert(mount.innerHTML.includes(`Technician / ${user.name}`), `${user.name}: missing login label`);

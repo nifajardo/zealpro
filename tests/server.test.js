@@ -15,7 +15,7 @@ const origin = await new Promise((resolve, reject) => {
 });
 
 test('public assets serve with local-only security headers', async () => {
-  for (const path of ['/', '/styles.css', '/tokens.css', '/src/app.js', '/assets/zealpro-logo.png', '/assets/zealpro-field-visit.jpg', '/assets/zealpro-hygiene-inspection.jpg', '/assets/zealpro-site-work.jpg', '/assets/general-sans-semibold.woff2']) {
+  for (const path of ['/', '/styles.css', '/tokens.css', '/src/app.js', '/assets/zealpro-logo.png', '/assets/zealpro-hygiene-inspection.jpg', '/assets/zealpro-facility-equipment.jpg', '/assets/general-sans-semibold.woff2']) {
     const response = await fetch(`${origin}${path}`);
     assert.equal(response.status, 200, path);
     assert.match(response.headers.get('content-security-policy'), /default-src 'self'/);
@@ -24,6 +24,9 @@ test('public assets serve with local-only security headers', async () => {
 });
 
 test('paperwork, secrets, repository files and traversal paths are not served', async () => {
+  for (const path of ['/assets/zealpro-field-visit.jpg', '/assets/zealpro-site-work.jpg']) {
+    assert.equal((await fetch(`${origin}${path}`)).status, 404, path);
+  }
   for (const path of ['/ZEALPRO%20-%20SRS.pdf', '/ZEALPRO%20UPDATED%20REQUIREMENTS.pdf', '/reference/ZEALPRO_20PRESENTATION_202025_20(2).pdf', '/reference/Zealpro%20Solutions,%20Inc.%20Company%20Profile%20v2.pdf', '/a14ba4fb-89db-47c3-aa8a-19723c748653.jfif', '/PROJECT_PREFERENCES.md', '/.env', '/.git/config', '/server.mjs', '/src/../server.mjs', '/%2e%2e/server.mjs', '/assets/%2e%2e/%2e%2e/.env']) {
     assert.equal((await fetch(`${origin}${path}`)).status, 404, path);
   }

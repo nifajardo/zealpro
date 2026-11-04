@@ -1,5 +1,15 @@
 # Login refresh from supplied references
 
+## Current QA feedback revision — 5 November 2026
+
+This revision supersedes the original three-photo composition below. The accepted swabbing photograph is now the dominant portrait, spanning both desktop rows. A smaller facility/equipment photograph and a navy copy panel sit beside it. At narrow widths, the portrait moves above those two supporting panels and the form remains first. Captions describe the pictured content without claiming equipment ownership. Entrance motion remains finite with reduced-motion support.
+
+The new equipment image is an unaltered extraction from presentation page 3, xref 503, 1536 × 2048 pixels. `SOURCE_MANIFEST.json` records its exact bytes/hash and marks the rejected group and silo-work images unpublished. Those two JPEGs were removed from the public assets, build allowlist and local server routes. The browser artifact contains sixteen files. Original reference PDFs and the logo remain unchanged.
+
+The sidebar's source logo has unequal white margins: visible pixels span x=93–905 and y=68–280 inside a 1052 × 384 bitmap. A proportional CSS translation of 2.57% horizontally and 4.69% vertically centers the visible artwork without editing the bitmap. Client table actions now use a wrapping flex group with a 16-pixel horizontal gap, 10-pixel row gap and separate 44-pixel-high targets; action handlers and role permissions are unchanged.
+
+Verification: all 93 automated checks passed, including all twelve profile templates, revised hosting assets and local HTTP allowlist/retired-path checks. Syntax, static build and whitespace checks passed. Hallmark's source scan reported no failures or warnings. A temporary in-memory localhost server was used; the owner's database was not opened. Current browser screenshot capture failed (`FrameArrived timed out: timed out waiting on channel`), while browser navigation also failed in the control adapter. Visual crop/alignment, iPad and phone acceptance remain unverified; source/template evidence is not a substitute for those checks.
+
 ## Direction and source review
 
 The owner requested a better login layout using the PDFs in `reference/`. Both decks were inspected: the eight-page company profile establishes pest/pathogen management and protective-clothing imagery; the ten-page presentation includes field/site-visit photographs. The existing navy/lime logo system and General Sans remain authoritative.
