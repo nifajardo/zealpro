@@ -61,3 +61,7 @@ Owner, Supervisor and Technician sample logins preview the proposed SRS hierarch
 ## Updated requirements presentation
 
 The 4 November update separates Administrator from Owner and scopes two Supervisor accounts. Approval-led browser workflows, stock/payment/reminder previews and staff/access/activity screens are implemented without backend integration. Read [current role/workflow guide](../docs/ROLES_AND_REPORTS.md), [updated QA](../docs/QA_UPDATED_REQUIREMENTS_UI.md) and [[Architecture]]. Browser visual acceptance is blocked by Computer Use URL verification; source/controller checks are separate evidence.
+
+## Login presentation
+
+Three unaltered company-reference photos now form the login collage. Taste's editorial-greeting direction keeps the form clear, with public demo-role selection and a finite reduced-motion-aware entrance. Navy/lime branding and all role behavior remain. [Login source/QA](../docs/QA_LOGIN_REFRESH.md) records asset provenance and the unresolved browser visual acceptance limitation.

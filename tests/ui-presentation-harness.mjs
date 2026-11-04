@@ -55,6 +55,15 @@ const app = moduleAt('src/app.js');
 await app.link((specifier, source) => moduleAt(resolve(dirname(source.identifier), specifier)));
 await app.evaluate();
 const ui = app.namespace.templateTest;
+assert(mount.innerHTML.includes('/assets/zealpro-field-visit.jpg'));
+assert(mount.innerHTML.includes('/assets/zealpro-hygiene-inspection.jpg') && mount.innerHTML.includes('/assets/zealpro-site-work.jpg'));
+assert(mount.innerHTML.includes('data-demo-account') && mount.innerHTML.includes('data-form="demo-login"'));
+const demoFields = { email: { value: '' }, password: { value: '' } }, loginError = { hidden: false };
+handlers.change({ target: { value: 'admin', matches: selector => selector === '[data-demo-account]', form: { elements: demoFields, querySelector: () => loginError } } });
+assert.equal(demoFields.email.value, 'admin@zealpro.demo');
+assert.equal(demoFields.password.value, 'AdminDemo!2026');
+assert(loginError.hidden);
+assert(mount.innerHTML.includes('data-form="demo-login"'), 'Picking a sample must not bypass sign-in');
 const logins = [
   ['owner', 'owner@zealpro.demo', 'OwnerDemo!2026'],
   ['admin', 'admin@zealpro.demo', 'AdminDemo!2026'],

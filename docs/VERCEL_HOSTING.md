@@ -21,7 +21,7 @@ Use the existing `zealpro-demo` project and repository; a second project is unne
 
 The committed configuration provides these build/output settings. The Root Directory must point at the repository root so Vercel finds the configuration and package files. Do not use `npm start`, `server.mjs` or `public` as the hosted entry point/output.
 
-After the commit reaches the connected production branch, verify the new deployment uses it. If automatic deployments are disabled, redeploy the latest commit from the existing Vercel project. The build log should report **Built 14 browser files in dist/**. Reuse the existing production domain, `https://zealpro-demo.vercel.app/`.
+After the commit reaches the connected production branch, verify the new deployment uses it. If automatic deployments are disabled, redeploy the latest commit from the existing Vercel project. The build log should report **Built 17 browser files in dist/**. Reuse the existing production domain, `https://zealpro-demo.vercel.app/`.
 
 ## Local verification
 
@@ -35,7 +35,7 @@ python -m http.server 4390 --bind 127.0.0.1 --directory dist
 
 The last command is an optional static preview when Python is available; open `http://127.0.0.1:4390/`. It does not start or open the local database. Stop it with Ctrl+C. Vercel applies the security/cache headers configured in `vercel.json`; the simple Python preview does not emulate those headers.
 
-The build uses only Node's standard library. It removes stale generated output and copies an explicit list of fourteen browser files: HTML, two stylesheets, seven modules, the unchanged logo, two fonts and their license. `dist/` is generated and ignored by Git. Source paperwork, signatures, `.local/`, real credentials, backend code, documentation and tests are not published. The intentionally public demo presets in `src/access.js` are part of the browser artifact and are not secrets or secure authentication. `.vercelignore` additionally limits CLI source uploads; the explicit `dist/` allowlist is the public-file boundary for Git deployments.
+The build uses only Node's standard library. It removes stale generated output and copies an explicit list of seventeen browser files: HTML, two stylesheets, seven modules, the unchanged logo, three selected fieldwork photographs, two fonts and their license. `dist/` is generated and ignored by Git. Source paperwork, signatures, `.local/`, real credentials, backend code, documentation and tests are not published. The intentionally public demo presets in `src/access.js` are part of the browser artifact and are not secrets or secure authentication. `.vercelignore` additionally limits CLI source uploads; the explicit `dist/` allowlist is the public-file boundary for Git deployments.
 
 Navigation uses URL fragments such as `/#schedule?date=2026-11-02&view=year`. No catch-all rewrite is needed. Unknown file paths and `/api/*` should return 404 instead of invoking a server or returning app HTML.
 

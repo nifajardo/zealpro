@@ -81,7 +81,7 @@ src/presentation.js     Browser-only approvals, reservations, ledger and demo ac
 src/workspace-ui.js     Staff/settings/activity and billing/stock workflow panels
 src/app.js              Eleven destinations, forms, calendar and browser persistence
 backend/                Local PostgreSQL lifecycle, SQL migrations, transaction repository/API and exports
-scripts/build.mjs       Explicit fourteen-file static hosting artifact builder
+scripts/build.mjs       Explicit seventeen-file static hosting artifact builder
 dist/                   Ignored static browser output for Vercel
 vercel.json             Static framework/build/output settings and response headers
 .local/                 Ignored database and private backups
@@ -108,3 +108,5 @@ The SRS spells the treatment category **Gel bathing**. The demo preserves it. Co
 - Typeface: General Sans, supplied by [Fontshare](https://www.fontshare.com/fonts/general-sans), downloaded from the official Fontshare API. The unmodified license is included at `public/assets/General-Sans-FFL.txt`.
 - Reference mapping: [SRS traceability](docs/SRS_TRACEABILITY.md).
 - Current palette: [overview](docs/screenshots/brand-restored-overview.jpg), [calendar](docs/screenshots/brand-restored-calendar.jpg), [phone](docs/screenshots/brand-restored-phone.jpg) and [QA](docs/QA_BRAND_RESTORATION.md). Year/calendar alignment evidence remains in [calendar QA](docs/QA_CALENDAR_REFINEMENT.md). Earlier screenshots: [workspace](docs/screenshots/overview-desktop-v2.png), [actual-product entry](docs/screenshots/report-actual-entry-v2.png), [phone calendar](docs/screenshots/calendar-phone-v2.png), [phone report form](docs/screenshots/report-phone-entry-v2.png). The live calendar contains the complete desktop layout; additional full-page capture was unavailable.
+
+Login presentation: company-supplied a three-photo fieldwork collage, subtle reduced-motion-aware entrance animation, a responsive split layout and a public demo-role selector. See [login source and QA](docs/QA_LOGIN_REFRESH.md). The static artifact contains 17 browser files; full reference decks remain private.

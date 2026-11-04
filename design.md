@@ -38,6 +38,10 @@ Keep General Sans for headings, data and controls. Headings use a fixed scale, n
 - Keep the full-width selected-day action, visible blank-cell boundaries and preserved calendar scroll behaviour.
 - States are those the app actually supports: full, empty, validation errors and storage warnings. No fake loading or server-success states are introduced.
 
+## Login composition
+
+The entry screen uses a white form and company-supplied three-photo fieldwork collage in a centered split layout, with navy copy below the photograph and a restrained lime mark. On narrow screens the sign-in form precedes the collage. A one-time fade/8-pixel entrance uses a restrained stagger; reduced-motion disables it. No continuous animation. Keep the original logo, plain labels and one primary sign-in action. A public demo-role selector fills existing credentials without automatically signing in. Source provenance and verification limits are in `docs/QA_LOGIN_REFRESH.md`. This login-specific composition does not change the working-screen navigation or financial palette.
+
 ## Motion and exports
 
 Still at rest. Existing brief control feedback remains; reduced-motion rules disable movement. No entrance animation or scroll choreography.
