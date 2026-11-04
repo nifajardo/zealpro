@@ -100,3 +100,7 @@ The local engine is PostgreSQL 18.6. SQL restore was tested against a fresh loca
 Next: connect UI mutations to server commands with durable same-payload retry, revision-conflict handling and explicit import review. Do not substitute full client-written snapshots for server domain commands. Review billing/tax rules, report financial visibility, recurrence, multiple technicians and the SRS Gel bathing terminology before production decisions.
 
 Origin `nifajardo/zealpro` is public. The SRS and three signed reference photographs remain unchanged locally and ignored by Git. The logo and synthetic UI evidence are versioned. The existing Vercel project serves static browser assets; no hosted database migration occurred.
+
+## Updated UI hosted acceptance
+
+Implementation `74f7dbc` is pushed to main. All fourteen browser assets match Git on https://zealpro-demo.vercel.app/; private/API paths and both requirements PDFs return 404. Ninety tests pass. Current browser/mobile/PDF pagination acceptance remains blocked by Computer Use URL safety verification. No backend integration occurred. See `docs/QA_UPDATED_REQUIREMENTS_UI.md`. The user's session transcript remains untracked and unpublished.

@@ -42,4 +42,6 @@ No current visual/mobile screenshot, browser interaction pass, saved-PDF paginat
 
 ## Hosting verification
 
-The existing Git-connected Vercel deployment is checked after pushing verified source to main. HTTP/artifact results are appended below; browser limitations remain separate.
+Implementation `74f7dbc` was pushed directly to main. The existing `https://zealpro-demo.vercel.app/` serves all fourteen browser assets with HTTP 200, matching committed Git blobs byte-for-byte. Both new modules are published; API, server/backend, environment/database and both private requirements PDFs return 404. CSP, nosniff, frame-denial and referrer headers remain present. An initial check preceded the new deployment; the subsequent check matched every asset.
+
+This establishes HTTP/static-artifact acceptance only. Current browser interaction, mobile appearance and PDF pagination remain unverified because Computer Use stopped on Windows URL safety verification. No alternate browser automation was used. The disposable static preview is no longer listening on port 4494. A user-created `codex-session-*.md` transcript was left untracked and was not published.

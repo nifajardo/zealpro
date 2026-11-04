@@ -28,4 +28,4 @@
 - [x] Integrate stock ledger, payment proof/verification/reminder simulation, staff/settings and audit screens, using existing form/table/dialog components.
 - [x] Update app/PDF comparison and approval labels, CSS, static allowlists and test/check scripts.
 - [x] Verify automated behavior, resolve independent review findings, update traceability, credentials and handoff. Real-browser flows remain blocked by Computer Use URL safety verification; template/controller tests are separate evidence.
-- [ ] Commit/push main and verify the existing static Vercel deployment.
+- [x] Commit/push main and verify the existing static Vercel deployment. All fourteen assets match Git; private/API paths are 404. Real-browser visual acceptance remains blocked as recorded in QA.

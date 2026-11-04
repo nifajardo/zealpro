@@ -30,3 +30,7 @@ Latest visual authority: the owner screenshot restores navy navigation, lime sel
 Vercel hosting: `npm run build` creates browser-only `dist/`, and `vercel.json` selects Other with that output. The local Node/PGlite API is deliberately excluded. Read `docs/VERCEL_HOSTING.md` before changing hosting or retrying the existing project; preserve browser-local records.
 
 Live acceptance after `0814dd0`: https://zealpro-demo.vercel.app/ returns 200; static assets, security headers, private-path 404s and browser Year/refresh checks passed. This is the browser-local presentation, not a hosted database deployment.
+
+## Updated UI hosted acceptance
+
+Implementation `74f7dbc` is pushed to main. All fourteen browser assets match Git on https://zealpro-demo.vercel.app/; private/API paths and both requirements PDFs return 404. Ninety tests pass. Current browser/mobile/PDF pagination acceptance remains blocked by Computer Use URL safety verification. No backend integration occurred. See `docs/QA_UPDATED_REQUIREMENTS_UI.md`. The user's session transcript remains untracked and unpublished.
